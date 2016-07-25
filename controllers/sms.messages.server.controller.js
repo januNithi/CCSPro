@@ -1,6 +1,6 @@
 
 
-var   smsDb= require('../config/db/sms/smsdb');
+var   smsDb= require('../config/db/sms/smsDb');
 var msg91 = require("msg91")("118856AnX1aObPdz5780a27d", "CCSPVT", "4" );
 var   memDb=require("../config/db/sms/memberDb");
 
