@@ -6,8 +6,8 @@ module.exports = {
     callbackURL: 'http://ec2-54-213-156-43.us-west-2.compute.amazonaws.com:3000/auth/facebook/callback'
   },
   googleAuth: {
-    clientID: '92955044095-h9rrm4lpt7jc3q1cgjj0mu9m5euoa4kt.apps.googleusercontent.com',
-    clientSecret: 'B-PyTKfjQCXpztN31qmNWNzV',
+    clientID: '825487253382-gj8k49pqvmk10ggdop4kevv7jnaci0n9.apps.googleusercontent.com',
+    clientSecret: '1Dws4wswdRg4XR0axhlI37kl',
     callbackURL: 'http://ec2-54-213-156-43.us-west-2.compute.amazonaws.com:3000/auth/google/callback'
   }
 };
