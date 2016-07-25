@@ -14,7 +14,7 @@
             ico = 'images/documents/pdf.png';
             break;
           case 2:
-            ico = 'images/documents/word.png';
+            ico = 'images/documents/Word.png';
             break;
           case 3:
             ico = 'images/documents/ppt.png';
@@ -23,7 +23,7 @@
             ico = 'images/documents/image.PNG';
             break;
           case 5:
-            ico = 'images/documents/zip.png';
+            ico = 'images/documents/ZIP.png';
             break;
           case 6:
             ico = 'images/documents/video.png';
