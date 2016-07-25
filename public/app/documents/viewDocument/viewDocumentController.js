@@ -173,6 +173,13 @@
                 return;
         };
 
+        $scope.getFilePath = function(){
+            console.log("http://docs.google.com/gview?url=http://ec2-54-213-156-43.us-west-2.compute." +
+                "amazonaws.com:3000/"+ $scope.thisFile +"&embedded=true");
+            return "http://docs.google.com/gview?url=http://ec2-54-213-156-43.us-west-2.compute." +
+                "amazonaws.com:3000/"+ $scope.thisFile +"&embedded=true";
+        };
+
         //Call the function for page loading//
         getUser();
         getDocument();
