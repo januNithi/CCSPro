@@ -18,7 +18,8 @@ var   docService=require('../config/db/documents/documentdb');
             {
               docService.getAllDoc(serStr,function(err,data){
                   if(err) {
-                      res.end({error:err});
+                      console.log(err);
+                      res.send(500,{ error: err });
                   }
                   else {
                       result=data;
