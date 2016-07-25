@@ -1,0 +1,181 @@
+
+<spinner name="html5spinner" ng-cloak="">
+    <div class="overlay"></div>
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+    <div class="please-wait">Please Wait...</div>
+</spinner>
+
+<nav class="nav navbar-dark bg-primary" role="navigation">
+    <div class="nav-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <label class="navbar-brand">Crisp Cloud Solutions</label>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+
+
+            <li>
+
+                <a ng-click='goToDashboard()'>
+
+                    <span class="glyphicon glyphicon-arrow-left"></span>
+
+                </a>
+
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white"><span class="glyphicon glyphicon-cog"></span></a>
+                <ul class="dropdown-menu" role="menu">
+
+                    <li align='right'>
+
+                        <a ng-click='goToDashboard()'>
+
+                            <span class="glyphicon glyphicon-th-large"></span>Dashboard
+
+                        </a>
+
+                    </li>
+
+                    <li align='right'>
+                        n
+                        <a ng-click='onLogout()'>
+
+                            <span class="glyphicon glyphicon-log-out"></span>Log Out
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+
+<div id="wrapper" class="col-md-offset-1 col-md-10 col-md-offset-1">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Choose Payment Method
+                </a>
+            </li>
+            <li class="active">
+                <a ng-click="payOption('card')">Credit/Debit Card</a>
+            </li>
+            <li>
+                <a ng-click="payOption('netBanking')">Internet Banking</a>
+            </li>
+        </ul>
+
+
+
+
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid" ng-show="payWithCredit">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Pay with Credit/Debit Card</h3>
+                    <div class="panel panel-default credit-card-box">
+                        <div class="panel-heading display-table" >
+                            Payment Details
+                        </div>
+                        <div class="panel-body">
+                            <!--<form name="ccForm">-->
+                                <!--<div class="form-group"  ng-class = "{'has-error':ccForm.ccNumber.$invalid,'has-success':ccForm.ccNumber.$valid}">-->
+                                    <!--<label for="card-number">Card Number</label>-->
+                                    <!--<div class="input-group">-->
+                                        <!--<input type="text" class="form-control" id="cardNumber" cc-number cc-eager-type name="ccNumber" ng-model="card.number">-->
+                                        <!--<span class="input-group-addon"><i class="fa fa-credit-card"></i></span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group" ng-class = "{'has-error':ccForm.ccCvc.$invalid,'has-success':ccForm.ccCvc.$valid}">-->
+                                    <!--<label for="cvc">CVC</label>-->
+                                    <!--<input type="text" class="form-control" id="cvc" cc-cvc cc-type="ccForm.ccNumber.$ccType" name="ccCvc" ng-model="card.cvc">-->
+                                <!--</div>-->
+                                <!--<div class="form-group" >-->
+                                    <!--<label for="card-number">Expiration</label>-->
+                                    <!--<div class="row" cc-exp>-->
+                                        <!--<div class="col-xs-3" ng-class = "{'has-error':ccForm.ccExpMonth.$invalid,'has-success':ccForm.ccExpMonth.$valid}">-->
+                                            <!--<input placeholder="MM" type="text" class="form-control" cc-exp-month name="ccExpMonth" ng-model="card.expiration.month">-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-3" ng-class = "{'has-error':ccForm.ccExpYear.$invalid,'has-success':ccForm.ccExpYear.$valid}">-->
+                                            <!--<input placeholder="YY" type="text" class="form-control" cc-exp-year name="ccExpYear" ng-model="card.expiration.year">-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-xs-12">-->
+                                        <!--<button class="subscribe btn btn-success btn-lg btn-block" ng-click="payOnline()" type="button">Pay</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row" style="display:none;">-->
+                                    <!--<div class="col-xs-12">-->
+                                        <!--<p class="payment-errors"></p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</form>-->
+
+                            <form align="center" method="post" action="https://sandbox.citruspay.com/sslperf/fd62d4zwkc">
+                                <input type="hidden" id="merchantTxnId" name="merchantTxnId" value="wpDugA3QbM330jJhIBmq" />
+                                <input type="hidden" id="orderAmount" name="orderAmount" value="0.00" />
+                                <input type="hidden" id="currency" name="currency" value="INR" />
+                                <input type="hidden" name="returnUrl" value="ttp://localhost:3000/auth/paymentResult" />
+                                <input type="hidden" id="notifyUrl" name="notifyUrl" value="http://localhost:3000/auth/notifyME" />
+                                <input type="hidden" id="secSignature" name="secSignature" value="cd3e011619454c28c463af3a47c3e0e292ead84" />
+                                <input type="hidden" id="dpSignature" name="dpSignature" value="699509a5e306f6f559cbf026427cd107f1ed0e0c" />
+                                <input type="Submit" value="Pay Now"/>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="netBanking" ng-hide="payWithCredit">
+
+            <div class="col-lg-12">
+                <h1>Pay through Internet Banking</h1>
+                <div class="panel panel-default credit-card-box">
+                    <div class="panel-heading display-table" >
+                        Payment Details
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+

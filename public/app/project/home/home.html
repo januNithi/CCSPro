@@ -1,0 +1,236 @@
+
+<spinner name="html5spinner" ng-cloak="">
+	<div class="overlay"></div>
+	<div class="spinner">
+		<div class="double-bounce1"></div>
+		<div class="double-bounce2"></div>
+	</div>
+	<div class="please-wait">Please Wait...</div>
+</spinner>
+	<nav class="nav navbar-dark bg-primary" role="navigation">
+		<div class="nav-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<label class="navbar-brand">Crisp Cloud Solutions</label>
+
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a ng-click='goToDashboard()'  style="color:white"><span class="glyphicon glyphicon-arrow-left"></span></a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+					<ul class="dropdown-menu" role="menu">
+
+						<li align='right'>
+
+							<a ng-click='onLogout()'>
+
+								<span class="glyphicon glyphicon-log-out"></span>Log Out
+
+							</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+			</ul>
+		</div>
+	</nav>
+
+<div class="panel panel-success">
+  		<div class="panel-heading">
+  			<label>Project Title : {{datas.Title}}</label>
+  			<span class="pull-right">
+  				<label>Project Code : {{datas.PCode}}</label>
+  			</span>
+  		</div>
+</div>
+
+<div class="container">
+	 <div class="panel-group" ng-accordion options="simpleAccordionOptions">
+		 <div class="row">
+			<div class="col-md-3">
+
+				<div class="panel panel-info" ng-init=""panel1="true" ng-click="panel1=!panel1" ng-accordion-group options="accordionGroupOptions1">
+
+					<div class="panel-heading" ng-accordion-heading>
+						<label>Payment Status</label>
+						<b><span class="pull-right" ng-show="panel1" style="color:#1719dd"><a href="#"><i class="fa fa-rupee"></i>{{datas.Amount-datas.Paid}}</a></span></b>
+						<b><span class="pull-right" ng-show="!panel1" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
+					</div>
+				 <div class="panel-collapse collapse in" ng-accordion-body>
+					<div class="panel-body">
+						<label>Total Amount :  <i class="fa fa-rupee"></i>{{datas.Amount}} </label>
+						<br><br>
+						<p>Paid :  <i class="fa fa-rupee"></i>{{datas.Paid}} </p>
+						<p class="text-danger">Pending :  <i class="fa fa-rupee"></i>{{datas.Amount-datas.Paid}}</p>
+					</div>
+				 </div>
+				</div>
+
+
+				<div class="panel panel-info" ng-init=""panel2="true" ng-click="panel2=!panel2" ng-accordion-group options="accordionGroupOptions2">
+					<div class="panel-heading" ng-accordion-heading>
+						<label>Project Handled By</label>
+						<b><span class="pull-right" ng-show="panel2" style="color:#1719dd"><a href="#"><u>View...</u></a></span></b>
+						<b><span class="pull-right" ng-show="!panel2" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
+					</div>
+				 <div class="panel-collapse collapse in" ng-accordion-body>
+					<div class="panel-body">			
+						<p><label>Employee Name : </label><br/> {{datas.HandledBy}}</p><br>
+						<p><label>Contact Number : </label><br/> (+91) {{datas.EmpContact}}</p>
+					</div>
+				 </div>
+				</div>
+
+				<div class="panel panel-info" ng-init=""panel10="true" ng-click="panel10=!panel10" ng-accordion-group options="accordionGroupOptions2">
+					<div class="panel-heading" ng-accordion-heading>
+						<label>Chat</label>
+						<b><span class="pull-right" ng-show="panel10" style="color:#1719dd"><a href="#"><u>View...</u></a></span></b>
+						<b><span class="pull-right" ng-show="!panel10" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
+					</div>
+					<div class="panel-collapse collapse in" ng-accordion-body>
+						<div class="panel-body">
+							<center><a ng-click="gotoChat()"><span class="fa fa-comments fa-5x" aria-hidden="true"></span></a></center>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-6">
+				<div class="panel panel-info" ng-init=""panel3="true" ng-click="panel3=!panel3" ng-accordion-group options="accordionGroupOptions4">
+					<div class="panel-heading" ng-accordion-heading>
+						<label>About Project</label>
+						<b><span class="pull-right" ng-show="panel3" style="color:#1719dd"><a href="#"><u>View...</u></a></span></b>
+						<b><span class="pull-right" ng-show="!panel3" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
+					</div>
+				 <div class="panel-collapse collapse in" ng-accordion-body>
+					<div class="panel-body">
+					<p class="text-justify">
+						{{datas.Abstract}}
+					</p>
+					</div>
+				 </div>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="panel panel-info" ng-init=""panel4="true" ng-click="panel4=!panel4" ng-accordion-group options="accordionGroupOptions5">
+					<div class="panel-heading" ng-accordion-heading>
+						<label>Project Status</label>
+						<b><span class="pull-right" ng-show="panel4" style="color:#1719dd"><a href="#">{{totalPercentage}}%</a></span></b>
+						<b><span class="pull-right" ng-show="!panel4" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
+					</div>
+				 <div class="panel-collapse collapse in" ng-accordion-body>
+					<div class="panel-body" >
+						<label>Project Completion Status : <span class="text-success"> {{totalPercentage}}%</span></label>
+						<!-- chart types : column2d, column3d, line, area2d, bar2d, bar3d, pie2d, pie3d, doughnut2d, doughnut3d, pareto2d, pareto3d -->
+						<div fusioncharts width="245" height="350" type="line" datasource="{{myDataSource}}">
+						</div>
+							
+					</div>
+				 </div>
+				</div>
+
+				<div class="panel panel-info" ng-init=""panel5="true" ng-click="panel5=!panel5" ng-accordion-group options="accordionGroupOptions6">
+					<div class="panel-heading" ng-accordion-heading>
+						<label>Delivery Date</label>
+						<b><span class="pull-right" ng-show="panel5" style="color:#1719dd"><a href="#">{{datas.DeliveryDate}}</a></span></b>
+						<b><span class="pull-right" ng-show="!panel5" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
+					</div>
+					 <div class="panel-collapse collapse in" ng-accordion-body>
+						<div class="panel-body">
+							<p>{{datas.DeliveryDate}}</p>
+						</div>
+			 		</div>
+				</div>
+
+				<div class="panel panel-info" ng-init=""panel6="true" ng-click="panel6=!panel6" ng-accordion-group options="accordionGroupOptions3">
+					<div class="panel-heading" ng-accordion-heading>
+						<label>Project Manager</label>
+						<b><span class="pull-right" ng-show="panel6" style="color:#1719dd"><a href="#"><u>View...</u></a></span></b>
+						<b><span class="pull-right" ng-show="!panel6" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
+					</div>
+				 <div class="panel-collapse collapse in" ng-accordion-body>
+					<div class="panel-body">
+						<p><label>Name : </label><br/>{{datas.Manager}}</p><br>
+						<p><label>Contact Number : </label><br/> (+91) {{datas.ManagerContact}}</p>
+					</div>
+				 </div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+		    <div class="col-md-12">
+		    	<div class="panel panel-info" ng-init=""panel7="true" ng-click="panel7=!panel7" ng-accordion-group options="accordionGroupOptions7">
+					<div class="panel-heading" ng-accordion-heading>
+						<label>Project Images</label>
+						<b><span class="pull-right" ng-show="!panel7" style="color:#1719dd"><a href="#"><u>View...</u></a></span></b>
+						<b><span class="pull-right" ng-show="panel7" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
+					</div>
+					 <div class="panel-collapse collapse in" ng-accordion-body>
+						<div class="panel-body">
+							<div class="col-md-4" ng-repeat="image in images">
+								<a ng-href="../uploads/project/{{image.fileName}}" class="thumbnail">
+						        	<p>CB2-1516-CSD0001</p>
+						        	<img ng-src="../uploads/project/{{image.fileName}}" alt="Project Image" style="width:150px;height:150px">
+						      </a>
+						    </div>
+						</div>
+			 		</div>
+				</div>
+		      
+				<div class="panel panel-info" ng-init=""panel8="true" ng-click="panel8=!panel8" ng-accordion-group options="accordionGroupOptions8">
+					<div class="panel-heading" ng-accordion-heading>
+						<label>Project History</label>
+						<b><span class="pull-right" ng-show="!panel8" style="color:#1719dd"><a href="#"><u>View...</u></a></span></b>
+						<b><span class="pull-right" ng-show="panel8" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
+					</div>
+				 <div class="panel-collapse collapse in" ng-accordion-body>
+					<div class="panel-body">
+						<timeline>
+						  <timeline-event ng-repeat="event in events" side="alternate">
+						    <timeline-badge class="{{event.badgeClass}}">
+						      <i class="glyphicon {{event.badgeIconClass}}"></i>
+						    </timeline-badge>
+						    <timeline-panel class="{{event.badgeClass}}"ng-hide="false">
+						      <timeline-heading>
+						        <h4 class="text-info">{{event.title}}</h4>
+						      </timeline-heading>
+						      <h5>{{event.content}}</h5>
+						    </timeline-panel>
+						  </timeline-event>
+						</timeline>
+					</div>
+				 </div>
+				</div>
+
+				<div class="panel panel-info"  ng-init=""panel9="true" ng-click="panel9=!panel9" ng-accordion-group options="accordionGroupOptions9">
+					<div class="panel-heading" ng-accordion-heading>
+						<label>For any queries or changes in this project (Title change or other clarification)</label>
+						<b><span class="pull-right" ng-show="!panel9" style="color:#1719dd"><a href="#"><u>View...</u></a></span></b>
+						<b><span class="pull-right" ng-show="panel9" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
+					</div>
+				 <div class="panel-collapse collapse in" ng-accordion-body>
+					<div class="panel-body">
+						<textarea class="form-control" rows="5" ng-model="question" ng-required="true"></textarea>
+						<br/>
+							<button type="submit" class="btn btn-primary pull-right" ng-disabled="!question.length"  ng-click="postData()">SUBMIT</button>
+					</div>
+				 </div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+</div>

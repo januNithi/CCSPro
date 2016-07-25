@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for CCSProject\config\db\forumManager.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">CCSProject/config/db/</a> forumManager.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">18.52% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>10/54</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">18.52% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>10/54</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * Created by Java-android on 26.05.2016.
+ */
+&nbsp;
+&nbsp;
+var q = require('q');
+var mysql = require('mysql');
+var data = '';
+var db = require('./../db');
+var con = mysql.createConnection(db);
+&nbsp;
+<span class="fstat-no" title="function not covered" >function getForum(type) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+<span class="cstat-no" title="statement not covered" >  var questions = [];</span>
+<span class="cstat-no" title="statement not covered" >  var getQus = '';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (type === 'All') {</span>
+<span class="cstat-no" title="statement not covered" >    getQus = 'select q.qusId,q.Question,q.Dates,q.Explation,q.Type,q.userid,personaldata.userid,personaldata.fname,personaldata.mname,personaldata.lname,personaldata.fb_fname,personaldata.fb_mname,personaldata.fb_lname,personaldata.g_fname,personaldata.g_mname,personaldata.lname,(select round(AVG(rating)) from rating where qusId=q.qusId) as rating from question as q INNER JOIN personaldata ON q.userid=personaldata.userid and personaldata.status="active" order by qusId DESC';</span>
+  } else {
+<span class="cstat-no" title="statement not covered" >    getQus='select q.qusId,q.Question,q.Dates,q.Explation,q.Type,q.userid,personaldata.userid,personaldata.fname,personaldata.mname,personaldata.lname,personaldata.fb_fname,personaldata.fb_mname,personaldata.fb_lname,personaldata.g_fname,personaldata.g_mname,personaldata.lname,(select round(AVG(rating)) from rating where qusId=q.qusId) as rating from question as q INNER JOIN personaldata ON q.userid=personaldata.userid and personaldata.status="active" where Type=\'' + type + '\' order by qusId DESC';</span>
+  }
+<span class="cstat-no" title="statement not covered" >          con.query(getQus, <span class="fstat-no" title="function not covered" >function(err, result) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (err) {</span>
+<span class="cstat-no" title="statement not covered" >              deferred.reject(err);</span>
+<span class="cstat-no" title="statement not covered" >              throw err;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (result) {</span>
+<span class="cstat-no" title="statement not covered" >              data = result;</span>
+&nbsp;
+              //console.log(JSON.stringify(data[0]));
+&nbsp;
+             // console.log(JSON.stringify(data.length));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              data.forEach(<span class="fstat-no" title="function not covered" >function(value, index) {</span></span>
+                //console.log(value);
+<span class="cstat-no" title="statement not covered" >                var get = 'SELECT answer.id,answer.qusId,answer.Date,answer.Answers,answer.userid,personaldata.userid,personaldata.fname,personaldata.mname,personaldata.lname,personaldata.fb_fname,personaldata.fb_mname,personaldata.fb_lname,personaldata.g_fname,personaldata.g_mname,personaldata.lname FROM answer INNER JOIN personaldata ON answer.userid=personaldata.userid and qusId=' + value.qusId + ' and personaldata.status="active" order by answer.id DESC';</span>
+&nbsp;
+                //var get = 'select * from answer where qusId=' + value.qusId + ' order by id DESC';
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                console.log('get answer query' + get);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                con.query(get, <span class="fstat-no" title="function not covered" >function(err, results) {</span></span>
+<span class="cstat-no" title="statement not covered" >                  if (err) {</span>
+<span class="cstat-no" title="statement not covered" >                    deferred.reject(err);</span>
+<span class="cstat-no" title="statement not covered" >                    throw err;</span>
+                  }
+&nbsp;
+                  //console.log(results);
+<span class="cstat-no" title="statement not covered" >                  if (results) {</span>
+<span class="cstat-no" title="statement not covered" >                    value.answers = results;</span>
+&nbsp;
+                    //console.log('value' + JSON.stringify(value));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    questions.push(value);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if ((index + 1) &gt;= data.length) {</span>
+<span class="cstat-no" title="statement not covered" >                      deferred.resolve(questions);</span>
+                    }
+&nbsp;
+                  }
+                });
+              });
+            }
+          });
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+&nbsp;
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function postForumquestion(forumData,userid) {</span>
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+<span class="cstat-no" title="statement not covered" >          con.query('INSERT INTO question(Question,Dates,Type,Explation,userid) values(\'' + forumData.question + '\',now(),\'' + forumData.Type + '\',\'' + forumData.explation + '\',\'' + userid + '\')', <span class="fstat-no" title="function not covered" >function(err, result) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (err) {</span>
+<span class="cstat-no" title="statement not covered" >              deferred.reject(err);</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >              deferred.resolve(result);</span>
+            }
+          });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function postForumAnswer(forumData,userid) {</span>
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          var qry = 'INSERT INTO answer(qusId,Date,Answers,userid)values(' + forumData.qusId + ',now(),\'' + forumData.comment + '\',\''+ userid +'\')';</span>
+&nbsp;
+          //console.log('Post Answer Query ---&gt;' + qry);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          con.query(qry, <span class="fstat-no" title="function not covered" >function(err, result) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (err) {</span>
+              //console.log('Error when get postAnswer data : ' + err);
+<span class="cstat-no" title="statement not covered" >              deferred.reject(err);</span>
+            } else {
+              //console.log(result);
+<span class="cstat-no" title="statement not covered" >              deferred.resolve(result);</span>
+            }
+          });
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function postForumRating(rating) {</span>
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+<span class="cstat-no" title="statement not covered" >          con.query('insert into Rating(qusId,rating) values(' + rating.qusId + ',' + rating.star + ')', <span class="fstat-no" title="function not covered" >function(err, result) {</span></span>
+            //console.log('insert into Rating(qusId,rating) values(' + rating.qusId + ',' + rating.star + ')');
+<span class="cstat-no" title="statement not covered" >            if (err) {</span>
+              //console.log(err);
+<span class="cstat-no" title="statement not covered" >              deferred.reject(err);</span>
+            } else {
+              //console.log('Successfully');
+<span class="cstat-no" title="statement not covered" >              deferred.resolve({affectedRows: result.affectedRows});</span>
+            }
+          });
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+}
+&nbsp;
+module.exports = {
+  getForum: getForum,
+  postForumquestion: postForumquestion,
+  postForumAnswer: postForumAnswer,
+  postForumRating: postForumRating
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jul 09 2016 10:39:50 GMT+0530 (India Standard Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

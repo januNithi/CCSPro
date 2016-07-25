@@ -1,0 +1,121 @@
+
+
+<div id="wrapper" class="col-md-offset-2 col-md-8 col-md-offset-2">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Choose Payment Method
+                </a>
+            </li>
+            <li>
+                <a href="#">Debit Card</a>
+            </li>
+            <li>
+                <a href="#">Credit Card</a>
+            </li>
+            <li>
+                <a href="#">Internet Banking</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Pay with Credit Card</h1>
+                    <div class="panel panel-default credit-card-box">
+                        <div class="panel-heading display-table" >
+                            Payment Details
+                        </div>
+                        <div class="panel-body">
+                            <form name="ccForm">
+                                <div class="form-group"  ng-class = "{'has-error':ccForm.ccNumber.$invalid,'has-success':ccForm.ccNumber.$valid}">
+                                    <label for="card-number">Card Number</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="cardNumber" cc-number cc-eager-type name="ccNumber" ng-model="card.number">
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>
+                                <!--<table class="table">-->
+                                    <!--<tr>-->
+                                        <!--<th>Valid</th>-->
+                                        <!--<th>Eager Type</th>-->
+                                        <!--<th>Type</th>-->
+                                    <!--</tr>-->
+                                    <!--<tr>-->
+                                        <!--<td>-->
+                                            <!--{{ccForm.ccNumber.$valid | yesNo}}-->
+                                        <!--</td>-->
+                                        <!--<td>-->
+                                            <!--{{ccForm.ccNumber.$ccEagerType || 'Unknown'}}-->
+                                        <!--</td>-->
+                                        <!--<td>-->
+                                            <!--{{ccForm.ccNumber.$ccType || 'Unknown'}}-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
+                                <!--</table>-->
+                                <div class="form-group" ng-class = "{'has-error':ccForm.ccCvc.$invalid,'has-success':ccForm.ccCvc.$valid}">
+                                    <label for="cvc">CVC</label>
+                                    <input type="text" class="form-control" id="cvc" cc-cvc cc-type="ccForm.ccNumber.$ccType" name="ccCvc" ng-model="card.cvc">
+                                </div>
+                                <!--<table class="table">-->
+                                    <!--<tr>-->
+                                        <!--<th>Valid</th>-->
+                                    <!--</tr>-->
+                                    <!--<tr>-->
+                                        <!--<td>-->
+                                            <!--{{ccForm.ccCvc.$valid | yesNo}}-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
+                                <!--</table>-->
+                                <div class="form-group" >
+                                    <label for="card-number">Expiration</label>
+                                    <div class="row" cc-exp>
+                                        <div class="col-xs-3" ng-class = "{'has-error':ccForm.ccExpMonth.$invalid,'has-success':ccForm.ccExpMonth.$valid}">
+                                            <input placeholder="MM" type="text" class="form-control" cc-exp-month name="ccExpMonth" ng-model="card.expiration.month">
+                                        </div>
+                                        <div class="col-xs-3" ng-class = "{'has-error':ccForm.ccExpYear.$invalid,'has-success':ccForm.ccExpYear.$valid}">
+                                            <input placeholder="YY" type="text" class="form-control" cc-exp-year name="ccExpYear" ng-model="card.expiration.year">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<table class="table">-->
+                                    <!--<tr>-->
+                                        <!--<th>Valid Month</th>-->
+                                        <!--<th>Valid Year</th>-->
+                                        <!--<th>Valid Pair</th>-->
+                                    <!--</tr>-->
+                                    <!--<tr>-->
+                                        <!--<td>-->
+                                            <!--{{ccForm.ccExpMonth.$valid | yesNo}}-->
+                                        <!--</td>-->
+                                        <!--<td>-->
+                                            <!--{{ccForm.ccExpYear.$valid | yesNo}}-->
+                                        <!--</td>-->
+                                        <!--<td>-->
+                                            <!--{{!ccForm.$error.ccExp | yesNo}}-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
+                                <!--</table>-->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+

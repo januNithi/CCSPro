@@ -1,0 +1,1775 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for config\db\personaldataManager.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">config/db/</a> personaldataManager.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">8.22% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>25/304</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0.85% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>1/118</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.11% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/73</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">8.22% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>25/304</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * Created by greg on 2015.10.11..
+ */
+&nbsp;
+var q = require('q');
+&nbsp;
+var http = require('https');
+&nbsp;
+var fs  = require('fs');
+&nbsp;
+var fileType = require('file-type');
+&nbsp;
+var connectionManager = require('./connectionManager');
+&nbsp;
+function getUserDetails(userType) {
+  var deffered = q.defer();
+  connectionManager.getConnection()
+    .then(function(connection) {
+      connection.query('Select * from personaldata where status = \'active\' and userType = \'' + userType + '\'',function(err, results) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
+<span class="cstat-no" title="statement not covered" >          console.error(err);</span>
+<span class="cstat-no" title="statement not covered" >          deffered.reject(err);</span>
+        }
+        deffered.resolve(results);
+      });
+    });
+  return deffered.promise;
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function getPersonalData(id) {</span>
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+<span class="cstat-no" title="statement not covered" >  connectionManager.getConnection()</span>
+    .then(<span class="fstat-no" title="function not covered" >function(connection) {</span>
+<span class="cstat-no" title="statement not covered" >      connection.query('SELECT * FROM personaldata where id =' + id + ' and status = \'active\'', <span class="fstat-no" title="function not covered" >function(error, results) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (error) {</span>
+<span class="cstat-no" title="statement not covered" >          console.error(error);</span>
+<span class="cstat-no" title="statement not covered" >          deferred.reject(error);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        deferred.resolve(results);</span>
+      });
+    })
+    .fail(<span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >      console.error(JSON.stringify(err));</span>
+<span class="cstat-no" title="statement not covered" >      deferred.reject(err);</span>
+    });
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function updatePersonalData(userData) {</span>
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+<span class="cstat-no" title="statement not covered" >  deletePersonalData(userData.id).then(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    var currencyInsert = 'Insert into personaldata(facebook_id,facebook_token,google_id,google_token,userid,password,';</span>
+<span class="cstat-no" title="statement not covered" >    currencyInsert += 'userType,fname,mname,lname,email,fb_fname,fb_mname,fb_lname,fb_email,';</span>
+<span class="cstat-no" title="statement not covered" >    currencyInsert += 'g_fname,g_mname,g_lname,g_email,contact,address,college,course,branch,year,project_fee,fees_paid,';</span>
+<span class="cstat-no" title="statement not covered" >    currencyInsert += 'fees_balance,createdDate,deletedDate,status,profile_pic,facebook_img,google_img)';</span>
+<span class="cstat-no" title="statement not covered" >    currencyInsert += ' values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,now(),?,?,?,?,?)';</span>
+<span class="cstat-no" title="statement not covered" >    console.log('Query template' + currencyInsert);</span>
+<span class="cstat-no" title="statement not covered" >    connectionManager.getConnection()</span>
+      .then(<span class="fstat-no" title="function not covered" >function(connection) {</span>
+<span class="cstat-no" title="statement not covered" >        var query = connectionManager.prepareQuery(currencyInsert, [userData.facebook_id,userData.facebook_token,</span>
+          userData.google_id, userData.google_token,userData.userid, userData.password,userData.userType,userData.fname,userData.mname,
+          userData.lname,userData.email,userData.fb_fname,userData.fb_mname,userData.fb_lname,userData.fb_email,
+          userData.g_fname,userData.g_mname,userData.g_lname,userData.g_email,userData.contact, userData.address, userData.college,userData.course,
+          userData.branch, userData.year, userData.project_fee, userData.fees_paid, userData.fees_balance,
+          userData.deletedDate, 'active', userData.profile_pic, userData.facebook_img, userData.google_img]);
+<span class="cstat-no" title="statement not covered" >        console.log('Query to execute:' + query);</span>
+<span class="cstat-no" title="statement not covered" >        connection.query(query, <span class="fstat-no" title="function not covered" >function(error, result) {</span></span>
+<span class="cstat-no" title="statement not covered" >          if (error) {</span>
+<span class="cstat-no" title="statement not covered" >            console.error(error);</span>
+<span class="cstat-no" title="statement not covered" >            deferred.reject(error);</span>
+          }
+<span class="cstat-no" title="statement not covered" >          getPersonalData(result.insertId).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >            deferred.resolve(result);</span>
+          });
+        });
+      })
+      .fail(<span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >        console.error(JSON.stringify(err));</span>
+<span class="cstat-no" title="statement not covered" >        deferred.reject(err);</span>
+      });
+  });
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function deletePersonalData(id) {</span>
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+<span class="cstat-no" title="statement not covered" >  var currencyDelete = 'Update personaldata set status = \'Move to trash\',deletedDate = now() where id = ? and status = ?';</span>
+<span class="cstat-no" title="statement not covered" >  connectionManager.getConnection()</span>
+    .then(<span class="fstat-no" title="function not covered" >function(connection) {</span>
+<span class="cstat-no" title="statement not covered" >      var query = connectionManager.prepareQuery(currencyDelete, [id,'active']);</span>
+<span class="cstat-no" title="statement not covered" >      console.log('Delete query:' + query);</span>
+<span class="cstat-no" title="statement not covered" >      connection.query(query, <span class="fstat-no" title="function not covered" >function(error, result) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (error) {</span>
+<span class="cstat-no" title="statement not covered" >          console.error(error);</span>
+<span class="cstat-no" title="statement not covered" >          deferred.reject(error);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        deferred.resolve({affectedRows: result.affectedRows});</span>
+      });
+    })
+    .fail(<span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >      console.error(JSON.stringify(err));</span>
+<span class="cstat-no" title="statement not covered" >      deferred.reject(err);</span>
+    });
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function updateImage(data) {</span>
+<span class="cstat-no" title="statement not covered" >  var deffered = q.defer();</span>
+<span class="cstat-no" title="statement not covered" >  updatePersonalData(data).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >    deffered.resolve(result);</span>
+  });
+<span class="cstat-no" title="statement not covered" >  return deffered.promise;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function updateFacebookPersonalData(req,profile,accessToken) {</span>
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+<span class="cstat-no" title="statement not covered" >  var data = [];</span>
+<span class="cstat-no" title="statement not covered" >  if (req &amp;&amp; req.session &amp;&amp; req.session.data) {</span>
+<span class="cstat-no" title="statement not covered" >    data = req.session.data;</span>
+<span class="cstat-no" title="statement not covered" >    data.facebook_id = profile.id;</span>
+<span class="cstat-no" title="statement not covered" >    data.facebook_token = accessToken;</span>
+<span class="cstat-no" title="statement not covered" >    if (profile.name.givenName) {</span>
+<span class="cstat-no" title="statement not covered" >      data.fb_fname = profile.name.givenName;</span>
+    }else <span class="cstat-no" title="statement not covered" >if (profile.displayName) {</span>
+<span class="cstat-no" title="statement not covered" >      data.fb_fname = profile.displayName;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (profile.name.familyName) {</span>
+<span class="cstat-no" title="statement not covered" >      data.fb_lname = profile.name.familyName;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (profile.emails &amp;&amp; profile.emails[0]) {</span>
+<span class="cstat-no" title="statement not covered" >      data.fb_email = profile.emails[0].value;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    updatePersonalData(data).then(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >      updateFacebookProfilePicture(profile).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >        deferred.resolve(result);</span>
+      });
+    });
+  }else {
+<span class="cstat-no" title="statement not covered" >    var fbDataUpdate = 'select * from personaldata where facebook_id = ? and status = ?';</span>
+<span class="cstat-no" title="statement not covered" >    connectionManager.getConnection()</span>
+      .then(<span class="fstat-no" title="function not covered" >function(connection) {</span>
+<span class="cstat-no" title="statement not covered" >        var query = connectionManager.prepareQuery(fbDataUpdate, [profile.id,'active']);</span>
+<span class="cstat-no" title="statement not covered" >        console.log('Select query:' + query);</span>
+<span class="cstat-no" title="statement not covered" >        connection.query(query, <span class="fstat-no" title="function not covered" >function(error, result) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (error) {</span>
+<span class="cstat-no" title="statement not covered" >              console.error(error);</span>
+<span class="cstat-no" title="statement not covered" >              deferred.reject(error);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (result &amp;&amp; result.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >              data = result[0];</span>
+<span class="cstat-no" title="statement not covered" >              data.facebook_id = profile.id;</span>
+<span class="cstat-no" title="statement not covered" >              data.facebook_token = accessToken;</span>
+<span class="cstat-no" title="statement not covered" >              if (profile.name.givenName) {</span>
+<span class="cstat-no" title="statement not covered" >                data.fb_fname = profile.name.givenName;</span>
+              }else <span class="cstat-no" title="statement not covered" >if (profile.displayName) {</span>
+<span class="cstat-no" title="statement not covered" >                data.fb_fname = profile.displayName;</span>
+              }
+<span class="cstat-no" title="statement not covered" >              if (profile.name.familyName) {</span>
+<span class="cstat-no" title="statement not covered" >                data.fb_lname = profile.name.familyName;</span>
+              }
+<span class="cstat-no" title="statement not covered" >              if (profile.emails &amp;&amp; profile.emails[0]) {</span>
+<span class="cstat-no" title="statement not covered" >                data.fb_email = profile.emails[0].value;</span>
+              }
+<span class="cstat-no" title="statement not covered" >              updatePersonalData(data).then(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                updateFacebookProfilePicture(profile).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >                  deferred.resolve(result);</span>
+                });
+              });
+            }else {
+<span class="cstat-no" title="statement not covered" >              insertFacebookProfileData(profile,accessToken).then(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                updateFacebookProfilePicture(profile).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >                  deferred.resolve(result);</span>
+                });
+              });
+            }
+          });
+      })
+      .fail(<span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >        console.error(JSON.stringify(err));</span>
+<span class="cstat-no" title="statement not covered" >        deferred.reject(err);</span>
+      });
+  }
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function updateFacebookProfilePicture(profile) {</span>
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+<span class="cstat-no" title="statement not covered" >  connectionManager.getConnection()</span>
+    .then(<span class="fstat-no" title="function not covered" >function(connection) {</span>
+<span class="cstat-no" title="statement not covered" >      connection.query('SELECT * FROM personaldata where facebook_id =' + profile.id + ' and status = \'active\'', <span class="fstat-no" title="function not covered" >function(error, results) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (error) {</span>
+<span class="cstat-no" title="statement not covered" >          console.error(error);</span>
+<span class="cstat-no" title="statement not covered" >          deferred.reject(error);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        http.get(profile.photos[0].value, <span class="fstat-no" title="function not covered" >function(res) {</span></span>
+<span class="cstat-no" title="statement not covered" >          var buffers = [];</span>
+<span class="cstat-no" title="statement not covered" >          var length = 0;</span>
+<span class="cstat-no" title="statement not covered" >          res.on('data', <span class="fstat-no" title="function not covered" >function(chunk) {</span></span>
+            // Store each block of data
+<span class="cstat-no" title="statement not covered" >            length += chunk.length;</span>
+<span class="cstat-no" title="statement not covered" >            buffers.push(chunk);</span>
+          });
+<span class="cstat-no" title="statement not covered" >          res.on('end', <span class="fstat-no" title="function not covered" >function() {</span></span>
+            // Combine the binary data into single buffer
+<span class="cstat-no" title="statement not covered" >            var image = Buffer.concat(buffers);</span>
+<span class="cstat-no" title="statement not covered" >            var filePath = 'public/uploads/profile/file-' + profile.id + '.' + fileType(image).ext;</span>
+<span class="cstat-no" title="statement not covered" >            fs.writeFile(filePath, image, <span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >              if (err) {</span>
+<span class="cstat-no" title="statement not covered" >                console.log('Error----&gt;' + err);</span>
+              }else {
+<span class="cstat-no" title="statement not covered" >                var data = results[0];</span>
+<span class="cstat-no" title="statement not covered" >                data.facebook_img = 'file-' + profile.id + '.' + fileType(image).ext;</span>
+<span class="cstat-no" title="statement not covered" >                updateImage(data).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >                  deferred.resolve(result);</span>
+                });
+              }
+            });
+          });
+        });
+      });
+    })
+    .fail(<span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >      console.error(JSON.stringify(err));</span>
+<span class="cstat-no" title="statement not covered" >      deferred.reject(err);</span>
+    });
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function deleteFacebookProfileData(profile) {</span>
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+<span class="cstat-no" title="statement not covered" >  var qry = 'Update personaldata set status = \'Move to trash\',deletedDate = now() where facebook_id = ? and status = ?';</span>
+<span class="cstat-no" title="statement not covered" >  connectionManager.getConnection()</span>
+    .then(<span class="fstat-no" title="function not covered" >function(connection) {</span>
+<span class="cstat-no" title="statement not covered" >      var query = connectionManager.prepareQuery(qry, [profile.id,'active']);</span>
+<span class="cstat-no" title="statement not covered" >      console.log('Delete query:' + query);</span>
+<span class="cstat-no" title="statement not covered" >      connection.query(query, <span class="fstat-no" title="function not covered" >function(error, result) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (error) {</span>
+<span class="cstat-no" title="statement not covered" >          console.error(error);</span>
+<span class="cstat-no" title="statement not covered" >          deferred.reject(error);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        deferred.resolve({affectedRows: result.affectedRows});</span>
+      });
+    })
+  .fail(<span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >    console.error(JSON.stringify(err));</span>
+<span class="cstat-no" title="statement not covered" >    deferred.reject(err);</span>
+  });
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function insertFacebookProfileData(profile, accessToken) {</span>
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+<span class="cstat-no" title="statement not covered" >  var qry = 'Insert into personaldata(facebook_id,facebook_token';</span>
+<span class="cstat-no" title="statement not covered" >  if (profile.name.givenName) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',fb_fname';</span>
+  }else <span class="cstat-no" title="statement not covered" >if (profile.displayName) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',fb_fname';</span>
+  }
+<span class="cstat-no" title="statement not covered" >  if (profile.name.familyName) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',fb_lname';</span>
+  }
+<span class="cstat-no" title="statement not covered" >  if (profile.emails &amp;&amp; profile.emails[0]) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',fb_email';</span>
+  }
+<span class="cstat-no" title="statement not covered" >  qry += ',createdDate,status,userType) values (' + profile.id + ',\'' + accessToken + '\'';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (profile.name.givenName) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',\'' + profile.name.givenName + '\'';</span>
+  }else <span class="cstat-no" title="statement not covered" >if (profile.displayName) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',\'' + profile.displayName + '\'';</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (profile.name.familyName) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',\'' + profile.name.familyName + '\'';</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (profile.emails &amp;&amp; profile.emails[0]) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',\'' + profile.emails[0].value + '\'';</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  qry += ',now(),\'active\',\'user\')';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  connectionManager.getConnection()</span>
+        .then(<span class="fstat-no" title="function not covered" >function(connection) {</span>
+<span class="cstat-no" title="statement not covered" >          console.log('Insert query:' + qry);</span>
+<span class="cstat-no" title="statement not covered" >          connection.query(qry, <span class="fstat-no" title="function not covered" >function(error, result) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (error) {</span>
+<span class="cstat-no" title="statement not covered" >              console.error(error);</span>
+<span class="cstat-no" title="statement not covered" >              deferred.reject(error);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            deferred.resolve({affectedRows: result.affectedRows});</span>
+          });
+        })
+        .fail(<span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >          console.error(JSON.stringify(err));</span>
+<span class="cstat-no" title="statement not covered" >          deferred.reject(err);</span>
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+}
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >function updateGooglePersonalData(req,profile,accessToken) {</span>
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var data = [];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (req &amp;&amp; req.session &amp;&amp; req.session.data) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    data = req.session.data;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    data.google_id = profile.id;</span>
+<span class="cstat-no" title="statement not covered" >    data.google_token = accessToken;</span>
+<span class="cstat-no" title="statement not covered" >    if (profile.name.givenName) {</span>
+<span class="cstat-no" title="statement not covered" >      data.g_fname = profile.name.givenName;</span>
+    }else <span class="cstat-no" title="statement not covered" >if (profile.displayName) {</span>
+<span class="cstat-no" title="statement not covered" >      data.g_fname = profile.displayName;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (profile.name.familyName) {</span>
+<span class="cstat-no" title="statement not covered" >      data.g_lname = profile.name.familyName;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (profile.email) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      data.g_email = profile.email;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    updatePersonalData(data).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >      console.log('Result' + result);</span>
+<span class="cstat-no" title="statement not covered" >      updateGoogleProfilePicture(profile).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >        deferred.resolve(result);</span>
+      });
+    });
+&nbsp;
+  }else {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var fbDataUpdate = 'select * from personaldata where google_id = ? and status = ?';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    connectionManager.getConnection()</span>
+            .then(<span class="fstat-no" title="function not covered" >function(connection) {</span>
+<span class="cstat-no" title="statement not covered" >              var query = connectionManager.prepareQuery(fbDataUpdate, [profile.id,'active']);</span>
+<span class="cstat-no" title="statement not covered" >              console.log('Select query:' + query);</span>
+<span class="cstat-no" title="statement not covered" >              connection.query(query, <span class="fstat-no" title="function not covered" >function(error, result) {</span></span>
+<span class="cstat-no" title="statement not covered" >                if (error) {</span>
+<span class="cstat-no" title="statement not covered" >                  console.error(error);</span>
+<span class="cstat-no" title="statement not covered" >                  deferred.reject(error);</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (result &amp;&amp; (result.length &gt; 0)) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                  data = result[0];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                  data.google_id = profile.id;</span>
+<span class="cstat-no" title="statement not covered" >                  data.google_token = accessToken;</span>
+<span class="cstat-no" title="statement not covered" >                  if (profile.name.givenName) {</span>
+<span class="cstat-no" title="statement not covered" >                    data.g_fname = profile.name.givenName;</span>
+                  }else <span class="cstat-no" title="statement not covered" >if (profile.displayName) {</span>
+<span class="cstat-no" title="statement not covered" >                    data.g_fname = profile.displayName;</span>
+                  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                  if (profile.name.familyName) {</span>
+<span class="cstat-no" title="statement not covered" >                    data.g_lname = profile.name.familyName;</span>
+                  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                  if (profile.email) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    data.g_email = profile.email;</span>
+                  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                  updatePersonalData(data).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    console.log('Result' + result);</span>
+<span class="cstat-no" title="statement not covered" >                    updateGoogleProfilePicture(profile).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >                      deferred.resolve(result);</span>
+                    });
+                  });
+&nbsp;
+                }else {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                  insertGoogleProfileData(profile,accessToken).then(<span class="fstat-no" title="function not covered" >function() {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    updateGoogleProfilePicture(profile).then(<span class="fstat-no" title="function not covered" >function(results) {</span></span>
+<span class="cstat-no" title="statement not covered" >                      deferred.resolve(results);</span>
+                    });
+&nbsp;
+                  });
+&nbsp;
+                }
+&nbsp;
+              });
+&nbsp;
+            })
+            .fail(<span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >              console.error(JSON.stringify(err));</span>
+<span class="cstat-no" title="statement not covered" >              deferred.reject(err);</span>
+            });
+&nbsp;
+&nbsp;
+  }
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function updateGoogleProfilePicture(profile) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  connectionManager.getConnection()</span>
+        .then(<span class="fstat-no" title="function not covered" >function(connection) {</span>
+<span class="cstat-no" title="statement not covered" >          connection.query('SELECT * FROM personaldata where google_id =' + profile.id + ' and status = \'active\'', <span class="fstat-no" title="function not covered" >function(error, results) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (error) {</span>
+<span class="cstat-no" title="statement not covered" >              console.error(error);</span>
+<span class="cstat-no" title="statement not covered" >              deferred.reject(error);</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            http.get(profile.photos[0].value,<span class="fstat-no" title="function not covered" >function(res) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              var buffers = [];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              var length = 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              res.on('data', <span class="fstat-no" title="function not covered" >function(chunk) {</span></span>
+&nbsp;
+                // Store each block of data
+<span class="cstat-no" title="statement not covered" >                length += chunk.length;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                buffers.push(chunk);</span>
+&nbsp;
+              });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              res.on('end', <span class="fstat-no" title="function not covered" >function() {</span></span>
+&nbsp;
+                // Combine the binary data into single buffer
+<span class="cstat-no" title="statement not covered" >                var image = Buffer.concat(buffers);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                var filePath = 'public/uploads/profile/file-' + profile.id + '.' + fileType(image).ext;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                fs.writeFile(filePath,image,<span class="fstat-no" title="function not covered" >function(err) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                  if (err) {</span>
+<span class="cstat-no" title="statement not covered" >                    console.log('Error----&gt;' + err);</span>
+                  }else {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    var data = results[0];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    data.google_img = 'file-' + profile.id + '.' + fileType(image).ext;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    updateImage(data).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >                      deferred.resolve(result);</span>
+                    });
+&nbsp;
+&nbsp;
+                  }
+&nbsp;
+                });
+&nbsp;
+              });
+&nbsp;
+            });
+          });
+        })
+        .fail(<span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >          console.error(JSON.stringify(err));</span>
+<span class="cstat-no" title="statement not covered" >          deferred.reject(err);</span>
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+&nbsp;
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function deleteGoogleProfileData(profile) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var qry = 'Update personaldata set status = \'Move to trash\',deletedDate = now() where google_id = ? and status = ?';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  connectionManager.getConnection()</span>
+        .then(<span class="fstat-no" title="function not covered" >function(connection) {</span>
+<span class="cstat-no" title="statement not covered" >          var query = connectionManager.prepareQuery(qry, [profile.id,'active']);</span>
+<span class="cstat-no" title="statement not covered" >          console.log('Delete query:' + query);</span>
+<span class="cstat-no" title="statement not covered" >          connection.query(query, <span class="fstat-no" title="function not covered" >function(error, result) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (error) {</span>
+<span class="cstat-no" title="statement not covered" >              console.error(error);</span>
+<span class="cstat-no" title="statement not covered" >              deferred.reject(error);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            deferred.resolve({affectedRows: result.affectedRows});</span>
+          });
+        })
+        .fail(<span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >          console.error(JSON.stringify(err));</span>
+<span class="cstat-no" title="statement not covered" >          deferred.reject(err);</span>
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+&nbsp;
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function insertGoogleProfileData(profile,accessToken) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var deferred = q.defer();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var qry = 'Insert into personaldata(google_id,google_token';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (profile.name.givenName) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',g_fname';</span>
+  }else <span class="cstat-no" title="statement not covered" >if (profile.displayName) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',g_fname';</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (profile.name.familyName) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',g_lname';</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (profile.email) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    qry += ',g_email';</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  qry += ',createdDate,status,userType) values (\'' + profile.id + '\',\'' + accessToken + '\'';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (profile.name.givenName) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',\'' + profile.name.givenName + '\'';</span>
+  }else <span class="cstat-no" title="statement not covered" >if (profile.displayName) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',\'' + profile.displayName + '\'';</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (profile.name.familyName) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',\'' + profile.name.familyName + '\'';</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (profile.email) {</span>
+<span class="cstat-no" title="statement not covered" >    qry += ',\'' + profile.email + '\'';</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  qry += ',now(),\'active\',\'user\')';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  connectionManager.getConnection()</span>
+        .then(<span class="fstat-no" title="function not covered" >function(connection) {</span>
+<span class="cstat-no" title="statement not covered" >          console.log('Insert query:' + qry);</span>
+<span class="cstat-no" title="statement not covered" >          connection.query(qry, <span class="fstat-no" title="function not covered" >function(error, result) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (error) {</span>
+<span class="cstat-no" title="statement not covered" >              console.error(error);</span>
+<span class="cstat-no" title="statement not covered" >              deferred.reject(error);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            deferred.resolve({affectedRows: result.affectedRows});</span>
+          });
+        })
+        .fail(<span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >          console.error(JSON.stringify(err));</span>
+<span class="cstat-no" title="statement not covered" >          deferred.reject(err);</span>
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+}
+&nbsp;
+&nbsp;
+module.exports = {
+  getPersonalData: getPersonalData,
+  updatePersonalData: updatePersonalData,
+  deletePersonalData: deletePersonalData,
+  updateFacebookPersonalData: updateFacebookPersonalData,
+  deleteFacebookProfileData: deleteFacebookProfileData,
+  insertFacebookProfileData: insertFacebookProfileData,
+  updateImage: updateImage,
+  updateFacebookProfilePicture: updateFacebookProfilePicture,
+  updateGooglePersonalData: updateGooglePersonalData,
+  deleteGoogleProfileData: deleteGoogleProfileData,
+  insertGoogleProfileData: insertGoogleProfileData,
+  updateGoogleProfilePicture: updateGoogleProfilePicture,
+  getUserDetails: getUserDetails
+};</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jun 09 2016 12:41:00 GMT+0530 (India Standard Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

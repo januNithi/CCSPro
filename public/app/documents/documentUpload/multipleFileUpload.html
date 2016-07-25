@@ -1,0 +1,146 @@
+<!--
+<body ng-app="documentModule" ng-controllers="mainController">-->
+<nav class="nav navbar-dark bg-primary" role="navigation">
+    <div class="nav-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <label class="navbar-brand">Crisp Cloud Solutions</label>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a ng-click='goToDashboard()'  style="color:white"><span class="glyphicon glyphicon-arrow-left"></span></a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+                <ul class="dropdown-menu" role="menu">
+
+                    <li align='right'>
+
+                        <a ng-click='goToDashboard()'>
+
+                            <span class="glyphicon glyphicon-th-large"></span>Dashboard
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container" style="padding-top: 25px;">
+  
+  <div class="row">
+    
+   <div class="panel panel-default">
+     <div class="panel-heading" style="height: 50px">Multiple Document Uploading <a class="btn btn-primary pull-right"  href="/documents/singleFileUpload">Single File Upload</a> </div>
+     <div class="panel-body">
+       <div style="text-align: right;">
+       
+
+       <button class="btn btn-primary" ng-click="addRow()">Add Row</button>
+       <button class="btn btn-primary" ng-click="removeRow()">Remove Row</button>
+    </div>
+
+    <div class="col-sm-12" >
+    <form class="form-horizontal" role="form" method="post" action="/uploadMulti" enctype="multipart/form-data" name="frmDoc" id="frmDoc" novalidate onsubmit="false" > 
+    <table class="table condensed table-responsive">
+      <thead>
+      <tr>
+        <th>Sl No</th>
+        <th>Document Caption</th>
+        <th>Doc Type</th>
+        <th>Department</th>
+        <th>Keywords</th>
+        <th>Description</th>
+        <th>File</th>
+      </tr>
+      </thead>
+      
+      <tbody>
+        <tr ng-repeat="r in rows">
+          <td>{{r}}</td>
+          <td><input type="text" class="form-control" id="docCaption{{r}}" name="docCaption{{r}}" placeholder="" ng-model="formData[r].docCaption" ng-maxlength="50" ng-minlength="0" required="true" >
+
+          <span style="color: red"  ng-show="isErr=frmDoc.docCaption{{r}}.$error.maxlength && frmDoc.docCaption{{r}}.$dirty">Maximum 50 Characters allowed</span>
+
+          <span style="color: red" ng-show="isErr=frmDoc.docCaption{{r}}.$error.required && frmDoc.docCaption{{r}}.$touched">This is Mandatory</span>
+                        
+          </td>
+
+          <td>
+
+          <select class="form-control" name="docType{{r}}" id="docType{{r}}" ng-model="formData[r].docType" required="" ng-change="getPattern(formData[r].docType)">
+
+                     <option ng-repeat="t in type" ng-value="{{t.id}}" ng-selected="t.id==formData[r].docType">{{t.type}}</option>
+                      
+          </select>
+
+          <span style="color: red" ng-show="isErr=frmDoc.docType{{r}}.$touched && frmDoc.docType{{r}}.$invalid">Please select the Document Type</span>
+
+                     </td>
+          <td>
+          <select class="form-control" name="docDep{{r}}" id="docDep{{r}}" ng-model="formData[r].docDep" required="true">
+                      
+                       <option ng-repeat="d in dep" ng-value="{{d.DEP_ID}}" ng-selected="d.DEP_ID==formData[r].docDep">{{d.DEP_NAME}}</option>
+                       
+                     </select>
+
+          <span style="color: red" ng-show="isErr=frmDoc.docDep{{r}}.$invalid && frmDoc.docDep{{r}}.$touched">Please select the Department</span>
+
+
+          </td> 
+          
+          <td>
+          <input type="text" class="form-control" placeholder=""  name="docKey{{r}}" id="docKey{{r}}" ng-model="formData[r].docKey" ng-maxlength="50" ng-minlength="0">
+                
+
+          <span style="color: red" ng-show="isErr=frmDoc.docKey{{r}}.$error.maxlength && frmDoc{{r}}.docKey.$dirty">Maximum 30 Characters allowed</span>
+          
+
+          </td>    
+          <td><input type="text" class="form-control" placeholder=""  name="docDesc{{r}}" id="docDesc{{r}}" ng-model="formData[r].docDesc" ng-maxlength="50" ng-minlength="0">
+            .
+
+           <span style="color: red" ng-show="isErr=frmDoc.docDesc{{r}}.$error.maxlength && frmDoc.docDesc{{r}}.$dirty">Maximum 30 Characters allowed</span>
+
+          </td>     
+          <td>
+
+          <input type="file" class="form-control" name="docFile{{r}}" id="docFile{{r}}" ng-model="formData[r].docFile" accept="{{docPattern}}" valid-file required file-upload />
+
+          <span style="color: red" ng-show="isErr=frmDoc.docFile{{r}}.$error.required && frmDoc.docFile{{r}}.$untouched 
+          && frmDoc.docFile.$dirty">Please select a file</span>
+
+          </td>                                  
+        </tr>
+
+        
+
+      </tbody>
+    </table>
+
+
+      <button ng-click="saveDoc()" ng-disabled="frmDoc.$invalid" class="btn btn-primary ">Submit</button>
+      <input type="reset" class="btn btn-primary"></button>
+ </form>
+
+       
+
+    </div>
+   
+  </div>
+     </div>
+   </div> 
+    
+</div>
+
+
