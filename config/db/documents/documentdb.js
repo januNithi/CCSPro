@@ -35,7 +35,11 @@ exports.insertDoc=function(data,cb){
 exports.getAllDoc=function(ser,cb){
 
       var myErr=null,data=null;
-      var qry="SELECT A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as  docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown,B.DEP_ID,B.DEP_NAME,COALESCE(FLOOR(AVG(C.STARS)),0) as star FROM TBL_DOCUMENTS A LEFT OUTER join TBL_DEPARTMENT B on (A.DOCDEP=B.DEP_ID) LEFT OUTER JOIN  TBL_DOC_STARS C  on  A.ID=C.DOC_ID WHERE A.DOCCAPTION LIKE '" + ser+ "%' GROUP BY A.id ORDER BY A.ID DESC";
+      var qry="SELECT A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as  docType,A.DOCDEP as docDep,A.DOCKEY as docKey,";
+        qry += "A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN ";
+        qry += "as docNoDown,B.DEP_ID,B.DEP_NAME,COALESCE(FLOOR(AVG(C.STARS)),0) as star FROM tbl_documents";
+        qry += "A LEFT OUTER join TBL_DEPARTMENT B on (A.DOCDEP=B.DEP_ID) LEFT OUTER JOIN  TBL_DOC_STARS C  on"
+        qry += "A.ID=C.DOC_ID WHERE A.DOCCAPTION LIKE '" + ser+ "%' GROUP BY A.id ORDER BY A.ID DESC";
       con.query(qry,function(err,res){
 
       if(err)
