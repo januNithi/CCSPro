@@ -156,6 +156,8 @@
                 getStar($scope.doc.id);
                 var filename = $scope.doc.docFile;
                 $scope.thisFile = UPLOAD_DOC_PATH + $scope.doc.id + '.' + filename.split('.').pop();
+                console.log($scope.doc.docFile );
+                console.log($scope.thisFile );
 
             if ($scope.doc.docType === 5) {
                 viewDocumentServices.getArchieve($scope.doc.id)
