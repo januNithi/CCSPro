@@ -33,7 +33,7 @@ exports.setStar=function(data,cb){
 
         if(data=="" ||  data==null) return cb("error",insertId);
 
-        var qry="INSERT INTO TBL_DOC_STARS SET ?";
+        var qry="INSERT INTO tbl_doc_stars SET ?";
         var objectConstructor = {}.constructor;
             if(data.constructor!==objectConstructor)
             {
@@ -61,7 +61,7 @@ exports.setStar=function(data,cb){
 exports.getStar=function(id,cb){
 console.log("Dd");
       var myErr=null,stardata=null;
-      var qry="SELECT FLOOR(AVG(STARS)) AS STR FROM TBL_DOC_STARS WHERE DOC_ID="+id;
+      var qry="SELECT FLOOR(AVG(STARS)) AS STR FROM tbl_doc_stars WHERE DOC_ID="+id;
     console.log(qry);
       if(id=="" || id==undefined ||  id==null) return cb("error",stardata);
 
