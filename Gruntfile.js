@@ -152,8 +152,8 @@ module.exports = function(grunt) {
                 options: {
                     banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
                     coverageFolder: 'report/coverage',
-                    mask: '**/routes/profile.login.server.routesTest.js'
-                    // mask: '**/**/**.js'
+                    // mask: '**/routes/profile.login.server.routesTest.js'
+                    mask: '**/**/**.js'
                 },
                 force:true
             }
