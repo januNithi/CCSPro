@@ -3,7 +3,6 @@ angular.module('myApp',[
     'angular-timeline',
     'uiAccordion',
     'ngFileUpload',
-    'ngProgress',
     'angularSpinners',
     'ui.bootstrap',
 
