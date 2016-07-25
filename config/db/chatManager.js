@@ -5,7 +5,7 @@ var data = '';
 var db = require('./../chatdb');
 var con = mysql.createConnection(db);
 
-console.log(con);
+// console.log(con);
 
 function send_msg(data_server) {
     var deferred = q.defer();

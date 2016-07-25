@@ -25,16 +25,17 @@ var users=[];
 
 // This is auto initiated event when Client connects to Your Machien.
 io.on('connection',function(socket) {
-    console.log('connection');
+    // console.log('connection');
 
 
     //Storing users into array as an object
     socket.on('user name', function (userData) {
         users.push({id: socket.id, user_name: userData.userid+'- '+userData.firstName,user_id:userData.userid,profilePic:userData.profilePic});
-        console.log(userData.profilePic);
+        // console.log(userData.profilePic);
         len = users.length;
         len--;
         //Sending th user Id and List of users
+        io.emit('user entrance', users, users[len].id);
         io.emit('user entrance', users, users[len].id);
     });
 
@@ -90,12 +91,12 @@ io.on('connection',function(socket) {
 
     // Do something when a file is saved:
     uploader.on("saved", function(event){
-        console.log(event.file);
+        // console.log(event.file);
     });
 
     // Error handler:
     uploader.on("error", function(event){
-        console.log("Error from uploader", event);
+        // console.log("Error from uploader", event);
     });
 });
 
