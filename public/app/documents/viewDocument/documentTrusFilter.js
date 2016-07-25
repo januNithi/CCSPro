@@ -10,7 +10,7 @@
 
     function myDate($sce) {
         return function(input)  {
-                return $sce.trustAsResourceUrl(val);
+                return $sce.trustAsResourceUrl(input);
         };
     }
 })();
