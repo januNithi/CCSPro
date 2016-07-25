@@ -8,10 +8,16 @@
       .controller('logoutController', logoutController);
 
   logoutController.$inject=[
-    '$scope'
+    '$scope',
+      '$window'
   ];
 
-  function logoutController($scope) {
+  function logoutController($scope,$window) {
     $scope.userCredentials = false;
+
+    $scope.goToLoginScreen = function () {
+      $window.location.href =  '/';
+    }
+
   }
 })();
