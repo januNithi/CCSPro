@@ -158,7 +158,7 @@
                 $scope.thisFile = UPLOAD_DOC_PATH + $scope.doc.id + '.' + filename.split('.').pop();
                 console.log($scope.doc.docFile );
                 console.log($scope.thisFile );
-                $scope.$digest();
+                
 
             if ($scope.doc.docType === 5) {
                 viewDocumentServices.getArchieve($scope.doc.id)
