@@ -18,12 +18,12 @@ var upload=multer({storage:storage}).single('file');
 exports.image=function(req,res)
 {
 
-upload(req,res,function(err) {
-    if(err) {
-        return res.end("Error uploading file.");
-    }
-    res.end(req.session.chatFile);
-});
+    upload(req,res,function(err) {
+        if(err) {
+            return res.end("Error uploading file.");
+        }
+        res.end(req.session.chatFile);
+    });
 };
 
 
@@ -56,13 +56,41 @@ exports.Files=function(req,res)
 exports.chatInfo=function(req,res)
 {
     console.log("sssjj");
-    forumConfig.getChatinfo().then(function(results) {
-            if (results) {
-                console.log(results);
-                res.send(results);
-            }
-        });
+    forumConfig.getChatinfo().then(function(result) {
+        if (result) {
+            console.log(result);
+            res.send(result);
+        }
+    });
 };
+
+exports.getchat=function(req,res)
+{
+
+    console.log("getchatinfo");
+
+    forumConfig.getReadinfo(req.query.id).then(function(result) {
+        console.log("data");
+        if (result) {
+            console.log(result);
+            res.send(result);
+        }
+    });
+};
+
+
+exports.msgReadInfo=function(req,res)
+{
+    console.log("getchatinfo");
+    forumConfig.msgreadInfo(req.body).then(function(results) {
+        if (results) {
+            console.log(results);
+            res.send(results);
+        }
+    });
+};
+
+
 
 
 
