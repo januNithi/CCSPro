@@ -37,12 +37,13 @@ function send_msg(data_server) {
 
 
 function getChatinfo() {
-  
+
     var deferred = q.defer();
     var getChatinfo = "select q.id,q.select_userid,q.select_userid as select_userid2,q.msg,q.Dates as date,q.image as image,q.profile_pic as profilePic,q.file,q.my_userid,q.my_userid as my_userid2,personaldata.fname as name,personaldata.mname,personaldata.profile_pic as profilePic,personaldata.lname from tb_sendmsg as q INNER JOIN personaldata ON personaldata.userid=q.my_userid where personaldata.status='active' order by q.Dates DESC";
 
     con.query(getChatinfo, function (err,result) {
         if (err) {
+            console.log(err);
             deferred.reject(err);
         } else {
             console.log(result);
