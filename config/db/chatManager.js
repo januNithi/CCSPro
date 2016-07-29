@@ -79,6 +79,7 @@ function msgreadInfo(data) {
     console.log("select * from tb_sendmsg");
     con.query(msgReadInfo, function (err,results) {
         if (err) {
+            console.log(err);
             deferred.reject(err);
         } else {
             console.log(results);
