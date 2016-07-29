@@ -175,7 +175,7 @@
         dashboardService.checkAdmin().then(function (result) {
             $scope.userData = result;
 
-            $scope.getChatinfo();
+            // $scope.getChatinfo();
             socket.emit('user name',  $scope.userData); // sending user name to the server
 
         });
