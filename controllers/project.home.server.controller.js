@@ -19,7 +19,7 @@ exports.data = function(req, res) {
 
 
 exports.projectHistory = function(req, res) {
-  connection.query('Select * from projectDetails',function(err,result) {
+  connection.query('Select * from projectdetails',function(err,result) {
 
     if (err) {
      // console.log('Error when get projectHistory data : ' + err);
