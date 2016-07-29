@@ -9,7 +9,7 @@ exports.insertgroupMapper = function (data,cb){
 
     insertData=data;
 
-    con.query('DELETE FROM  TBL_GROUPMAPPER WHERE memId='+insertData.memId+' and grpId='+insertData.grpId,  function(err,result) {
+    con.query('DELETE FROM  tbl_groupmapper WHERE memId='+insertData.memId+' and grpId='+insertData.grpId,  function(err,result) {
     });
 
     con.query('INSERT INTO TBL_GROUPMAPPER SET ?',insertData,  function(err,insertId){
@@ -31,7 +31,7 @@ exports.insertgroupMapper = function (data,cb){
 
 exports.getMemberByGrpId = function (id,cb){
     var result=null,myErr=null;
-    con.query('SELECT mem.memName as memName,mem.memMob as memMob,mem.crDate as crDate,g.id as mapperId,g.grpId as grpId FROM TBL_MEMBER mem LEFT OUTER JOIN TBL_GROUPMAPPER g on mem.id=g.memId WHERE g.grpId='+id,  function(err,result){
+    con.query('SELECT mem.memName as memName,mem.memMob as memMob,mem.crDate as crDate,g.id as mapperId,g.grpId as grpId FROM tbl_member mem LEFT OUTER JOIN tbl_groupmapper g on mem.id=g.memId WHERE g.grpId='+id,  function(err,result){
         if(err)
         {
             myErr=err;
@@ -48,7 +48,7 @@ exports.getMemberByGrpId = function (id,cb){
 };
 
 exports.removeFromGroup = function (id,cb){
-    con.query('DELETE FROM TBL_GROUPMAPPER WHERE id='+id,  function(err,result){
+    con.query('DELETE FROM tbl_groupmapper WHERE id='+id,  function(err,result){
         if(err)
         {
             myErr=err;

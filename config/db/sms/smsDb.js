@@ -17,7 +17,7 @@ exports.insertSmsData = function (data,cb){
 
 
 
-    con.query('INSERT INTO TBL_SMS_MASTER SET ?',insertMasterData,  function(err,insertId){
+    con.query('INSERT INTO tbl_sms_master SET ?',insertMasterData,  function(err,insertId){
         if(err)
         {
             myErr=err;
@@ -84,7 +84,7 @@ exports.insertSmsData = function (data,cb){
                 require('deasync').sleep(100);
             }
             console.log("dattttt:"+insertSubData);
-            con.query('INSERT INTO TBL_SMS_SUB (smsId,mobNo,smsSts)  VALUES ?',[insertSubData],  function(err,insertSubId){
+            con.query('INSERT INTO tbl_sms_sub (smsId,mobNo,smsSts)  VALUES ?',[insertSubData],  function(err,insertSubId){
                 if(err)
                 {
                     myErr=err;
@@ -106,14 +106,14 @@ exports.insertSmsData = function (data,cb){
 };
 
 exports.getSmsData = function (cb){
-    con.query('SELECT s.id as id,s.smsDate as smsDate,s.msg as msg,count(*) as contactCount FROM TBL_SMS_MASTER s LEFT OUTER JOIN TBL_SMS_SUB m ON s.id=m.smsId group by m.smsId',function(err,result){
+    con.query('SELECT s.id as id,s.smsDate as smsDate,s.msg as msg,count(*) as contactCount FROM tbl_sms_master s LEFT OUTER JOIN tbl_sms_sub m ON s.id=m.smsId group by m.smsId',function(err,result){
             cb( err,result);
     });
 };
 
 exports.getSmsDataById = function (id,cb){
-    console.log('SELECT s.smsDate as smsDate,s.msg as msg,sub.mobNo as mobNo,sub.smsSts as smsSts FROM TBL_SMS_MASTER s LEFT OUTER JOIN TBL_SMS_SUB sub ON s.id=sub.smsId WHERE s.id='+id);
-    con.query('SELECT s.smsDate as smsDate,s.msg as msg,sub.mobNo as mobNo,sub.smsSts as smsSts FROM TBL_SMS_MASTER s LEFT OUTER JOIN TBL_SMS_SUB sub ON s.id=sub.smsId WHERE s.id='+id,function(err,result){
+    console.log('SELECT s.smsDate as smsDate,s.msg as msg,sub.mobNo as mobNo,sub.smsSts as smsSts FROM tbl_sms_master s LEFT OUTER JOIN tbl_sms_sub sub ON s.id=sub.smsId WHERE s.id='+id);
+    con.query('SELECT s.smsDate as smsDate,s.msg as msg,sub.mobNo as mobNo,sub.smsSts as smsSts FROM tbl_sms_master s LEFT OUTER JOIN tbl_sms_sub sub ON s.id=sub.smsId WHERE s.id='+id,function(err,result){
         cb( err,result);
     });
 };

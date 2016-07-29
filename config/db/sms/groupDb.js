@@ -13,9 +13,9 @@ exports.insertGroup = function (data,cb){
     console.log(insertData.grpId);
 
     if(insertData.grpId==='')
-        qry='INSERT INTO TBL_GROUP SET ?';
+        qry='INSERT INTO tbl_group SET ?';
     else
-        qry='UPDATE  TBL_GROUP SET ? WHERE ID='+insertData.grpId;
+        qry='UPDATE  tbl_group SET ? WHERE ID='+insertData.grpId;
 
     delete insertData.grpId;
     
@@ -40,7 +40,7 @@ exports.insertGroup = function (data,cb){
 
 exports.listGroup = function (cb){
 
-    con.query('SELECT g.id as grpId,g.grpName as grpName,g.crDate as crDate,count(m.grpId) as memCount FROM TBL_GROUP g LEFT OUTER JOIN TBL_GROUPMAPPER m ON g.id=m.grpId group by g.id',  function(err,result){
+    con.query('SELECT g.id as grpId,g.grpName as grpName,g.crDate as crDate,count(m.grpId) as memCount FROM tbl_group g LEFT OUTER JOIN tbl_groupmapper m ON g.id=m.grpId group by g.id',  function(err,result){
         if(err)
         {
             myErr=err;
@@ -59,7 +59,7 @@ exports.listGroup = function (cb){
 
 exports.getGroupById = function (id,cb){
 
-    con.query('SELECT g.id as grpId,g.grpName as grpName,g.crDate as crDate,m.count(*) as memCount FROM TBL_GROUP g WHERE id='+id,  function(err,result){
+    con.query('SELECT g.id as grpId,g.grpName as grpName,g.crDate as crDate,m.count(*) as memCount FROM tbl_group g WHERE id='+id,  function(err,result){
         if(err)
         {
             myErr=err;
@@ -78,7 +78,7 @@ exports.getGroupById = function (id,cb){
 
 exports.deleteGroup = function (id,cb){
     
-    con.query('DELETE FROM TBL_GROUP WHERE id='+id,  function(err,result){
+    con.query('DELETE FROM tbl_group WHERE id='+id,  function(err,result){
         if(err)
         {
             myErr=err;
