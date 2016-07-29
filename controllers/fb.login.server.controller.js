@@ -11,8 +11,11 @@ exports.fbLogin=function(req,res,next){
     //
 
     login({email: '9566494491', password: 'yoosu147258'}, function callback (err, api) {
-        if (err)
+        if (err){
+            console.log(err);
             return res.json(err);
+        }
+
         else
         {
             req.fbApi=api;
