@@ -41,7 +41,7 @@ io.on('connection',function(socket) {
 
     //Sending message to Specific user
     socket.on('send msg', function (data_server) {
-        
+        console.log("saveddddd");
         forumConfig.send_msg(data_server).then(function(result){
             console.log("saveddddd");
             socket.broadcast.to(data_server.id).emit('get msg', {
