@@ -8,10 +8,14 @@ var con = mysql.createConnection(db);
 function send_msg(data_server) {
     var deferred = q.defer();
 
-    var sendData ='INSERT INTO tb_sendmsg(my_userid,select_userid,msg,Dates,image,file,profile_pic,meg_read)';
-    sendData +='values(?,?,?,now(),?,?,?,?)';
-    var query = mysql.format(sendData,[data_server.my_userid,data_server.selectUserid,data_server.msg,data_server.image,data_server.file,data_server.profile_pic,data_server.msg_read]);
-    con.query(query,function(err, result) {
+    // var sendData ='INSERT INTO tb_sendmsg(my_userid,select_userid,msg,Dates,image,file,profile_pic,meg_read)';
+    // sendData +='values(?,?,?,now(),?,?,?,?)';
+
+    var sendData ="INSERT INTO tb_sendmsg(my_userid,select_userid,msg,Dates,image,file,profile_pic,meg_read)";
+    sendData +="values('"+data_server.my_userid+"','"+data_server.selectUserid+"','"+data_server.msg+"',now(),'"+data_server.image+"','"+data_server.file+"','"+data_server.profile_pic+","+data_server.msg_read+")";
+
+    // var query = mysql.format(sendData,[data_server.my_userid,data_server.selectUserid,data_server.msg,data_server.image,data_server.file,data_server.profile_pic,data_server.msg_read]);
+    con.query(sendData,function(err, result) {
         console.log(query);
         if (err) {
             console.log(err);
