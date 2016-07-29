@@ -36,7 +36,7 @@ io.on('connection',function(socket) {
         len--;
         //Sending th user Id and List of users
         io.emit('user entrance', users, users[len].id);
-        io.emit('user entrance', users, users[len].id);
+        // io.emit('user entrance', users, users[len].id);
     });
 
     //Sending message to Specific user
