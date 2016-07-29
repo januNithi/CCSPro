@@ -51,8 +51,6 @@ function getChatinfo() {
 
 function getReadinfo(id) {
 
-console.log("Id"+id);
-
     var deferred = q.defer();
     var getReadinfo = "select q.id,q.my_userid,count(q.meg_read) as readCount from tb_sendmsg q where meg_read = 0 and q.select_userid='"+id+"' group by q.my_userid" ;
     console.log("qry"+getReadinfo);

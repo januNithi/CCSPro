@@ -267,7 +267,7 @@
         //to highlight selected row
         $scope.clicked_highlight = function (id,user_id) {
 
-            // $scope.getChatinfo();
+            $scope.getChatinfo();
             var msgs1=[],msgs2=[];
             $scope.clicked = id;
             $scope.selected_id = id;
