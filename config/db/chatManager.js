@@ -14,6 +14,7 @@ function send_msg(data_server) {
     con.query(query,function(err, result) {
         console.log(query);
         if (err) {
+            console.log(err);
             deferred.reject(err);
         } else {
             getChatinfo().then(function(result)
