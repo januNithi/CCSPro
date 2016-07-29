@@ -55,7 +55,7 @@ exports.Files=function(req,res)
 
 exports.chatInfo=function(req,res)
 {
-    console.log("sssjj");
+    console.log("chatInfo");
     forumConfig.getChatinfo().then(function(result) {
         if (result) {
             console.log(result);
@@ -67,7 +67,7 @@ exports.chatInfo=function(req,res)
 exports.getchat=function(req,res)
 {
 
-    console.log("getchatinfo");
+    console.log("getchat");
 
     forumConfig.getReadinfo(req.query.id).then(function(result) {
         console.log("data");
@@ -81,7 +81,7 @@ exports.getchat=function(req,res)
 
 exports.msgReadInfo=function(req,res)
 {
-    console.log("getchatinfo");
+    console.log("msgreadInfo");
     forumConfig.msgreadInfo(req.body).then(function(results) {
         if (results) {
             console.log(results);
