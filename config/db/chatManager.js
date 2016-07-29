@@ -61,6 +61,7 @@ function getReadinfo(id) {
 
     con.query(getReadinfo, function (err,result) {
         if (err) {
+            console.log(err);
             deferred.reject(err);
         } else {
             console.log(result);
