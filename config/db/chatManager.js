@@ -16,7 +16,7 @@ function send_msg(data_server) {
 
     // var query = mysql.format(sendData,[data_server.my_userid,data_server.selectUserid,data_server.msg,data_server.image,data_server.file,data_server.profile_pic,data_server.msg_read]);
     con.query(sendData,function(err, result) {
-        console.log(query);
+        console.log(sendData);
         if (err) {
             console.log(err);
             deferred.reject(err);
