@@ -58,7 +58,7 @@
                 </form>
             <div ng-show="mechanical">
                 <h4>Mechanical projects</h4><hr>
-                <ul ng-repeat="file in files | filter:searchText">
+                <ul ng-repeat="file in files track by $index | filter:searchText">
                     <li class="panel col-sm-offset-1">{{file.Doc_File}}
                         <div class="panel col-sm-offset-8">
                             <button type="button" class="btn btn-primary" ng-init="File = file.Doc_File" ng-click='showFile(file.id,file.Doc_File)'>DOWNLOAD</button>
