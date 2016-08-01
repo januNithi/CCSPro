@@ -113,6 +113,7 @@
 
                 .then(function(response){
 
+                    alert();
                     $scope.files=response.data;
 
                     //alert('the file was selected');
