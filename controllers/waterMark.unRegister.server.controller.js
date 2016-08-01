@@ -9,6 +9,8 @@ exports.home=function(req,res){
 };
 
 exports.getAllDoc=function(req,res){
+
+    console.log(req);
     objWaterMark.getPdfFiles(function(err,results){
         if(err){
             res.send(err);
