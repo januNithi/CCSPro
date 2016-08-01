@@ -13,6 +13,7 @@ module.exports=function(connection){
         connection.query(qry, function (err, results) {
 
             if (err) {
+                console.log(err);
                 cb(err,results);
             }
             else {

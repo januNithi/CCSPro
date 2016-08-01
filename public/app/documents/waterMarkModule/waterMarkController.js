@@ -124,7 +124,7 @@
             });
         };
 
-        // $scope.getFileDoc();
+        $scope.getFileDoc();
 
 
     }
