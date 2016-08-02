@@ -2,7 +2,7 @@ var edge = require('edge');
 var path  = require('path');
 
 module.exports = edge.func({
-    source: './office.cs',
+    // source: './office.cs',
     // references: [
     //     __dirname+'\\config\\pdfConvert\\Microsoft.Office.Interop.Word.dll',
     //     __dirname+'\\config\\pdfConvert\\Microsoft.Office.Interop.Excel.dll',
