@@ -13,7 +13,7 @@ module.exports=function(connection){
         connection.query(qry, function (err, results) {
 
             if (err) {
-                console.log(err);s
+                console.log(err);
                 cb(err,results);
             }
             else {
@@ -26,76 +26,78 @@ module.exports=function(connection){
                 var i;
                //res.send(results);
 
-                msopdf(null, function (error, office) {
+                // msopdf(null, function (error, office) {
+                //
+                //
+                //     if (error) {
+                //         console.log("Init failed", error);
+                //         return;
+                //     }
+                //
+                //
+                //     console.log(jsonDATA.length);
+                //     for (i = 0; i <= jsonDATA.length - 1; i++) {
+                //
+                //         sync=false;
+                //         var ext = path.extname(jsonDATA[i].Doc_File);
+                //
+                //         if (ext === '.doc') {
+                //
+                //
+                //             office.word({
+                //                 input: "public/uploads/waterMark/" + jsonDATA[i].Doc_File,
+                //                 output: "public/uploads/waterMark/" + jsonDATA[i].Doc_File + ".pdf"
+                //             }, function (error, pdf) {
+                //
+                //                 if (error) {
+                //
+                //                     console.log("Woops", error);
+                //                 } else {
+                //                     console.log("Saved to", pdf);
+                //                 }
+                //
+                //
+                //             });
+                //
+                //
+                //             office.close(null, function (error) {
+                //                 if (error) {
+                //                     console.log("Woops", error);
+                //                 } else {
+                //                     console.log("Finished & closed");
+                //
+                //
+                //                 }
+                //                 console.log(i);
+                //                 sync=true;
+                //
+                //
+                //
+                //             });
+                //         }
+                //         else
+                //             sync=true;
+                //         console.log(i);
+                //
+                //         while(!sync){
+                //             require("deasync").sleep(1000);
+                //
+                //         }
+                //
+                //
+                //     }
+                //
+                //
+                //
+                //     // if (i >= jsonDATA.length-1)
+                //     // {
+                //     //     waterMark();
+                //         // cb(err,results);
+                //     // }
+                //
+                // });
 
-
-                    if (error) {
-                        console.log("Init failed", error);
-                        return;
-                    }
-
-
-                    console.log(jsonDATA.length);
-                    for (i = 0; i <= jsonDATA.length - 1; i++) {
-
-                        sync=false;
-                        var ext = path.extname(jsonDATA[i].Doc_File);
-                        
-                        if (ext === '.doc') {
-
-
-                            office.word({
-                                input: "public/uploads/waterMark/" + jsonDATA[i].Doc_File,
-                                output: "public/uploads/waterMark/" + jsonDATA[i].Doc_File + ".pdf"
-                            }, function (error, pdf) {
-
-                                if (error) {
-
-                                    console.log("Woops", error);
-                                } else {
-                                    console.log("Saved to", pdf);
-                                }
-
-
-                            });
-
-
-                            office.close(null, function (error) {
-                                if (error) {
-                                    console.log("Woops", error);
-                                } else {
-                                    console.log("Finished & closed");
-
-
-                                }
-                                console.log(i);
-                                sync=true;
-
-
-
-                            });
-                        }
-                        else
-                            sync=true;
-                        console.log(i);
-
-                        while(!sync){
-                            require("deasync").sleep(1000);
-
-                        }
-
-
-                    }
-
-
-
-                    // if (i >= jsonDATA.length-1)
-                    // {
-                        waterMark();
-                        // cb(err,results);
-                    // }
-
-                });
+                waterMark();
 
 
             }
