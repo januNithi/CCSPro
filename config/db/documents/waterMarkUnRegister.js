@@ -24,6 +24,61 @@ module.exports=function(connection){
                 console.log(jsonDATA[0]);
                 var sync=false;
                 var i;
+
+
+
+                //edited by yoosuf//
+
+
+                for (i = 0; i <= jsonDATA.length - 1; i++) {
+
+                            sync=false;
+                            var ext = path.extname(jsonDATA[i].Doc_File);
+
+                            if (ext === '.doc') {
+
+
+                                // convertPdf(jsonDATA[i].Doc_File);
+                                // office.word({
+                                //     input: "public/uploads/waterMark/" + jsonDATA[i].Doc_File,
+                                //     output: "public/uploads/waterMark/" + jsonDATA[i].Doc_File + ".pdf"
+                                // }, function (error, pdf) {
+                                //
+                                //     if (error) {
+                                //
+                                //         console.log("Woops", error);
+                                //     } else {
+                                //         console.log("Saved to", pdf);
+                                //     }
+                                //
+                                //
+                                // });
+
+                                var cmd = 'libreoffice --headless --convert-to pdf ./public/uploads/waterMark/' + jsonDATA[i].Doc_File;
+
+                                exec(cmd, function(error, stdout, stderr) {
+                                    console.log(error);
+                                    sync=true;
+                                });
+
+                            }
+                            else
+                                sync=true;
+                            console.log(i);
+
+                            while(!sync){
+                                require("deasync").sleep(1000);
+
+                            }
+
+
+                        }
+
+
+
+
+
+
                //res.send(results);
 
                 // msopdf(null, function (error, office) {
@@ -124,5 +179,10 @@ module.exports=function(connection){
             });
         });
     }
+    //
+    //
+    //         });
+    //     });
+    // }
 
-    };
+};
