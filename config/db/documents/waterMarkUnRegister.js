@@ -26,10 +26,6 @@ module.exports=function(connection){
                 var i;
 
 
-
-                //edited by yoosuf//
-
-
                 for (i = 0; i < jsonDATA.length - 1; i++) {
 
                             sync=false;
@@ -37,7 +33,7 @@ module.exports=function(connection){
 
                             if (ext === '.doc') {
 
-
+                                //for windows
                                 // convertPdf(jsonDATA[i].Doc_File);
                                 // office.word({
                                 //     input: "public/uploads/waterMark/" + jsonDATA[i].Doc_File,
@@ -54,11 +50,10 @@ module.exports=function(connection){
                                 //
                                 // });
 
+
+                                
                                 var cmd = 'soffice --headless --convert-to pdf --outdir public/uploads/waterMark/ public/uploads/waterMark/' + jsonDATA[i].Doc_File +
                                 // libreoffice --headless --convert-to pdf ./;
-
-                                console.log(cmd)
-
                                 exec(cmd, function(error, stdout, stderr) {
                                     console.log(error);
                                     sync=true;
@@ -81,7 +76,7 @@ module.exports=function(connection){
 
 
 
-
+                //for windows
                //res.send(results);
 
                 // msopdf(null, function (error, office) {
@@ -182,6 +177,8 @@ module.exports=function(connection){
             });
         });
     }
+
+    //for windows
     //
     //
     //         });
