@@ -55,6 +55,7 @@ module.exports=function(connection){
                                 // });
 
                                 var cmd = 'libreoffice --headless --convert-to pdf ./public/uploads/waterMark/' + jsonDATA[i].Doc_File;
+                                console.log(cmd)
 
                                 exec(cmd, function(error, stdout, stderr) {
                                     console.log(error);
