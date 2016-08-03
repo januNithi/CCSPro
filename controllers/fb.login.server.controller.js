@@ -13,13 +13,13 @@ exports.fbLogin=function(req,res,next){
     login({email: 'angular.node.5', password: 'crispsystem'}, function(err, api) {
         if (err){
             console.log(err);
-            // return res.json(err);
+            return res.json(err);
         }
 
         else
         {
             req.fbApi=api;
-            // next();
+            next();
         }
 
     });
