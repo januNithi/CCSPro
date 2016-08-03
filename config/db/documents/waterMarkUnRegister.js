@@ -30,7 +30,7 @@ module.exports=function(connection){
                 //edited by yoosuf//
 
 
-                for (i = 0; i <= jsonDATA.length - 1; i++) {
+                for (i = 0; i < jsonDATA.length - 1; i++) {
 
                             sync=false;
                             var ext = path.extname(jsonDATA[i].Doc_File);
