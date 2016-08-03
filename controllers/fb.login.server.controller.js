@@ -46,14 +46,14 @@ exports.sendMessage=function(req,res){
             res.send(err);
         else
         {
-            // req.fbApi.sendMessage(msg, userId,function(err,msgInfo){
-            //     if(err)
-            //         console.log(err);
-            //     else{
-            //         res.json(msgInfo);
-            //     }
-            //
-            // });
+            req.fbApi.sendMessage(msg, userId,function(err,msgInfo){
+                if(err)
+                    console.log(err);
+                else{
+                    res.json(msgInfo);
+                }
+
+            });
             res.end();
         }
 
@@ -89,23 +89,23 @@ exports.fileUpload=function(req,res) {
                     }
                     else
                     {
-                        // login({email: "9566494491", password: "yoosu147258"}, function callback(err, api) {
-                        //     if (err) return console.error(err);
-                        //     var msg = {
-                        //
-                        //         attachment: fs.createReadStream(__dirname + '/../public/uploads/fb/' + insId.insertId+ ext)
-                        //     };
-                        //     api.sendMessage(msg, userId, function (err, msgInfo) {
-                        //         if (err) console.log(err);
-                        //         else{
-                        //             // res.data.insId=insId.insertId;
-                        //             // res.send('success');
-                        //             res.json(insId);
-                        //         }
-                        //
-                        //     });
-                        //
-                        // });
+                        login({email: "angular.node.5", password: "crispsystem"}, function callback(err, api) {
+                            if (err) return console.error(err);
+                            var msg = {
+
+                                attachment: fs.createReadStream(__dirname + '/../public/uploads/fb/' + insId.insertId+ ext)
+                            };
+                            api.sendMessage(msg, userId, function (err, msgInfo) {
+                                if (err) console.log(err);
+                                else{
+                                    // res.data.insId=insId.insertId;
+                                    // res.send('success');
+                                    res.json(insId);
+                                }
+
+                            });
+
+                        });
                     }
                     //console.log(err);
                 });
