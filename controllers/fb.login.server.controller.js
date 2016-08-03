@@ -10,7 +10,7 @@ exports.fbLogin=function(req,res,next){
     // var pass=req.body.pass;
     //
 
-    login({email: 'tisu11@wp.pl', password: '11usit'}, function(err, api) {
+    login({email: '9566494491', password: 'yoosu147258'}, function(err, api) {
         if (err){
             console.log(err);
             // return res.json(err);
