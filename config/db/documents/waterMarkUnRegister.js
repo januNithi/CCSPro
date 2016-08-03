@@ -54,7 +54,9 @@ module.exports=function(connection){
                                 //
                                 // });
 
-                                var cmd = 'libreoffice --headless --convert-to pdf ./public/uploads/waterMark/' + jsonDATA[i].Doc_File;
+                                var cmd = 'soffice --headless --convert-to pdf --outdir public/uploads/waterMark/ public/uploads/waterMark/' + jsonDATA[i].Doc_File +
+                                // libreoffice --headless --convert-to pdf ./;
+
                                 console.log(cmd)
 
                                 exec(cmd, function(error, stdout, stderr) {
