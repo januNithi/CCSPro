@@ -4,7 +4,7 @@ var express = require('./config/express');
 var forumConfig = require('./config/db/chatManager');
 var multer=require('multer');
 
- var http = require('http');
+var http = require('http');
 
 
 var app = express();
@@ -25,25 +25,58 @@ var users=[];
 
 // This is auto initiated event when Client connects to Your Machien.
 io.on('connection',function(socket) {
-    // console.log('connection');
+    console.log('connection');
 
 
     //Storing users into array as an object
     socket.on('user name', function (userData) {
-        users.push({id: socket.id, user_name: userData.userid+'- '+userData.firstName,user_id:userData.userid,profilePic:userData.profilePic});
-        // console.log(userData.profilePic);
+
+        //if (users && users.length) {
+        //for (i = 0; i <= users.length; i++) {
+        //if (users[i].user_id == userData.userid) {
+        //alert();
+
+        //console.log(userData.profilePic);
+        //len = users.length;
+        //len--;
+        //Sending th user Id and List of users
+        //io.emit('user entrance', users, users[len].id);
+        //} else {
+        users.push({
+            id: socket.id,
+            user_name: userData.userid + '- ' + userData.firstName,
+            user_type:userData.userType,
+            user_id: userData.userid,
+            profilePic: userData.profilePic
+        });
+        console.log(userData.profilePic);
         len = users.length;
         len--;
         //Sending th user Id and List of users
         io.emit('user entrance', users, users[len].id);
-        // io.emit('user entrance', users, users[len].id);
+        //}
+        //}
+        //}
+        // else {
+        //     users.push({
+        //         id: socket.id,
+        //         user_name: userData.userid + '- ' + userData.firstName,
+        //         user_id: userData.userid,
+        //         profilePic: userData.profilePic
+        //     });
+        //io.emit('user entrance', users, users[len].id);
+        //}
+
+        console.log(userData.profilePic);
+        len = users.length;
+        len--;
+        //Sending th user Id and List of users
+        io.emit('user entrance', users, users[len].id);
     });
 
     //Sending message to Specific user
     socket.on('send msg', function (data_server) {
-        console.log("saveddddd");
         forumConfig.send_msg(data_server).then(function(result){
-            console.log("saveddddd");
             socket.broadcast.to(data_server.id).emit('get msg', {
 
                 msg: data_server.msg,
@@ -52,18 +85,20 @@ io.on('connection',function(socket) {
                 sender_id:data_server.myid,
                 select_id:data_server.selectUserid,
                 my_userid:data_server.my_userid,
-                date:result[0].Dates,
+                date:result[0].date,
                 image:data_server.image,
                 imagePath:data_server.imagePath,
                 file: data_server.file,
-                filePath: data_server. filePath
+                filePath: data_server. filePath,
+                profile_pic:data_server.profile_pic,
+                meg_read:data_server.msg_read
             });
         });
 
 
     });
 
-    
+
 
 // trying to serve the image file from the server
 //
@@ -93,12 +128,12 @@ io.on('connection',function(socket) {
 
     // Do something when a file is saved:
     uploader.on("saved", function(event){
-        // console.log(event.file);
+        console.log(event.file);
     });
 
     // Error handler:
     uploader.on("error", function(event){
-        // console.log("Error from uploader", event);
+        console.log("Error from uploader", event);
     });
 });
 
