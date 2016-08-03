@@ -54,7 +54,7 @@ exports.sendMessage=function(req,res){
                 }
 
             });
-            res.end();
+            // res.end();
         }
 
     });
