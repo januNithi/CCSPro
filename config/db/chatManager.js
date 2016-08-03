@@ -2,7 +2,7 @@
 var mysql = require('mysql');
 var q=require('q');
 var data = '';
-var db = require('./../chatdb');
+var db = require('./../db');
 var con = mysql.createConnection(db);
 
 console.log(con);
