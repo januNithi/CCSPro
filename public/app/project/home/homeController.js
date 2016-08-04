@@ -13,8 +13,11 @@
 
   function homeController($scope,homeService,$window,dashboardService,spinnerService) {
       $scope.datas = [];
+      $scope.fields = [];
       $scope.events = [];
-      $scope.myDataSource = {};
+      $scope.myDataSource={
+          
+      };
       $scope.images = [];
       var data=[];
 
@@ -58,6 +61,21 @@
       homeService.goToDashboard();
     };
 
+      $scope.getAllFields=function(){
+          homeService.getAllFields()
+              .success(function(response){
+                  $scope.fields=response[0];
+                  console.log("kjjjj"+$scope.fields);
+                  $scope.imageData();
+                  $scope.projectHistory();
+                  alert('data showed successfully');
+              })
+              .error(function(error){
+                  alert('error');
+
+              });
+      };
+
     $scope.projectData = function(){
       homeService.projectData()
           .then(function (results) {	//Success function
@@ -68,7 +86,7 @@
     };
 
     $scope.projectHistory = function(){
-      homeService.projectHistory()
+      homeService.projectHistory($scope.fields.PCode)
           .then(function (results) {	//Success function
               data=results.data;
               for (var i = 0;i < data.length;i++) {
@@ -86,14 +104,17 @@
     $scope.chartData = function(){
       homeService.chartData()
           .then(function (results) {	//Success function
-                   $scope.totalPercentage = results.data[0].per;
+              // $scope.totalPercentage = results.data[0].per;
+
+              // $scope.myDataSource=results.data;
+              console.log($scope.myDataSource);
           }).catch(function(error) {
             console.log('Error');
           });
     };
 
     $scope.imageData = function(){
-      homeService.imageData()
+      homeService.imageData($scope.fields.PCode)
           .then(function (results) {
             $scope.images = results.data;
           }).catch(function (error) {
@@ -112,9 +133,10 @@
             });
     };
 
+      $scope.getAllFields();
     $scope.projectData();
-    $scope.projectHistory();
-    $scope.chartData();
-    $scope.imageData();
+    // $scope.chartData();
+
+
   }
 })();

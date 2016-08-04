@@ -1,6 +1,6 @@
 module.exports=function(connection){
     this.getProjects=function(cb){
-        var qry="select q.projectCode as projectCode,q.title as title,q.department as department,q.subHeads as subHeads,q.software as software,q.hardware as hardware,q.catlogCode as catlogCode,q.domain as domain,q.id as id from erp_database q";
+        var qry="select q.projectCode as projectCode,q.title as title,q.department as department,q.subHeads as subHeads,q.software as software,q.hardware as hardware,q.catlogCode as catlogCode,q.domain as domain,q.abstract as abstract,q.docFile as docFile,q.id as id from erp_database q";
         console.log("get the data from DB" + qry);
         var err=null,results=null;
         connection.query(qry,function(err,results){
@@ -16,21 +16,37 @@ module.exports=function(connection){
     };
 
     this.postProjects=function(data,cb){
+        // var qry="INSERT INTO erp_database set ? ";
+        // console.log("store the data in DB" + qry);
+        // var err=null,results=null;
+        // connection.query(qry,data,function(err,results){
+        //     if(err)
+        //     {
+        //         cb(err,results);
+        //         console.log('Error when post question :' +err);
+        //     }
+        //     else
+        //     {
+        //         console.log(results);
+        //         cb(err,results);
+        //     }
+       
+
+            console.log(data);
         var qry="INSERT INTO erp_database set ? ";
-        console.log("store the data in DB" + qry);
-        var err=null,results=null;
-        connection.query(qry,data,function(err,results){
-            if(err)
-            {
-                cb(err,results);
-                console.log('Error when post question :' +err);
-            }
-            else
-            {
-                console.log(results);
-                cb(err,results);
-            }
-        });
+            console.log("store the data in DB" + qry);
+            connection.query(qry,data,function(error,results){
+                        console.log(data);
+                if(error){
+
+                    console.log(error);
+                }
+                else{
+                    cb(error,results)
+
+                }
+
+            });
     };
     this.editProjects=function(id,data,cb){
         var qry="UPDATE erp_database set ? where id="+id+"";

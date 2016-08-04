@@ -14,141 +14,49 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-            <li><a ng-click='goToDashboard()'  style="color:white"><span class="glyphicon glyphicon-arrow-left"></span></a></li>
-            <li class="dropdown">
-                <a href="#"  style="color:white" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-                <ul class="dropdown-menu" role="menu">
+            <li><a href="/project/registration"  style="color:white"><span class="glyphicon glyphicon-arrow-left"></span></a></li>
+            <!--<li class="dropdown">-->
+                <!--<a href="#"  style="color:white" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger"></span></a>-->
+                <!--&lt;!&ndash;<ul class="dropdown-menu" role="menu">&ndash;&gt;-->
 
-                    <li align='right'>
+                    <!--&lt;!&ndash;<li align='right'>&ndash;&gt;-->
 
-                        <a ng-click='onLogout()'>
+                        <!--&lt;!&ndash;<a ng-click='onLogout()'>&ndash;&gt;-->
 
-                            <span class="glyphicon glyphicon-log-out"></span>Log Out
+                            <!--&lt;!&ndash;<span class="glyphicon glyphicon-log-out"></span>Log Out&ndash;&gt;-->
 
-                        </a>
+                        <!--&lt;!&ndash;</a>&ndash;&gt;-->
 
-                    </li>
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
 
-                </ul>
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
 
-            </li>
+            <!--</li>-->
 
         </ul>
     </div>
 </nav>
-
+<div style="background-color: #F2F3F4">
 <div class="container">
     <div class="row content">
         <hr>
-        <div class="alert alert-success" style="text-align: center">
+        <div class="panel panel-primary" style="text-align: center">
+            <div class="panel-heading">
             <h4>STUDENT PROJECT</h4>
-        </div>
+        </div></div>
         <!-- MASTER ROW -->
         <div class="row">
-            <!-- INPUT TEXT AREAS -->
-            <div class="col-sm-3">
-                <div class="col-sm-12 panel panel-info" style="padding:0px">
-                    <div class="panel-heading" style="text-align: center">
-                        DETAILS
-                    </div>
-
-                    <div class="form-group">
-                        <h5>Here You Can Give The Project Hardware And Software Details...!!!
-                        </h5>
-                    </div>
-                        <div class="panel-body">
-                            <form name="sampleform"><br>
-                                <table class="center">
-                                    <div class="form-group">
-                                        <tr><td>
-                                            <label class="col-xs-2 control-label" for="inputSuccess">
-                                                ProjectCode:</label></td><td>
-                                            <input type="text" class="form-control" data-toggle="tooltip" data-placement="top" title="Enter The projectCode" data-ng-model="new.projectCode">
-                                            <br>
-                                        </td></tr>
-                                        <tr><td>
-
-                                            <label class="col-xs-2 control-label">Title</label>
-                                        </td><td>
-
-                                            <select class="form-control" data-toggle="tooltip" data-placement="top" title="Title" ng-options="y for y in Title" data-ng-model="new.title">
-                                            </select><br>
-                                        </td></tr>
-                                        <tr><td>
-
-                                            <label class="col-xs-2 control-label" for="inputSuccess">Department</label></td><td>
-                                            <select class="form-control" data-toggle="tooltip" data-placement="top" title="Department" ng-options="x for x in departments" data-ng-model="new.department">
-                                            </select><br>
-                                        </td></tr>
-
-                                        <tr><td>
-
-                                            <label class="col-xs-2 control-label" for="inputSuccess">SubHeads</label>
-                                        </td><td>
-
-                                            <select class="form-control" data-toggle="tooltip" data-placement="top" title="subHeads" ng-options="z for z in subHeads" data-ng-model="new.subHeads"></select><br>
-                                        </td></tr>
-
-                                        <tr><td>
-
-                                            <label class="col-xs-2 control-label" for="inputSuccess">SoftwareAmount</label>
-                                        </td>
-                                            <td>
-                                                <input type="text" class="form-control"  data-toggle="tooltip" data-placement="top" title="Software Cost" data-ng-model="new.software"  name="price_field"
-                                                       ng-pattern="/^[0-9]{1,7}$/" required>
-                                                <span ng-show="sampleform.price_field.$error.pattern">Not a valid number!</span><br></td></tr>
-                                        <tr><td>
-                                            <label class="col-xs-2 control-label" for="inputSuccess">HardwareAmount</label>
-                                        </td>
-                                            <td>
-                                                <input type="text" class="form-control" data-toggle="tooltip" data-placement="top" title="Hardware Cost" data-ng-model="new.hardware"  name="price_field1"
-                                                       ng-pattern="/^[0-9]{1,7}$/" required>
-                                                <span ng-show="sampleform.price_field1.$error.pattern">Not a valid number!</span><br>
-                                            </td></tr>
-                                        <tr><td>
-
-                                            <label class="col-xs-2 control-label" for="inputSuccess">CatlogCode</label>
-                                        </td>
-                                            <td>
-                                                <select class="form-control" data-toggle="tooltip" data-placement="top" title="Catlog Code" ng-options="w for w in catlogCode" data-ng-model="new.catlogCode"></select><br>
-                                            </td></tr>
-
-                                        <tr><td>
-
-                                            <label class="col-xs-2 control-label" for="inputSuccess">Domain</label>
-                                        </td>
-                                            <td>
-                                                <select class="form-control" data-toggle="tooltip" data-placement="top" title="Domain" ng-options="w for w in Domain" data-ng-model="new.domain"></select><br>
-                                            </td></tr>
-
-                                    </div>
-                                </table>
-                                <!-- TEXT TABLE END -->
-                            </form>
-
-                            <!-- SUBMIT BUTTON -->
-
-                            <button type="button" class="btn btn-default" data-ng-show="displaySave" ng-click="postNewProject()"><span class="glyphicon glyphicon-save"></span>Submit</button>
-
-                            <br/>
-                            <p>{{status}}</p>
-                        </div>
-
-                    <hr>
-                </div>
-            </div>
-
 
             <!-- TABLE HEAD -->
 
-            <div class="col-sm-9 ">
-                <div class="panel panel-success" style="padding: 0px">
-                    <div class="panel-heading" style="text-align: center">
+            <div class="col-sm-12">
+                <div class="panel panel-primary" style="padding: 0px">
+                    <div class="panel-heading" style="text-align: center; height:50px">
                         PROJECT_DETAILS
                         <div class="pull-right" style="margin-right: 50px">
                             <div class="dropdown">
-                                <a class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-list"></span></a>
-                                <ul class="dropdown-menu"  >
+                                <a class="btn dropdown-toggle" type="button" style="color: white" data-toggle="dropdown"><span class="glyphicon glyphicon-list"></span></a>
+                                <ul class="dropdown-menu" style="color:black">
                                     <li><input type="checkbox" ng-model="hideProjectCode" />Hide projectCode</li><br>
                                     <li><input type="checkbox" ng-model="hideTitle" />Hide Title</li><br>
                                     <li><input type="checkbox" ng-model="hideDepartment" />Hide Department</li><br>
@@ -156,6 +64,8 @@
                                     <li><input type="checkbox" ng-model="hideAmount" />Hide Amount</li><br>
                                     <li><input type="checkbox" ng-model="hideCatlogCode" />Hide catlogcCode</li><br>
                                     <li><input type="checkbox" ng-model="hideDomain" />Hide Domain</li><br>
+                                    <li><input type="checkbox" ng-model="hideAbstract" />Hide Abstract</li><br>
+                                    <li><input type="checkbox" ng-model="hideImg" />Hide Images</li><br>
                                 </ul>
                             </div>
                         </div>
@@ -170,9 +80,9 @@
                                 <!-- PROJECT_CODE -->
                                 <th ng-hide="hideProjectCode"><span ng-show="visible[0]">Projectcode</span>
                                     <div class="btn-group">
-                                        <button  class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
+                                        <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
                                             <span  class="caret"></span></button>
-                                        <my-directive field="projectCode" search-box="searchBox(0)" search1-box="search1Box(0)"" visible-arr="visible[0]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
+                                        <my-directive field="projectCode" search-box="searchBox(0)" search1-box="search1Box(0)" visible-arr="visible[0]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
                                         </div>
                                     <input type="text" class="form-control" ng-show="searchText[0]" ng-model="name1" value="search">
                                 </th>
@@ -180,9 +90,9 @@
                                 <!-- TITLE -->
                                 <th  ng-hide="hideTitle"><span ng-show="visible[1]">Title</span>
                                     <div class="btn-group">
-                                        <button  class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
-                                            <span  class="caret"></span></button>
-                                        <my-directive field="Title" search-box="searchBox(1)" search1-box="search1Box(1)"" visible-arr="visible[1]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
+                                        <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                                            <span class="caret"></span></button>
+                                        <my-directive field="Title" search-box="searchBox(1)" search1-box="search1Box(1)" visible-arr="visible[1]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
                                     </div>
                                     <input type="text" class="form-control" ng-show="searchText[1]" ng-model="name2" value="search">
 
@@ -193,7 +103,7 @@
                                     <div class="btn-group">
                                         <button  class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
                                             <span  class="caret"></span></button>
-                                        <my-directive field="Department" search-box="searchBox(2)" search1-box="search1Box(2)"" visible-arr="visible[2]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
+                                        <my-directive field="Department" search-box="searchBox(2)" search1-box="search1Box(2)" visible-arr="visible[2]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
                                     </div>
                                     <input type="text" class="form-control" ng-show="searchText[2]" ng-model="name3" value="search">
 
@@ -204,7 +114,7 @@
                                     <div class="btn-group">
                                         <button  class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
                                             <span class="caret"></span></button>
-                                        <my-directive field="subHeads" search-box="searchBox(3)" search1-box="search1Box(3)"" visible-arr="visible[3]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
+                                        <my-directive field="subHeads" search-box="searchBox(3)" search1-box="search1Box(3)" visible-arr="visible[3]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
 
                                     </div>
                                     <input type="text" class="form-control" ng-show="searchText[3]" ng-model="name4" value="search">
@@ -215,7 +125,7 @@
                                     <div class="btn-group">
                                         <button  class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
                                             <span  class="caret"></span></button>
-                                        <my-directive field="Amount" search-box="searchBox(4)" search1-box="search1Box(4)"" visible-arr="visible[4]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
+                                        <my-directive field="Amount" search-box="searchBox(4)" search1-box="search1Box(4)" visible-arr="visible[4]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
                                     </div>
                                     <input type="text" class="form-control" ng-show="searchText[4]" ng-model="name5" value="search">
 
@@ -226,7 +136,7 @@
                                     <div class="btn-group">
                                         <button  class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
                                             <span  class="caret"></span></button>
-                                        <my-directive field="catlogCode" search-box="searchBox(5)" search1-box="search1Box(5)"" visible-arr="visible[5]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
+                                        <my-directive field="catlogCode" search-box="searchBox(5)" search1-box="search1Box(5)" visible-arr="visible[5]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
                                     </div>
                                     <input type="text" class="form-control" ng-show="searchText[5]" ng-model="name6" value="search">
                                 </th>
@@ -236,9 +146,25 @@
                                     <div class="btn-group">
                                         <button  class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
                                             <span  class="caret"></span></button>
-                                        <my-directive field="Domain" search-box="searchBox(6)" search1-box="search1Box(6)"" visible-arr="visible[6]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
+                                        <my-directive field="Domain" search-box="searchBox(6)" search1-box="search1Box(6)" visible-arr="visible[6]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
                                     </div>
                                     <input type="text" class="form-control" ng-show="searchText[6]" ng-model="name7" value="search">
+                                </th>
+                                <th ng-hide="hideAbstract"><span ng-show="visible[7]">Abstract</span>
+                                    <div class="btn-group">
+                                        <button  class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
+                                            <span  class="caret"></span></button>
+                                        <my-directive field="abstract" search-box="searchBox(7)" search1-box="search1Box(7)" visible-arr="visible[7]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
+                                    </div>
+                                    <input type="text" class="form-control" ng-show="searchText[7]" ng-model="name8" value="search">
+                                </th>
+                                <th ng-hide="hideImg"><span ng-show="visible[8]">Images</span>
+                                    <div class="btn-group">
+                                        <button  class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
+                                            <span  class="caret"></span></button>
+                                        <my-directive field="image" search-box="searchBox(8)" search1-box="search1Box(8)" visible-arr="visible[8]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
+                                    </div>
+                                    <input type="text" class="form-control" ng-show="searchText[8]" ng-model="name9" value="search">
                                 </th>
                                 <th style="text-align:center; font-size:medium">If Any Changes
                                 </th></tr>
@@ -255,46 +181,136 @@
                                 <tbody>
 
 
-                                <tr ng-repeat="detail in dataFilter | orderBy : predicate : reverse | filter:search | filter:{projectCode:name1,title:name2,department:name3,subHeads:name4,software:name5,catlogCode:name6,domain:name7}">
+                                <tr ng-repeat="detail in dataFilter | orderBy : predicate : reverse | filter:search | filter:{projectCode:name1,title:name2,department:name3,subHeads:name4,software:name5,catlogCode:name6,domain:name7,image:name8,}">
 
 
-                                    <td ng-hide="hideProjectCode"><input type="text" class="form-control" ng-model="detail.projectCode" ng-show=$index==rowEdit><span ng-hide="$index==rowEdit"> {{ detail.projectCode }}</span></td>
+                                    <td ng-hide="hideProjectCode">{{ detail.projectCode }}</td>
 
+                                    <td ng-hide="hideTitle"> {{ detail.title }}</td>
 
+                                    <td ng-hide="hideDepartment">{{ detail.department }}</td>
 
+                                    <td ng-hide="hideSubHeads">{{ detail.subHeads }}</td>
 
-                                    <td ng-hide="hideTitle"> <select class="form-control" data-toggle="tooltip" data-placement="top" title="Title" ng-options="y for y in Title" ng-model="detail.title" ng-show=$index==rowEdit>
-                                    </select><span ng-hide="$index==rowEdit"> {{ detail.title }} </span></td>
+                                    <td ng-hide="hideAmount">${{ detail.software + detail.hardware }}</td>
 
+                                    <td ng-hide="hideCatlogCode">{{ detail.catlogCode }}</td>
 
-                                    <td ng-hide="hideDepartment"> <select class="form-control" data-toggle="tooltip" data-placement="top" title="Department" ng-options="x for x in names" ng-model="detail.department" ng-show=$index==rowEdit>
-                                       </select> <span ng-hide="$index==rowEdit"> {{ detail.department }} </span></td>
+                                    <td ng-hide="hideDomain">{{ detail.domain }}</td>
 
+                                    <td ng-hide="hideAbstract">{{ detail.abstract }}</td>
 
-                                    <td ng-hide="hideSubHeads"> <select class="form-control" data-toggle="tooltip" data-placement="top" title="subHeads" ng-options="z for z in subHeads" ng-model="detail.subHeads" ng-show=$index==rowEdit></select><span ng-hide="$index==rowEdit"> {{ detail.subHeads }} </span></td>
-
-
-                                    <td ng-hide="hideAmount"><input type="text" data-toggle="tooltip" data-placement="top" title="SoftwareCost" class="form-control" ng-model="detail.software" ng-show=$index==rowEdit><input type="text" class="form-control" data-toggle="tooltip" data-placement="top" title="HardwareCost" ng-model="detail.hardware" ng-show=$index==rowEdit ><span ng-hide=$index==rowEdit>   ${{ detail.software + detail.hardware }} </span></td>
-
-
-                                    <td ng-hide="hideCatlogCode"> <select class="form-control" data-toggle="tooltip" data-placement="top" title="Catlog Code" ng-options="w for w in catlogCode" ng-model="detail.catlogCode" ng-show=$index==rowEdit></select><span ng-hide=$index==rowEdit> {{ detail.catlogCode }} </span></td>
-
-                                    <td ng-hide="hideDomain"><select class="form-control" data-toggle="tooltip" data-placement="top" title="Domain" ng-options="w for w in Domain" ng-model="detail.domain" ng-show=$index==rowEdit></select>
-                                        <span ng-hide=$index==rowEdit>  {{ detail.domain }}</span> </td>
+                                    <td ng-hide="hideImg">{{ detail.docFile }}</td>
 
                                     <!-- EDIT UPDATE AND DELETE BUTTON -->
 
-                                    <td><a class="btn btn-default btn-small" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editProjectData($index)" ng-hide="$index==rowEdit" >
-                                        <span class="glyphicon glyphicon-edit"></span> </a>
+                                    <td>
+                                        <a> <button type="button" class="btn btn-default" data-toggle="modal" ng-click="editData($index)" data-target="{{'#'+detail.id}}"><span class="glyphicon glyphicon-edit"></span></button></a>
+                                        <a data-ng-click="deleteProject(detail.id)" data-toggle="tooltip"  title="Delete" data-placement="top" class="btn btn-default btn-small"><span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </td>
 
-                                        <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="upDate" ng-click="updateProject(detail,$index)" ng-show="$index==rowEdit">
-                                            <span class=" glyphicon glyphicon-check"></span></a>
+                                    <td>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="{{detail.id}}" role="dialog">
+                                        <div class="modal-dialog">
 
-                                        <a data-ng-click="deleteProject(detail.id)" data-toggle="tooltip" data-placement="top" title="Delete" data-placement="top" class="btn btn-default btn-small"><span class="glyphicon glyphicon-trash"></span>
-                                        </a></td>
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Modal Header</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form role="form" ><br>
+
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3" for="inputSuccess">
+                                                                ProjectCode:</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" ng-model="edit.projectCode" data-toggle="tooltip" data-placement="top" title="Enter The projectCode">
+                                                                <br></div>
+
+                                                            <label class="col-sm-3" for="inputSuccess">Title</label>
+                                                            <div class="col-sm-9">
+                                                                <select class="form-control" data-toggle="tooltip" data-placement="top" title="Title" ng-options="y for y in Title" data-ng-model="edit.title">
+                                                                </select><br></div>
+
+
+                                                            <label class="col-sm-3" for="inputSuccess">Department</label>
+                                                            <div class="col-sm-9">
+                                                                <select class="form-control" data-toggle="tooltip" data-placement="top" title="Department" ng-options="x for x in departments" data-ng-model="edit.department">
+                                                                </select><br></div>
+
+
+                                                            <label class="col-sm-3" for="inputSuccess">SubHeads</label>
+
+                                                            <div class="col-sm-9">
+
+                                                                <select class="form-control" data-toggle="tooltip" data-placement="top" title="subHeads" ng-options="z for z in subHeads" data-ng-model="edit.subHeads"></select><br>
+                                                            </div>
+
+
+                                                            <label class="col-sm-3" for="inputSuccess">SoftwareAmount</label>
+
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control"  data-toggle="tooltip" data-placement="top" title="Software Cost" data-ng-model="edit.software"  name="price_field"
+                                                                       ng-pattern="/^[0-9]{1,7}$/" required>
+                                                                <span ng-show="sampleform.price_field.$error.pattern">Not a valid number!</span><br></div>
+
+                                                            <label class="col-sm-3" for="inputSuccess">HardwareAmount</label>
+
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" data-toggle="tooltip" data-placement="top" title="Hardware Cost" data-ng-model="edit.hardware"  name="price_field1"
+                                                                       ng-pattern="/^[0-9]{1,7}$/" required>
+                                                                <span ng-show="sampleform.price_field1.$error.pattern">Not a valid number!</span><br>
+                                                            </div>
+
+
+                                                            <label class="col-sm-3" for="inputSuccess">CatlogCode</label>
+
+                                                            <div class="col-sm-9">
+                                                                <select class="form-control" data-toggle="tooltip" data-placement="top" title="Catlog Code" ng-options="w for w in catlogCode" data-ng-model="edit.catlogCode"></select><br>
+                                                            </div>
+
+
+                                                            <label class="col-sm-3" for="inputSuccess">Domain</label>
+
+                                                            <div class="col-sm-9">
+                                                                <select class="form-control" data-toggle="tooltip" data-placement="top" title="Domain" ng-options="w for w in Domain" data-ng-model="edit.domain"></select><br>
+                                                            </div>
+
+
+                                                            <label class="col-sm-3" for="inputSuccess">Abstraction</label>
+
+                                                            <div class="col-sm-9">
+                                                                <textarea class="form-control" rows="4" cols="50" ng-model="edit.abstract" data-toggle="tooltip" data-placement="top" title="Abstraction"></textarea>
+                                                            </div>
+                                                            <label class="col-sm-3" for="inputSuccess">Abstraction</label>
+
+                                                            <div class="col-sm-9">
+                                                                <input type="file" class="form-control" name="fileUpload" data-toggle="tooltip" data-placement="top" title="select the file" data-ng-model="edit.docFile">
+                                                            </div>
+
+                                                            <!-- TEXT TABLE END -->
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="upDate" ng-click="updateProject()">
+                                                    update</a>
+                                                    <a type="button" class="btn btn-default" ng-click="close()" data-dismiss="modal">Close</a>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- Modal content-->
+
+                                    </td>
                                 </tr>
-
-
 
                                 </tbody>
 

@@ -45,9 +45,9 @@
 
 <div class="panel panel-success">
   		<div class="panel-heading">
-  			<label>Project Title : {{datas.Title}}</label>
+  			<label>Project Title : {{fields.Title}}</label>
   			<span class="pull-right">
-  				<label>Project Code : {{datas.PCode}}</label>
+  				<label>Project Code : {{fields.projectCode}}</label>
   			</span>
   		</div>
 </div>
@@ -66,10 +66,10 @@
 					</div>
 				 <div class="panel-collapse collapse in" ng-accordion-body>
 					<div class="panel-body">
-						<label>Total Amount :  <i class="fa fa-rupee"></i>{{datas.Amount}} </label>
+						<label>Total Amount :  <i class="fa fa-rupee"></i>{{fields.project_fee}} </label>
 						<br><br>
-						<p>Paid :  <i class="fa fa-rupee"></i>{{datas.Paid}} </p>
-						<p class="text-danger">Pending :  <i class="fa fa-rupee"></i>{{datas.Amount-datas.Paid}}</p>
+						<p>Paid :  <i class="fa fa-rupee"></i>{{fields.fees_paid}} </p>
+						<p class="text-danger">Pending :  <i class="fa fa-rupee"></i>{{fields.project_fee-fields.fees_paid}}</p>
 					</div>
 				 </div>
 				</div>
@@ -83,8 +83,8 @@
 					</div>
 				 <div class="panel-collapse collapse in" ng-accordion-body>
 					<div class="panel-body">			
-						<p><label>Employee Name : </label><br/> {{datas.HandledBy}}</p><br>
-						<p><label>Contact Number : </label><br/> (+91) {{datas.EmpContact}}</p>
+						<p><label>Employee Name : </label><br/> {{fields.HandledBy}}</p><br>
+						<p><label>Contact Number : </label><br/> (+91) {{fields.EmpContact}}</p>
 					</div>
 				 </div>
 				</div>
@@ -114,7 +114,9 @@
 				 <div class="panel-collapse collapse in" ng-accordion-body>
 					<div class="panel-body">
 					<p class="text-justify">
-						{{datas.Abstract}}
+						{{fields.abstract}}
+						<br>
+						<img width="250px" height="250px" ng-src="/uploads/projectRegistration/58.jpg">
 					</p>
 					</div>
 				 </div>
@@ -128,12 +130,17 @@
 						<b><span class="pull-right" ng-show="panel4" style="color:#1719dd"><a href="#">{{totalPercentage}}%</a></span></b>
 						<b><span class="pull-right" ng-show="!panel4" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
 					</div>
-				 <div class="panel-collapse collapse in" ng-accordion-body>
-					<div class="panel-body" >
-						<label>Project Completion Status : <span class="text-success"> {{totalPercentage}}%</span></label>
-						<!-- chart types : column2d, column3d, line, area2d, bar2d, bar3d, pie2d, pie3d, doughnut2d, doughnut3d, pareto2d, pareto3d -->
-						<div fusioncharts width="245" height="350" type="line" datasource="{{myDataSource}}">
-						</div>
+				 <div class="panel-collapse collapse in" >
+					<div>
+						<fc-chart class="panel-body"  width="245" height="350" type="line" fc-data="{{myDataSource}}" >
+							</fc-chart>
+
+						<!--&lt;!&ndash;<label>Project Completion Status : <span class="text-success"> {{totalPercentage}}%</span></label>&ndash;&gt;-->
+						<!--&lt;!&ndash; chart types : column2d, column3d, line, area2d, bar2d, bar3d, pie2d, pie3d, doughnut2d, doughnut3d, pareto2d, pareto3d &ndash;&gt;-->
+						<!--&lt;!&ndash;<div fusioncharts width="245" height="350" type="line" datasource="{{myDataSource}}">&ndash;&gt;-->
+						<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
 							
 					</div>
 				 </div>
@@ -147,7 +154,7 @@
 					</div>
 					 <div class="panel-collapse collapse in" ng-accordion-body>
 						<div class="panel-body">
-							<p>{{datas.DeliveryDate}}</p>
+							<p>{{fields.deletedDate}}</p>
 						</div>
 			 		</div>
 				</div>
@@ -160,8 +167,8 @@
 					</div>
 				 <div class="panel-collapse collapse in" ng-accordion-body>
 					<div class="panel-body">
-						<p><label>Name : </label><br/>{{datas.Manager}}</p><br>
-						<p><label>Contact Number : </label><br/> (+91) {{datas.ManagerContact}}</p>
+						<p><label>Name : </label><br/>{{fields.Manager}}</p><br>
+						<p><label>Contact Number : </label><br/> (+91) {{fields.ManagerContact}}</p>
 					</div>
 				 </div>
 				</div>

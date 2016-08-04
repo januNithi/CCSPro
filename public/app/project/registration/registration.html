@@ -1,0 +1,159 @@
+<nav class="nav navbar-dark bg-primary" role="navigation">
+    <div class="nav-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <label class="navbar-brand">Crisp Cloud Solutions</label>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a ng-click='goToDashboard()'  style="color:white"><span class="glyphicon glyphicon-arrow-left"></span></a></li>
+            <li class="dropdown">
+                <a href="#"  style="color:white" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+                <ul class="dropdown-menu" role="menu">
+
+                    <li align='right'>
+
+                        <a ng-click='onLogout()'>
+
+                            <span class="glyphicon glyphicon-log-out"></span>Log Out
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+        </ul>
+    </div>
+</nav>
+<div style="background-color: #F2F3F4">
+<div class="container">
+    <div class="row content">
+        <hr>
+        <!--<div class="alert alert-info" style="text-align: center">-->
+            <!--<h4>STUDENT PROJECT</h4>-->
+        <!--</div>-->
+        <!-- MASTER ROW -->
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="col-sm-12 panel panel-primary col-sm-offset-1" style="padding:0px">
+                    <div class="panel-heading" style="text-align: center;height: 50px">
+                        DETAILS
+                    </div>
+
+                    <div class="form-group"  style="text-align: center">
+                        <h5>Here You Can Give The Project Hardware And Software Details...!!!
+                        </h5>
+                    </div>
+                    <div class="panel-body col-sm-offset-1">
+                        <form method="post" action="/postNewProject" enctype="multipart/form-data" >
+                        <!--<form action="/postNewProject"  method ="post" enctype="multipart/form-data"><br>-->
+                            <div class="form-group">
+                                        <label class="col-xs-2 control-label" for="inputSuccess">
+                                            ProjectCode:</label></td><td>
+                                        <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="projectCode" data-toggle="tooltip" data-placement="top" title="Enter The projectCode" data-ng-model="new.projectCode">
+                                        <br></div>
+
+
+                                        <label class="col-xs-2 control-label">Title</label>
+
+                                        <div class="col-sm-9">
+                                        <select class="form-control" name="title" data-toggle="tooltip" data-placement="top" title="Title" ng-options="y for y in Title" data-ng-model="new.title">
+                                        </select><br></div>
+
+
+                                        <label class="col-xs-2 control-label" for="inputSuccess">Department</label>
+                                        <div class="col-sm-9">
+                                        <select class="form-control" name="department" data-toggle="tooltip" data-placement="top" title="Department" ng-options="x for x in departments" data-ng-model="new.department">
+                                        </select><br></div>
+
+
+                                        <label class="col-xs-2 control-label" for="inputSuccess">SubHeads</label>
+
+                                        <div class="col-sm-9">
+
+                                        <select class="form-control" name="subHeads" data-toggle="tooltip" data-placement="top" title="subHeads" ng-options="z for z in subHeads" data-ng-model="new.subHeads"></select><br>
+                                            </div>
+
+
+                                        <label class="col-xs-2 control-label" for="inputSuccess">SoftwareAmount</label>
+
+                                <div class="col-sm-9">
+                                            <input type="text" class="form-control"  data-toggle="tooltip" data-placement="top" title="Software Cost" data-ng-model="new.software"  name="price_field"
+                                                   ng-pattern="/^[0-9]{1,7}$/" required>
+                                            <span ng-show="sampleform.price_field.$error.pattern">Not a valid number!</span><br></div>
+
+                                        <label class="col-xs-2 control-label" for="inputSuccess">HardwareAmount</label>
+
+                                <div class="col-sm-9">
+                                            <input type="text" class="form-control" data-toggle="tooltip" data-placement="top" title="Hardware Cost" data-ng-model="new.hardware"  name="price_field1"
+                                                   ng-pattern="/^[0-9]{1,7}$/" required>
+                                            <span ng-show="sampleform.price_field1.$error.pattern">Not a valid number!</span><br>
+                                        </div>
+
+
+                                        <label class="col-xs-2 control-label" for="inputSuccess">CatlogCode</label>
+
+                                            <div class="col-sm-9">
+                                            <select class="form-control" name="catelogCode" data-toggle="tooltip" data-placement="top" title="Catlog Code" ng-options="w for w in catlogCode" data-ng-model="new.catlogCode"></select><br>
+                                       </div>
+
+
+                                        <label class="col-xs-2 control-label" for="inputSuccess">Domain</label>
+
+                                <div class="col-sm-9">
+                                            <select class="form-control" name="domain" data-toggle="tooltip" data-placement="top" title="Domain" ng-options="w for w in Domain" data-ng-model="new.domain"></select><br>
+                                        </div>
+                                <label class="col-xs-2 control-label" for="inputSuccess">
+                                    IMG_UPLOAD:</label></td><td>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" name="fileUpload" data-toggle="tooltip" data-placement="top" title="select the file" data-ng-model="new.docFile">
+                                    <br></div>
+
+
+                                    <label class="col-xs-2 control-label" for="inputSuccess">Abstraction</label>
+
+                                <div class="col-sm-9">
+                                        <textarea class="form-control" name="abstract" rows="4" cols="50" ng-model="new.abstract" data-toggle="tooltip" data-placement="top" title="Abstraction"></textarea>
+                                    </div>
+
+                            <!-- TEXT TABLE END -->
+                                </div>
+                            <div class="col-sm-offset-5">
+                                <!--<button type="button" class="btn btn-default" data-ng-show="displaySave" ng-click="postNewProject()"><span class="glyphicon glyphicon-save"></span>Submit</button>-->
+
+                                <a href="/project/projectReg"><button type="button" class="btn btn-default col-sm-offset-1"><span class="glyphicon glyphicon-save"></span>View Details</button>
+                                </a>
+                            </div>
+                            <div class="col-sm-offset-3">
+                                <input type="submit" class='btn btn-default' name="save" value="Submit">
+
+                            </div>
+                        </form>
+                        <!-- SUBMIT BUTTON -->
+
+
+                        <br/>
+                        <p>{{status}}</p>
+                    </div>
+
+                    <hr>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+});</script>
+
+

@@ -6,7 +6,6 @@
         '$scope',
         '$window',
         'projectRegService',
-        'dashboardService',
         'DEPARTMENTS',
         'TITLE',
         'SUB_HEADS',
@@ -15,14 +14,13 @@
 
     ];
 
-    function projectRegController($scope,$window,projectRegService,dashboardService,DEPARTMENTS,TITLE,SUB_HEADS,CATELOG_CODE,DOMAIN) {
+    function projectRegController($scope,$window,projectRegService,DEPARTMENTS,TITLE,SUB_HEADS,CATELOG_CODE,DOMAIN) {
 
         $scope.departments = DEPARTMENTS;
         $scope.Title = TITLE;
         $scope.subHeads = SUB_HEADS;
         $scope.catlogCode = CATELOG_CODE;
         $scope.Domain = DOMAIN;
-
 
         var isEdit = true;
 
@@ -46,7 +44,9 @@
             software: '',
             hardware: '',
             catlogCode: '',
-            domain: ''
+            domain: '',
+            abstract:'',
+            docFile:''
         };
 
         $scope.onLogout = function () {
@@ -57,9 +57,9 @@
             return noData;
         };
 
-        $scope.goToDashboard = function() {
-            projectRegService.goToDashboard();
-        };
+        // $scope.goToDashboard = function() {
+        //     projectRegService.goToDashboard();
+        // };
 
         $scope.reverse = false;
 
@@ -94,7 +94,8 @@
         };
 
 
-        $scope.displaySave = true;
+
+        
 
         $scope.getAllProjects = function() {
             projectRegService.getAllProjects()
@@ -128,11 +129,12 @@
                         software: '',
                         hardware: '',
                         catlogCode: '',
-                        domain: ''
+                        domain: '',
+                        abstract:'',
+                        docFile:''
 
                     };
-
-
+                    
                 })
 
                 .catch(function(error) {
@@ -145,69 +147,31 @@
 
         };
 
-        $scope.postNewProject = function() {
+        $scope.editData = function(index)    {
+            $scope.edit = {
+                projectCode: $scope.datas[index].projectCode,
+                title: $scope.datas[index].title,
+                department: $scope.datas[index].department,
+                subHeads: $scope.datas[index].subHeads,
+                software: $scope.datas[index].software,
+                hardware: $scope.datas[index].hardware,
+                catlogCode: $scope.datas[index].catlogCode,
+                domain: $scope.datas[index].domain,
+                abstract:$scope.datas[index].abstract,
+                docFile:$scope.datas[index].docFile,
+                id:$scope.datas[index].id
 
-            var data = {projectCode: $scope.new.projectCode,
-                title: $scope.new.title,
-                department: $scope.new.department,
-                subHeads: $scope.new.subHeads,
-                software: $scope.new.software,
-                hardware: $scope.new.hardware,
-                catlogCode: $scope.new.catlogCode,
-                domain: $scope.new.domain
             };
-
-
-            projectRegService.postNewProject(data)
-                .then(function(data) {
-                alert('New Project Added Successfully!!!');
-                $scope.getAllProjects();
-            }).
-            catch(function(error) {
-                alert('Unable To The Project :' + error);
-            });
-        };
-
-        $scope.editProjectData = function(index) {
-            $scope.rowEdit = index;
-            isEdit = false;
 
         };
 
-
-
-        $scope.updateProject = function(x,rowedit) {
-
-            $scope.dataFilter[rowedit].projectCode = x.projectCode;
-            $scope.dataFilter[rowedit].title = x.title;
-            $scope.dataFilter[rowedit].department = x.department;
-            $scope.dataFilter[rowedit].subHeads = x.subHeads;
-            $scope.dataFilter[rowedit].software = x.software;
-            $scope.dataFilter[rowedit].hardware = x.hardware;
-            $scope.dataFilter[rowedit].catlogCode = x.catlogCode;
-            $scope.dataFilter[rowedit].domain = x.domain;
-            $scope.dataFilter[rowedit].editProjectData = false;
-            console.log($scope.dataFilter);
-            console.log($scope.rowEdit);
-            var data = {
-                projectCode: x.projectCode,
-                title: x.title,
-                department: x.department,
-                subHeads: x.subHeads,
-                software: x.software,
-                hardware: x.hardware,
-                catlogCode: x.catlogCode,
-                domain: x.domain,
-                id: $scope.dataFilter[rowedit].id
-            };
-
-            projectRegService.updateProject(data)
+        $scope.updateProject = function(id) {
+            projectRegService.updateProject($scope.edit)
 
                 .then(function(response) {
                     alert('The Project Updated Successfully!!!');
-                    $scope.rowEdit = -1;
                     $scope.getAllProjects();
-                    $scope.isEdit = true;
+                    window.location.reload();
                 })
                 .catch(function(error) {
                     alert('Unable to Update The Project: ' + error);

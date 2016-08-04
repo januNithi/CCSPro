@@ -825,3 +825,109 @@ INSERT INTO `tbl_sms_sub` (`id`, `smsId`, `mobNo`, `smsSts`) VALUES
 (29, 60, '147258369', 0),
 (30, 60, '95055555', 0),
 (31, 61, '9020821578', 0);
+
+
+
+
+CREATE TABLE IF NOT EXISTS `erp_database` (
+  `projectCode` varchar(50) NOT NULL,
+  `Title` varchar(50) NOT NULL,
+  `Department` varchar(50) NOT NULL,
+  `subHeads` varchar(50) NOT NULL,
+  `Software` int(50) NOT NULL,
+  `Hardware` int(11) NOT NULL,
+  `catlogCode` varchar(50) NOT NULL,
+  `Domain` varchar(50) NOT NULL,
+  `abstract` varchar(250) DEFAULT NULL,
+  `docFile` varchar(250) DEFAULT NULL,
+  `id` int(1) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1 COMMENT='# --------------------------------------------------------\r\n# Host:                         127.0.0.1\r\n# Database:                     cloudproject\r\n# Server version:               5.0.45-community-nt\r\n# Server OS:                    Win32\r\n# HeidiSQL version:             5.0.0.3272\r\n# Date/time:                    2016-05-28 12:16:55\r\n# --------------------------------------------------------\r\n\r\n/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;\r\n/*!40101 SET NAMES utf8 */;\r\n/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;\r\n/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE=''NO_AUTO_VALUE_ON_ZERO'' */;\r\n# Dumping database structure for cloudproject\r\nCREATE DATABASE IF NOT EXISTS `cloudproject` /*!40100 DEFAULT CHARACTER SET latin1 */;\r\nUSE `cloudproject`;\r\n\r\n\r\n# Dumping structure for table cloudproject.answer\r\nCREATE TABLE IF NOT EXISTS `answer` (\r\n  `id` int(11) NOT NULL auto_increment,\r\n  `qusId` int(11) default NULL,\r\n  `Date` datetime NOT NULL,\r\n  `Answers` varchar(50) NOT NULL,\r\n  PRIMARY KEY  (`id`),\r\n  KEY `FK__question` (`qusId`),\r\n  CONSTRAINT `FK__question` FOREIGN KEY (`qusId`) REFERENCES `question` (`qusId`)\r\n) ENGINE=InnoDB  DEFAULT CHARSET=latin1;\r\n\r\n# Dumping data for table cloudproject.answer: 51 rows\r\n/*!40000 ALTER TABLE `answer` DISABLE KEYS */;\r\nINSERT INTO `answer` (`id`, `qusId`, `Date`, `Answers`) VALUES (1, 1, ''2016-05-03 10:29:23'', ''ode.js is a platform built on Chrome\\''s JavaScript ''), (2, 1, ''2016-05-02 14:55:36'', ''In software development, Node.js is an open-source''), (3, 2, ''2016-05-02 15:56:40'', ''AngularJS directives are extended HTML attributes ''), (4, 2, ''2016-05-02 17:45:12'', ''AngularJS lets you extend HTML with new attributes''), (27, 1, ''2016-05-03 15:22:12'', ''Node is a one of the sever side scripting language''), (28, 1, ''2016-05-03 15:23:23'', ''In software development, Node.js is an open-source''), (59, 11, ''2016-05-05 16:44:13'', ''s''), (60, 2, ''2016-05-05 18:05:32'', ''AngularJS lets you extend HTML with new attributes''';
+
+-- Dumping data for table cloudproject.erp_database: ~19 rows (approximately)
+/*!40000 ALTER TABLE `erp_database` DISABLE KEYS */;
+INSERT INTO `erp_database` (`projectCode`, `Title`, `Department`, `subHeads`, `Software`, `Hardware`, `catlogCode`, `Domain`, `abstract`, `docFile`, `id`) VALUES
+	('domain', 'Hydraulic Power Generation', 'mechanical', 'CEA-ATMEL', 10000, 10000, 'CDB BIO MEDICAL PROJECTS', 'ROBOTICS', 'success', 'waterMark.pdf', 16),
+	('rakesh', 'Aeronatical Projects', 'ECE', 'CEC-PC BASED', 500, 500, 'CIVIL DESIGN PROJECTS', 'ROBOTICS', 'done', 'waterMark.pdf', 18),
+	('senthil12', 'Aeronatical Projects', 'ECE', 'CEC-PC BASED', 500, 500, 'CIVIL DESIGN PROJECTS', 'BIOMEDICAL PROJECTS', 'done', 'waterMark.pdf', 20),
+	('orange', 'Aeronatical Projects', 'mechanical', 'CEC-PC BASED', 2500, 2500, 'C,C++ AND VC++ PROJECTS', 'RFID', 'zfgdf', 'waterMark.pdf', 22),
+	('4556', 'Embaded projects', 'mechatronics', 'CEA-ATMEL', 1500, 1234, 'C,C++ AND VC++ PROJECTS', 'ROBOTICS', 'zfgxzfcb', 'waterMark.pdf', 26),
+	('hari', 'Courier Hacking System', 'mechanical', 'CEA-ATMEL', 1500, 1500, 'CDB BIO MEDICAL PROJECTS', 'ROBOTICS', 'dfgxdfc', NULL, 29),
+	('senthil', 'Mechanical Projects', 'mechanical', 'CEA-ATMEL', 5000, 2500, 'CAD/CAM/CAE PROJECTS', 'RFID', 'zfgcxzcf', NULL, 31),
+	('sasi', 'Aeronatical Projects', 'mechanical', 'CEA-ATMEL', 1500, 1500, 'CIS-C# NET PROJECTS', 'RFID', 'zdfgzdf', NULL, 32),
+	('second', 'Mechanical Projects', 'ECE', 'CEA-OTHERS', 5000, 5000, 'CDB BIO MEDICAL PROJECTS', 'ROBOTICS', 'done', NULL, 47),
+	('get', 'Aeronatical Projects', 'IT', 'CEA-ATMEL', 1550, 1550, 'CDB BIO MEDICAL PROJECTS', 'ROBOTICS', 'done', NULL, 48),
+	('dfgdf', 'Mechanical Projects', 'mechatronics', 'CEA-ATMEL', 2000, 2000, 'CDB BIO MEDICAL PROJECTS', 'ROBOTICS', 'mohan', NULL, 49),
+	('mohan', 'Driving License Management System', 'mechanical', 'CEA-OTHERS', 2000, 2000, 'C,C++ AND VC++ PROJECTS', 'ROBOTICS', 'project', NULL, 50),
+	('sample1111', 'string:Courier Hacking System', 'string:mechatronics', 'string:CEC-PC BASED', 54645, 4564, 'string:CIS-C# NET PROJECTS', 'string:ROBOTICS', 'erterte', 'a-pdf-wm.zip', 51),
+	('ssdf', 'string:Driving License Management System', 'string:mechatronics', 'string:CEA-OTHERS', 0, 0, 'string:CDB BIO MEDICAL PROJECTS', 'string:ROBOTICS', 'sdfsdf', '9781484200384.zip', 52),
+	('sdfsd', 'string:Driving License Management System', 'string:mechatronics', 'string:CEA-ATMEL', 234234, 23423, 'string:CDB BIO MEDICAL PROJECTS', 'string:RFID', '324234', 'angular-datepicker-master.zip', 53),
+	('sdfsd', 'string:Courier Hacking System', 'string:mechatronics', 'string:CEA-ATMEL', 234234, 32423, 'string:CIS-C# NET PROJECTS', 'string:RFID', '234234234', 'bootstrap-3.3.6-dist (1).zip', 54),
+	('image', 'string:Courier Hacking System', 'string:ECE', 'string:CEC-PC BASED', 6000, 6000, 'string:C,C++ AND VC++ PROJECTS', 'string:ROBOTICS', 'xfhcfgh', 'html-for-babies.jpg', 56),
+	('string', 'string:Driving License Management System', 'string:mechanical', 'string:CEA-ATMEL', 65765, 56567, 'string:C,C++ AND VC++ PROJECTS', 'string:ROBOTICS', 'fjycfgh', '16.doc', 57),
+	('12', 'Driving License Management System', 'string:mechatronics', 'string:CEA-OTHERS', 5000, 50000, 'string:CDB BIO MEDICAL PROJECTS', 'string:BIOMEDICAL PROJECTS', 'connection', 'samplepr.jpg', 58);
+/*!40000 ALTER TABLE `erp_database` ENABLE KEYS */;
+
+
+-- Dumping structure for table cloudproject.project
+CREATE TABLE IF NOT EXISTS `project` (
+  `PCode` varchar(16) DEFAULT NULL,
+  `Title1` varchar(500) DEFAULT NULL,
+  `Amount` int(11) DEFAULT NULL,
+  `Paid` int(11) DEFAULT NULL,
+  `DeliveryDate` varchar(50) DEFAULT NULL,
+  `HandledBy` varchar(50) DEFAULT NULL,
+  `EmpContact` decimal(50,0) DEFAULT NULL,
+  `Manager` varchar(50) DEFAULT NULL,
+  `ManagerContact` decimal(10,0) DEFAULT NULL,
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table cloudproject.project: ~2 rows (approximately)
+/*!40000 ALTER TABLE `project` DISABLE KEYS */;
+INSERT INTO `project` (`PCode`, `Title1`, `Amount`, `Paid`, `DeliveryDate`, `HandledBy`, `EmpContact`, `Manager`, `ManagerContact`, `id`) VALUES
+	('12', 'Product Management System', 18000, 6000, '16/05/2016', 'GANESH KUMAR R', 9894339708, 'GURU ANANDAN', 7373630000, 1),
+	('CBE-1516-CSD002', 'Product Management ', 10000, 5000, '17/05/16', 'suresh', 9876543210, 'GURU ANANDAN', 9999999999, 2);
+/*!40000 ALTER TABLE `project` ENABLE KEYS */;
+
+
+-- Dumping structure for table cloudproject.projectdetails
+CREATE TABLE IF NOT EXISTS `projectdetails` (
+  `S_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `PCode` varchar(16) DEFAULT NULL,
+  `History` varchar(500) DEFAULT NULL,
+  `Date` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`S_Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table cloudproject.projectdetails: ~4 rows (approximately)
+/*!40000 ALTER TABLE `projectdetails` DISABLE KEYS */;
+INSERT INTO `projectdetails` (`S_Id`, `PCode`, `History`, `Date`) VALUES
+	(1, '12', 'Project Started ', 'Wednesday, April 27th, 2016, 11:00:17 AM'),
+	(2, '12', 'Design finished', 'Thursday, April 28th, 2016, 11:58:17 AM'),
+	(3, '12', 'Design Flow chart', 'Monday, May 02nd, 2016, 10:50:24 AM'),
+	(4, '12', 'Project Modification', 'Saturday, May 06th, 2016, 02:28:52 PM');
+/*!40000 ALTER TABLE `projectdetails` ENABLE KEYS */;
+
+
+-- Dumping structure for table cloudproject.project_allocate
+CREATE TABLE IF NOT EXISTS `project_allocate` (
+  `student_id` varchar(50) DEFAULT NULL,
+  `project_id` varchar(50) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `id` int(50) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table cloudproject.project_allocate: ~4 rows (approximately)
+/*!40000 ALTER TABLE `project_allocate` DISABLE KEYS */;
+INSERT INTO `project_allocate` (`student_id`, `project_id`, `date`, `id`) VALUES
+	('std001', 'crisp001', '2016-08-03', 1),
+	('std002', 'crisp002', '2016-08-03', 2),
+	('std003', 'crisp003', '2016-08-03', 3),
+	('58', '12', '2016-08-03', 4);
+/*!40000 ALTER TABLE `project_allocate` ENABLE KEYS */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -17,12 +17,24 @@ exports.data = function(req, res) {
   });
 };
 
-
-exports.projectHistory = function(req, res) {
-  connection.query('Select * from projectdetails',function(err,result) {
+exports.getAllFields = function(req, res) {
+  connection.query("select a.*,b.*,c.*,d.* from personaldata a left outer join project_allocate b on a.id=b.student_id left outer join erp_database c on b.project_id=c.projectCode left outer join project d on b.project_id=d.PCode where a.id='58'",function(err,result) {
 
     if (err) {
-     // console.log('Error when get projectHistory data : ' + err);
+      console.log('Error when get projectHistory data : ' + err);
+    }else {
+      console.log(result);
+      res.send(JSON.stringify(result));
+    }
+  });
+};
+
+
+exports.projectHistory = function(req, res) {
+  connection.query('Select * from projectDetails where PCode='+req.query.id,function(err,result) {
+
+    if (err) {
+     console.log('Error when get projectHistory data : ' + err);
     }else {
       console.log(result);
       res.send(result);
@@ -31,7 +43,7 @@ exports.projectHistory = function(req, res) {
 };
 
 exports.chartData = function(req, res) {
-  connection.query('Select max(y) as per from chart', function(err,result) {
+  connection.query('Select a.x as caption,a.y as value from chart a', function(err,result) {
 
     if (err) {
       //console.log('Error when get chart data : ' + err);
@@ -44,7 +56,7 @@ exports.chartData = function(req, res) {
 };
 
 exports.imageData = function(req, res) {
-  connection.query('select * from images where fileName like \'CB2-1516-CSD0001%\'', function(err,result) {
+  connection.query('select * from images where prj_id='+ req.query.id, function(err,result) {
 
     if (err) {
      // console.log('Error when get imageData : ' + err);
