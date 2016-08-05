@@ -92,8 +92,11 @@
 
                     $scope.formData = response.data[0];
                     $scope.getPattern(response.data[0].DOCTYPE);
-                    getDepartment();
-                    console.log($scope.formData);
+
+                    setTimeout(function(){
+                        // getDepartment();
+                    },2500)
+
                 })
                 .catch(function (err) {
                     console.log(err);
@@ -121,6 +124,7 @@
 
             $scope.editForm();
             $scope.getPattern($scope.formData.docType);
+
 
         }
 
