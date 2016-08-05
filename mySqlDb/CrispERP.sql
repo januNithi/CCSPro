@@ -932,3 +932,47 @@ INSERT INTO `project_allocate` (`student_id`, `project_id`, `date`, `id`) VALUES
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+
+CREATE DATABASE IF NOT EXISTS `cloudproject` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `cloudproject`;
+
+
+-- Dumping structure for table cloudproject.deliverydate
+CREATE TABLE IF NOT EXISTS `deliverydate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `deliveryDate` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table cloudproject.deliverydate: ~1 rows (approximately)
+/*!40000 ALTER TABLE `deliverydate` DISABLE KEYS */;
+INSERT INTO `deliverydate` (`id`, `deliveryDate`) VALUES
+	(1, '2016-08-05');
+/*!40000 ALTER TABLE `deliverydate` ENABLE KEYS */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+
+CREATE DATABASE IF NOT EXISTS `cloudproject` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `cloudproject`;
+
+
+-- Dumping structure for table cloudproject.prj_allocation
+CREATE TABLE IF NOT EXISTS `prj_allocation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project_Id` varchar(50) DEFAULT NULL,
+  `employee_Id` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table cloudproject.prj_allocation: ~1 rows (approximately)
+/*!40000 ALTER TABLE `prj_allocation` DISABLE KEYS */;
+INSERT INTO `prj_allocation` (`id`, `project_Id`, `employee_Id`) VALUES
+	(1, 'prj001', 'emp001');
+/*!40000 ALTER TABLE `prj_allocation` ENABLE KEYS */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
