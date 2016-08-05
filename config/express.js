@@ -61,7 +61,7 @@ module.exports = function() {
   require('../routes/project.home.server.routes.js')(app);
   require('../routes/project.history.server.routes.js')(app);
   require('../routes/project.image.server.routes.js')(app);
-  require('../routes/project.prj_allocate.server.routes.js')(app);
+  //require('../routes/project.prj_allocate.server.routes.js')(app);
   require('../routes/project.delivery.server.routes.js')(app);
   require('../routes/project.percentage.server.routes.js')(app);
   require('../routes/profile.login.server.routes.js')(app);

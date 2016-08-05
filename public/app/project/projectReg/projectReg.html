@@ -64,7 +64,7 @@
                                     <li><input type="checkbox" ng-model="hideAmount" />Hide Amount</li><br>
                                     <li><input type="checkbox" ng-model="hideCatlogCode" />Hide catlogcCode</li><br>
                                     <li><input type="checkbox" ng-model="hideDomain" />Hide Domain</li><br>
-                                    <li><input type="checkbox" ng-model="hideAbstract" />Hide Abstract</li><br>
+                                    <!--<li><input type="checkbox" ng-model="hideAbstract" />Hide Abstract</li><br>-->
                                     <li><input type="checkbox" ng-model="hideImg" />Hide Images</li><br>
                                 </ul>
                             </div>
@@ -150,14 +150,14 @@
                                     </div>
                                     <input type="text" class="form-control" ng-show="searchText[6]" ng-model="name7" value="search">
                                 </th>
-                                <th ng-hide="hideAbstract"><span ng-show="visible[7]">Abstract</span>
-                                    <div class="btn-group">
-                                        <button  class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
-                                            <span  class="caret"></span></button>
-                                        <my-directive field="abstract" search-box="searchBox(7)" search1-box="search1Box(7)" visible-arr="visible[7]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>
-                                    </div>
-                                    <input type="text" class="form-control" ng-show="searchText[7]" ng-model="name8" value="search">
-                                </th>
+                                <!--<th ng-hide="hideAbstract"><span ng-show="visible[7]">Abstract</span>-->
+                                    <!--<div class="btn-group">-->
+                                        <!--<button  class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >-->
+                                            <!--<span  class="caret"></span></button>-->
+                                        <!--<my-directive field="abstract" search-box="searchBox(7)" search1-box="search1Box(7)" visible-arr="visible[7]" order-dsc="order1(field)" order-asc="order(field)"></my-directive>-->
+                                    <!--</div>-->
+                                    <!--<input type="text" class="form-control" ng-show="searchText[7]" ng-model="name8" value="search">-->
+                                <!--</th>-->
                                 <th ng-hide="hideImg"><span ng-show="visible[8]">Images</span>
                                     <div class="btn-group">
                                         <button  class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
@@ -198,7 +198,7 @@
 
                                     <td ng-hide="hideDomain">{{ detail.domain }}</td>
 
-                                    <td ng-hide="hideAbstract">{{ detail.abstract }}</td>
+                                    <!--<td ng-hide="hideAbstract">{{ detail.abstract }}</td>-->
 
                                     <td ng-hide="hideImg">{{ detail.docFile }}</td>
 
