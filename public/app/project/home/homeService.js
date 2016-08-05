@@ -22,7 +22,7 @@
         $window.location.href = '/profile/dashboard';
       },
       chartData: function (id) {
-        return $http.get('/chartData?id='+id);
+        return $http.get('/getPercentage?id='+id);
       },
       imageData: function (id) {
         return $http.get('/imageData?id=' + id);
