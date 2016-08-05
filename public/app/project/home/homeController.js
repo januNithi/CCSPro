@@ -19,6 +19,7 @@
           data:[]
       };
       $scope.images = [];
+      $scope.abstractImage;
       var data=[];
 
       $scope.gotoChat = function() {
@@ -66,6 +67,8 @@
               .success(function(response){
                   $scope.fields=response[0];
                   console.log("kjjjj"+$scope.fields);
+                  var ext=$scope.fields.docFile.split('.').pop();
+                  $scope.abstractImage="/uploads/projectRegistration/"+$scope.fields.PCode+"."+ext;
                   $scope.imageData();
                   $scope.projectHistory();
                   $scope.chartData();
