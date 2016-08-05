@@ -155,6 +155,7 @@ CREATE TABLE IF NOT EXISTS `personaldata` (
   `profile_pic` varchar(50) collate latin1_general_ci default NULL,
   `facebook_img` varchar(50) collate latin1_general_ci default NULL,
   `google_img` varchar(50) collate latin1_general_ci default NULL,
+  `message_no` varchar(50) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=248 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
