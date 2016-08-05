@@ -31,7 +31,7 @@ exports.getAllFields = function(req, res) {
 
 
 exports.projectHistory = function(req, res) {
-  connection.query('Select * from projectDetails where PCode='+req.query.id,function(err,result) {
+  connection.query('Select * from projectdetails where PCode='+req.query.id,function(err,result) {
 
     if (err) {
      console.log('Error when get projectHistory data : ' + err);
