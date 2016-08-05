@@ -52,7 +52,7 @@
 
             project: function () {
                 if(localStorage.getItem('userType') === 'admin') {
-                    $window.location.href = '/project/projectReg';
+                    $window.location.href = '/project/registration';
                 }else{
                     $window.location.href = '/project/home';
                 }
