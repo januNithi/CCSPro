@@ -16,7 +16,7 @@
       $scope.fields = [];
       $scope.events = [];
       $scope.myDataSource={
-          
+          data:[]
       };
       $scope.images = [];
       var data=[];
@@ -106,7 +106,7 @@
           .then(function (results) {	//Success function
               // $scope.totalPercentage = results.data[0].per;
 
-              // $scope.myDataSource=results.data;
+              $scope.myDataSource.data=results.data;
               console.log($scope.myDataSource);
           }).catch(function(error) {
             console.log('Error');
@@ -135,7 +135,7 @@
 
       $scope.getAllFields();
     $scope.projectData();
-    // $scope.chartData();
+    $scope.chartData();
 
 
   }

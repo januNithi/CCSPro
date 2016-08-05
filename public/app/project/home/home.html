@@ -130,10 +130,10 @@
 						<b><span class="pull-right" ng-show="panel4" style="color:#1719dd"><a href="#">{{totalPercentage}}%</a></span></b>
 						<b><span class="pull-right" ng-show="!panel4" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
 					</div>
-				 <div class="panel-collapse collapse in" >
+				 <div class="panel-collapse collapse in" ng-accordion-body>
 					<div>
-						<fc-chart class="panel-body"  width="245" height="350" type="line" fc-data="{{myDataSource}}" >
-							</fc-chart>
+						<fusioncharts class="panel-body"  width="245" height="350" type="line" dataFormat= "json" dataSource="{{myDataSource}}" >
+							</fusioncharts>
 
 						<!--&lt;!&ndash;<label>Project Completion Status : <span class="text-success"> {{totalPercentage}}%</span></label>&ndash;&gt;-->
 						<!--&lt;!&ndash; chart types : column2d, column3d, line, area2d, bar2d, bar3d, pie2d, pie3d, doughnut2d, doughnut3d, pareto2d, pareto3d &ndash;&gt;-->
