@@ -155,12 +155,20 @@
                 console.log(arrayString[i]);
             }
 
-        }
+        };
+
+        $scope.checkValidOnBlur=function(){
+            if($scope.contactString.length===0) return;
+            $scope.contactString=$scope.contactString+",";
+        };
 
         $scope.$watch("contactString",function(oldVal,newVal){
+
             if($scope.contactString[$scope.contactString.length-1]===','){
                 if(isNaN($scope.contactString.substr(0,$scope.contactString.length-2)) || $scope.contactString.length <=7 || $scope.contactString.length >=12){
                     alert("inavlid");
+                    document.getElementById('contactId').focus();
+                    $scope.contactString=$scope.contactString.substring(0,$scope.contactString.length-1);
                     return;
                 }
                 str=str+$scope.contactString;
