@@ -116,6 +116,7 @@
         //Initially calling the function
         if ($location.path() === '/documents/editDoc'){
 
+            getDepartment();
             $scope.editForm();
             $scope.getPattern($scope.formData.docType);
         }
