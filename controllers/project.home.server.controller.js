@@ -43,7 +43,7 @@ exports.projectHistory = function(req, res) {
 };
 
 exports.chartData = function(req, res) {
-  connection.query('Select a.x as label,a.y as value from chart a', function(err,result) {
+  connection.query('Select a.x as label,a.y as value from chart a where prId='+req.query.id, function(err,result) {
 
     if (err) {
       console.log('Error when get chart data : ' + err);

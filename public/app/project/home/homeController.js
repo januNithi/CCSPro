@@ -68,7 +68,7 @@
                   console.log("kjjjj"+$scope.fields);
                   $scope.imageData();
                   $scope.projectHistory();
-                  alert('data showed successfully');
+                  $scope.chartData();
               })
               .error(function(error){
                   alert('error');
@@ -102,7 +102,7 @@
     };
 
     $scope.chartData = function(){
-      homeService.chartData()
+      homeService.chartData($scope.fields.PCode)
           .then(function (results) {	//Success function
               // $scope.totalPercentage = results.data[0].per;
 
@@ -135,7 +135,7 @@
 
       $scope.getAllFields();
     $scope.projectData();
-    $scope.chartData();
+
 
 
   }
