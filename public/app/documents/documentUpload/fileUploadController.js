@@ -91,6 +91,7 @@
 
                     $scope.formData = response.data[0];
                     $scope.getPattern(response.data[0].DOCTYPE);
+                    console.log($scope.formData);
                 })
                 .catch(function (err) {
                     console.log(err);
