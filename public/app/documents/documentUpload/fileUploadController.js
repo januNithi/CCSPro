@@ -79,6 +79,7 @@
             departmentServices.getDepartment()
                 .then(function (response) {
                     $scope.dep = response.data;
+                    console.log($scope.dep );
                 })
                 .catch(function (err) {
                     console.log(err);
@@ -91,6 +92,8 @@
 
                     $scope.formData = response.data[0];
                     $scope.getPattern(response.data[0].DOCTYPE);
+                    getDepartment();
+                    console.log($scope.formData);
                 })
                 .catch(function (err) {
                     console.log(err);
@@ -115,8 +118,10 @@
         //Initially calling the function
         if ($location.path() === '/documents/editDoc'){
 
+
             $scope.editForm();
             $scope.getPattern($scope.formData.docType);
+
         }
 
 
