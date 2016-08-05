@@ -5,6 +5,7 @@ angular.module('myApp',[
     'ngFileUpload',
     'angularSpinners',
     'ui.bootstrap',
+    'ng-fusioncharts'
 
 ]);
 

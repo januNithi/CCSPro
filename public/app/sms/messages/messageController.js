@@ -17,10 +17,7 @@
 
     function messageController($scope,messageServices,groupServices,$filter,departmentServices){
         //$scope.selectedContacts=[];                                                        //selected contact list
-        $scope.contacts=[
-            {name:"name1",mob:"9100821578"},
-            {name:"name2",mob:"8025821578"},
-            {name:"name3",mob:"912821578"}];                                               //contact List
+        $scope.contacts=[];                                               //contact List
         $scope.newSms= {
             smsText:'',
             selectedContacts:[],
@@ -34,21 +31,9 @@
         $scope.selProject=null;
         $scope.selStud=null;
         $scope.selDep=null;
-        $scope.contInfo=[
-            {id:1,name:'Ramshif',mob:123456789,prId:1001},
-            {id:2,name:'Rakesh',mob:9020521784 ,prId:1002},
-            {id:3,name:'Midhun',mob:1472583652,prId:1001},
-            {id:4,name:'Ilyas',mob:10214205478,prId:1001}
-        ];
-
+        $scope.contInfo=[];
         $scope.prDepartment=[];
-        $scope.prInfo=[
-            {prId:1001,prCaption:'Cloud Project',prDep:1},
-            {prId:1002,prCaption:'Java Project',prDep:2},
-            {prId:1003,prCaption:'Embedded Project',prDep:4}
-
-        ];
-
+        $scope.prInfo=[];
 
         var str='';
 
@@ -137,7 +122,16 @@
         function getContactList(){
             messageServices.getContactList()
                 .then(function(response){
+                    $scope.contInfo=response.data;
+                },function(err){
 
+                })
+        };
+
+        function getProjectInfo(){
+            messageServices.getProjectInfo()
+                .then(function(response){
+                    $scope.prInfo=response.data;
                 },function(err){
 
                 })
@@ -161,12 +155,20 @@
                 console.log(arrayString[i]);
             }
 
-        }
+        };
+
+        $scope.checkValidOnBlur=function(){
+            if($scope.contactString.length===0) return;
+            $scope.contactString=$scope.contactString+",";
+        };
 
         $scope.$watch("contactString",function(oldVal,newVal){
+
             if($scope.contactString[$scope.contactString.length-1]===','){
                 if(isNaN($scope.contactString.substr(0,$scope.contactString.length-2)) || $scope.contactString.length <=7 || $scope.contactString.length >=12){
                     alert("inavlid");
+                    document.getElementById('contactId').focus();
+                    $scope.contactString=$scope.contactString.substring(0,$scope.contactString.length-1);
                     return;
                 }
                 str=str+$scope.contactString;
@@ -213,5 +215,6 @@
         listGroup();
         getContactList();
         $scope.getDepartment();
+        getProjectInfo();
     }
 })();

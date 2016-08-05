@@ -34,7 +34,13 @@
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 })
-            }
+            },
+            getContactList:function(){
+                return $http.get("/api/sms/getStudentInfo");
+            },
+            getProjectInfo:function(){
+                return $http.get("/api/sms/getProjectInfo");
+            },
         }
     }
 })();

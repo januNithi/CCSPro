@@ -21,8 +21,8 @@
       goToDashboard: function () {
         $window.location.href = '/profile/dashboard';
       },
-      chartData: function () {
-        return $http.get('/chartData');
+      chartData: function (id) {
+        return $http.get('/chartData?id='+id);
       },
       imageData: function (id) {
         return $http.get('/imageData?id=' + id);
