@@ -17,7 +17,10 @@
                 return $http.post("/api/sms/sendMessage",data);
             },
             getContactList:function(){
-                return $http.get("");
+                return $http.get("/api/sms/getStudentInfo");
+            },
+            getProjectInfo:function(){
+                return $http.get("/api/sms/getProjectInfo");
             },
             
         }
