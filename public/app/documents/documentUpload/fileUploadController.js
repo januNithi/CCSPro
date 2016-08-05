@@ -79,6 +79,7 @@
             departmentServices.getDepartment()
                 .then(function (response) {
                     $scope.dep = response.data;
+                    console.log($scope.dep );
                 })
                 .catch(function (err) {
                     console.log(err);
