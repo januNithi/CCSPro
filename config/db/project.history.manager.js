@@ -13,7 +13,7 @@ module.exports=function(connection) {
     };
 
     this.postHomeProjectHistory=function(data,cb){
-        var qry="INSERT INTO projectDetails set ?";
+        var qry="INSERT INTO projectdetails set ?";
         var err=null; var result=null;
         connection.query(data,function(err,result){
             if(err){
@@ -28,7 +28,7 @@ module.exports=function(connection) {
     };
 
     this.updateHomeProjectHistory=function(id,data,cb){
-        var qry="UPDATE projectDetails set ? where id="+id+"";
+        var qry="UPDATE projectdetails set ? where id="+id+"";
         console.log("store the data in database" + qry);
         var err=null; var result=null;
         connection.query(qry,data,function(err,results){
@@ -45,7 +45,7 @@ module.exports=function(connection) {
     };
 
     this.deleteHomeProjectHistory=function(id,cb){
-        var qry="Delete from projectDetails where id=" +id;
+        var qry="Delete from projectdetails where id=" +id;
         var err=null; var result=null;
         if(data='null') return cb('error', result);
         connection.qry(qry,function(err,result){
