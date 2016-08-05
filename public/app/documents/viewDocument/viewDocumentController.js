@@ -158,8 +158,7 @@ $scope.documentPath = '';
                 $scope.thisFile = UPLOAD_DOC_PATH + $scope.doc.id + '.' + filename.split('.').pop();
                 console.log($scope.doc.docFile );
                 console.log($scope.thisFile );
-                $scope.documentPath = "http://docs.google.com/gview?url=http://ec2-54-213-156-43.us-west-2.compute.amazonaws." +
-                    "com:3000/"+$scope.thisFile + "&embedded=true";
+                $scope.documentPath = "http://docs.google.com/gview?url=http://ec2-54-186-170-48.us-west-2.compute.amazonaws.com:3000/"+$scope.thisFile + "&embedded=true";
 
             if ($scope.doc.docType === 5) {
                 viewDocumentServices.getArchieve($scope.doc.id)
