@@ -20,7 +20,7 @@
             ico = 'images/documents/ppt.png';
             break;
           case 4:
-            ico = 'images/documents/image.PNG';
+            ico = 'images/documents/image.png';
             break;
           case 5:
             ico = 'images/documents/ZIP.png';

@@ -111,6 +111,19 @@ exports.getSmsData = function (cb){
     });
 };
 
+exports.getStudentInfo = function (cb){
+    con.query('SELECT p.fname as name,p.id as id,p.facebook_id as fbId,p.message_no as mob,pr.project_id as prId FROM personaldata p INNER JOIN project_allocate pr on pr.student_id=p.id',function(err,result){
+        cb( err,result);
+    });
+};
+
+exports.getProjectInfo = function (cb){
+    con.query('SELECT p.projectCode as prCaption,p.Department as prDep,p.id as prId FROM erp_database p',function(err,result){
+        cb( err,result);
+    });
+};
+
+
 exports.getSmsDataById = function (id,cb){
     console.log('SELECT s.smsDate as smsDate,s.msg as msg,sub.mobNo as mobNo,sub.smsSts as smsSts FROM tbl_sms_master s LEFT OUTER JOIN tbl_sms_sub sub ON s.id=sub.smsId WHERE s.id='+id);
     con.query('SELECT s.smsDate as smsDate,s.msg as msg,sub.mobNo as mobNo,sub.smsSts as smsSts FROM tbl_sms_master s LEFT OUTER JOIN tbl_sms_sub sub ON s.id=sub.smsId WHERE s.id='+id,function(err,result){

@@ -19,7 +19,7 @@
                 <div><label class="control-label">Mobile No</label> <div ng-repeat="grp in newSms.selectGroup" class="btn btn-primary btn-xs" style="margin: 5px 5px">{{grp.grpName}}&nbsp; &nbsp;&nbsp;<a href="#" ng-click="removeGroup($index)" style="color:white;">x</a></a> </div> </div>
                 <div class="form-control" style="height: auto">
                     <div ng-repeat="contact in newSms.selectedContacts  | limitTo:(newSms.selectedContacts.length-1)" class="btn btn-primary btn-xs" style="margin: 5px 5px">{{contact}}&nbsp; &nbsp;&nbsp;<a href="#" ng-click="removeContact($index)" style="color:white;">x</a></a> </div>
-                    <input id="contactId" type="text"  style="border: none; display:inline-block;" ng-model="contactString" onkeydown="">
+                    <input id="contactId" type="text"  style="border: none; display:inline-block;" ng-model="contactString" onkeydown="" ng-blur="checkValidOnBlur()">
 
 
                 </div>

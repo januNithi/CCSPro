@@ -16,9 +16,10 @@
       $scope.fields = [];
       $scope.events = [];
       $scope.myDataSource={
-          
+          data:[]
       };
       $scope.images = [];
+      $scope.abstractImage;
       var data=[];
 
       $scope.gotoChat = function() {
@@ -66,9 +67,11 @@
               .success(function(response){
                   $scope.fields=response[0];
                   console.log("kjjjj"+$scope.fields);
+                  var ext=$scope.fields.docFile.split('.').pop();
+                  $scope.abstractImage="/uploads/projectRegistration/"+$scope.fields.PCode+"."+ext;
                   $scope.imageData();
                   $scope.projectHistory();
-                  alert('data showed successfully');
+                  $scope.chartData();
               })
               .error(function(error){
                   alert('error');
@@ -102,11 +105,11 @@
     };
 
     $scope.chartData = function(){
-      homeService.chartData()
+      homeService.chartData($scope.fields.PCode)
           .then(function (results) {	//Success function
               // $scope.totalPercentage = results.data[0].per;
 
-              // $scope.myDataSource=results.data;
+              $scope.myDataSource.data=results.data;
               console.log($scope.myDataSource);
           }).catch(function(error) {
             console.log('Error');
@@ -135,7 +138,7 @@
 
       $scope.getAllFields();
     $scope.projectData();
-    // $scope.chartData();
+
 
 
   }

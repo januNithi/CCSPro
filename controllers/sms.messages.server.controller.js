@@ -67,6 +67,24 @@ exports.getSmsData=function(req,res){
     });
 };
 
+exports.getStudentInfo=function(req,res){
+    smsDb.getStudentInfo(function (err,result) {
+        if(err)
+            console.log(err.message);
+        else
+            res.json(result);
+    });
+};
+
+exports.getProjectInfo=function(req,res){
+    smsDb.getProjectInfo(function (err,result) {
+        if(err)
+            console.log(err.message);
+        else
+            res.json(result);
+    });
+};
+
 exports.getSmsDataById=function(req,res){
     smsDb.getSmsDataById(req.params.id,function (err,result) {
         console.log(req.params.id);

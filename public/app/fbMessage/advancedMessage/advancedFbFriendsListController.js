@@ -20,17 +20,17 @@
 
         $scope.friendList=[];
         $scope.contInfo=[
-            {id:1,name:'Ramshif',mob:123456789,prId:1001,fbId:'100002196848042'},
-            {id:2,name:'Rakesh',mob:9020521784 ,prId:1002,fbId:'100002196848045'},
-            {id:3,name:'Midhun',mob:1472583652,prId:1001,fbId:'100002196848049'},
-            {id:4,name:'Ilyas',mob:10214205478,prId:1001,fbId:'100002196848047'}
+            // {id:1,name:'Ramshif',mob:123456789,prId:1001,fbId:'100002196848042'},
+            // {id:2,name:'Rakesh',mob:9020521784 ,prId:1002,fbId:'100002196848045'},
+            // {id:3,name:'Midhun',mob:1472583652,prId:1001,fbId:'100002196848049'},
+            // {id:4,name:'Ilyas',mob:10214205478,prId:1001,fbId:'100002196848047'}
         ];
 
         $scope.prDepartment=[];
         $scope.prInfo=[
-            {prId:1001,prCaption:'Cloud Project',prDep:1},
-            {prId:1002,prCaption:'Java Project',prDep:2},
-            {prId:1003,prCaption:'Embedded Project',prDep:4}
+            // {prId:1001,prCaption:'Cloud Project',prDep:1},
+            // {prId:1002,prCaption:'Java Project',prDep:2},
+            // {prId:1003,prCaption:'Embedded Project',prDep:4}
 
         ];
 
@@ -70,6 +70,25 @@
                 })
         };
 
+
+        function getContactList(){
+            advancedFbFriendsListServices.getContactList()
+                .then(function(response){
+                    $scope.contInfo=response.data;
+                    console.log($scope.contInfo)
+                },function(err){
+
+                })
+        };
+
+        function getProjectInfo(){
+            advancedFbFriendsListServices.getProjectInfo()
+                .then(function(response){
+                    $scope.prInfo=response.data;
+                },function(err){
+
+                })
+        };
 
         $scope.getContactsByPrId=function(){
             $scope.selectedFrnd=[];
@@ -213,6 +232,8 @@
 
         $scope.getFriendsList();
         $scope.getDepartment();
+        getContactList();
+        getProjectInfo();
 
     };
 

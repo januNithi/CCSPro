@@ -50,6 +50,9 @@
             }).when('/project/home', {
                 controller: 'homeController',
                 templateUrl: '../app/project/home/home.html'
+            }).when('/project/registration', {
+            controller: 'registrationController',
+            templateUrl: '../app/project/registration/registration.html'
             }).when('/project/projectReg', {
                 controller: 'projectRegController',
                 templateUrl: '../app/project/projectReg/projectReg.html'
