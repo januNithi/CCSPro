@@ -1,0 +1,59 @@
+
+<div ng-include src="'../home/projectManager.html'"></div>
+<div class="container-fluid">
+    <br>
+    <div class="col-sm-9">
+        <br><br><br><br>
+        <form>
+            <div class="row content1">
+                <div class="col-sm-4">
+                    <div id="myDIV" class="header">
+                        Employee code: <select class="input" id="sel">
+                        <option>CBEOO1</option>
+                        <option>CBEOO12</option>
+                        <option>CBEOO13</option>
+                        <option>CBEOO14</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div id="myDIV1" class="header">
+                       Employee Name: <select class="input" id="sel1" placeholder="EmployeeName...">
+                            <option>Mohan</option>
+                            <option>jaga</option>
+                            <option>Kumar</option>
+                            <option>Raj</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+
+                <div class="col-sm-4">
+                    <button type="button" class="cancelbtn" ng-click="add()">ADD</button>
+                    <button type="button" class="cancelbtn" ng-click="cancel()">Cancel</button>
+                </div>
+                <br><br><br><br><br><br>
+                <table class="table table-bordered">
+                    <thead  align="center">
+                    <tr>
+
+                        <th>Employee Name</th>
+                        <th>Employee Code</th>
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td><button type="button" class="cancelbtn" ng=-click="Delete()">DELETE</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
