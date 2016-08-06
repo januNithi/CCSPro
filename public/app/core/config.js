@@ -29,9 +29,9 @@
             }).when('/profile/dashboard', {
                 templateUrl: '../app/profile/dashboard/dashboard.html',
                 controller: 'dashboardController'
-            }).when('/projectManager/home', {
-                templateUrl: '../app/projectMananger/home/projectManager.html',
-                controller: 'dashboardController'
+            // }).when('/projectManager/home', {
+            //     templateUrl: '../app/projectMananger/home/projectManager.html',
+            //     controller: 'dashboardController'
             }).when('/projectMananger/projectHistory', {
                 templateUrl: '../app/projectMananger/projectHistory/projectHistory.html',
                 controller: 'projectHistoryController'
@@ -42,11 +42,11 @@
                 templateUrl: '../app/projectMananger/ProjectAllocateEmployee/ProjectAllocateEmployee.html',
                 controller: 'projectAllocateEmployeeController'
              }).when('/projectMananger/projectDeliveryDateController', {
-            templateUrl: '../app/projectMananger/projectDeliveryDate/projectDeliveryDate.html',
-            controller: 'projectDeliveryDateController'
+                templateUrl: '../app/projectMananger/projectDeliveryDate/projectDeliveryDate.html',
+                controller: 'projectDeliveryDateController'
              }).when('/projectMananger/projectPercentage', {
-            templateUrl: '../app/projectMananger/projectPercentage/projectPercentage.html',
-            controller: 'projectPercentageController'
+                templateUrl: '../app/projectMananger/projectPercentage/projectPercentage.html',
+                controller: 'projectPercentageController'
             }).when('/chat/chathome', {
                 templateUrl: 'app/chat/home/chat.html',
                 controller: 'dashboardController'
@@ -69,8 +69,8 @@
                 controller: 'homeController',
                 templateUrl: '../app/project/home/home.html'
             }).when('/project/registration', {
-            controller: 'registrationController',
-            templateUrl: '../app/project/registration/registration.html'
+                controller: 'registrationController',
+                templateUrl: '../app/project/registration/registration.html'
             }).when('/project/projectReg', {
                 controller: 'projectRegController',
                 templateUrl: '../app/project/projectReg/projectReg.html'

@@ -63,7 +63,6 @@
         };
 
         $scope.getContactsByPrId=function(){
-
             $scope.newSms.selectedContacts = $filter("filter")($scope.contInfo,{prId:$scope.selProject});
         };
 
@@ -123,6 +122,7 @@
             messageServices.getContactList()
                 .then(function(response){
                     $scope.contInfo=response.data;
+                    console.log($scope.contInfo)
                 },function(err){
 
                 })
