@@ -29,9 +29,27 @@
             }).when('/profile/dashboard', {
                 templateUrl: '../app/profile/dashboard/dashboard.html',
                 controller: 'dashboardController'
+            }).when('/projectManager/home', {
+                templateUrl: '../app/projectMananger/home/projectManager.html',
+                controller: 'dashboardController'
+            }).when('/projectMananger/projectHistory', {
+                templateUrl: '../app/projectMananger/projectHistory/projectHistory.html',
+                controller: 'projectHistoryController'
+            }).when('/projectMananger/ProjectImageUpload', {
+                templateUrl: '../app/projectMananger/ProjectImageUpload/ProjectImageUpload.html',
+                controller: 'ProjcetImageUploadController'
+            }).when('/projectMananger/ProjectAllocateEmployee', {
+                templateUrl: '../app/projectMananger/ProjectAllocateEmployee/ProjectAllocateEmployee.html',
+                controller: 'projectAllocateEmployeeController'
+             }).when('/projectMananger/projectDeliveryDateController', {
+            templateUrl: '../app/projectMananger/projectDeliveryDate/projectDeliveryDate.html',
+            controller: 'projectDeliveryDateController'
+             }).when('/projectMananger/projectPercentage', {
+            templateUrl: '../app/projectMananger/projectPercentage/projectPercentage.html',
+            controller: 'projectPercentageController'
             }).when('/chat/chathome', {
-            templateUrl: 'app/chat/home/chat.html',
-            controller: 'dashboardController'
+                templateUrl: 'app/chat/home/chat.html',
+                controller: 'dashboardController'
             }).when('/profile/adminProfile', {
                 templateUrl: '../app/profile/adminProfile/adminProfile.html',
                 controller: 'adminProfileController'
