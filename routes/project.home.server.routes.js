@@ -5,5 +5,6 @@ module.exports = function(app) {
   //App.get('/', home.home);
   app.get('/getAllFields',home.getAllFields);
   app.get('/data',home.data);
+  app.get('/getScheduler',home.getScheduler);
 
 };

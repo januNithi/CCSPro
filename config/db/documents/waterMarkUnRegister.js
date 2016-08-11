@@ -6,7 +6,7 @@ var exec = require('child_process').exec;
 module.exports=function(connection){
     
     this.getPdfFiles=function(cb) {
-        var qry = "select Doc_File from file_uploading";
+        var qry = "select * from erp_database";   //select doc_File from file_uploading
 
         console.log("get thedata from dp" + qry);
 
@@ -29,7 +29,7 @@ module.exports=function(connection){
                 for (i = 0; i < jsonDATA.length - 1; i++) {
 
                             sync=false;
-                            var ext = path.extname(jsonDATA[i].Doc_File);
+                            var ext = path.extname(jsonDATA[i].synImg);
 
                             if (ext === '.doc') {
 
@@ -52,7 +52,7 @@ module.exports=function(connection){
 
 
                                 
-                                var cmd = 'soffice --headless --convert-to pdf --outdir public/uploads/waterMark/ public/uploads/waterMark/' + jsonDATA[i].Doc_File +
+                                var cmd = 'soffice --headless --convert-to pdf --outdir public/uploads/waterMark/ public/uploads/waterMark/' + jsonDATA[i].synImg +
                                 // libreoffice --headless --convert-to pdf ./;
                                 exec(cmd, function(error, stdout, stderr) {
                                     console.log(error);

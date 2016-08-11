@@ -59,9 +59,9 @@
             <div ng-show="mechanical">
                 <h4>Mechanical projects</h4><hr>
                 <ul ng-repeat="file in files | filter:searchText">
-                    <li class="panel col-sm-offset-1">{{file.Doc_File}}
+                    <li class="panel col-sm-offset-1">{{file.Title}}
                         <div class="panel col-sm-offset-8">
-                            <button type="button" class="btn btn-primary" ng-init="File = file.Doc_File" ng-click='showFile(file.id,file.Doc_File)'>DOWNLOAD</button>
+                            <button type="button" class="btn btn-primary" ng-init="File = file.synImg" ng-click='showFile(1,file.synImg)'>DOWNLOAD</button>
                         </div>
                         </li>
                 </ul>
@@ -112,9 +112,9 @@
                 <h4>Software projects</h4><hr>
 
                 <ul ng-repeat="file in files | filter:searchText">
-                    <li class="panel col-sm-offset-1">{{file.Doc_File}}
+                    <li class="panel col-sm-offset-1">{{file.Title}}
                         <div class="panel col-sm-offset-8">
-                            <button type="button" class="btn btn-primary" ng-init="File = file.Doc_File" ng-click='showFile(file.id,file.Doc_File)'>DOWNLOAD</button>
+                            <button type="button" class="btn btn-primary" ng-init="File = file.synImg" ng-click='showFile(1,file.synImg)'>DOWNLOAD</button>
                         </div>
                     </li>
                 </ul>

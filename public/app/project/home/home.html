@@ -82,9 +82,13 @@
 						<b><span class="pull-right" ng-show="!panel2" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
 					</div>
 				 <div class="panel-collapse collapse in" ng-accordion-body>
-					<div class="panel-body">			
-						<p><label>Employee Name : </label><br/> {{fields.HandledBy}}</p><br>
-						<p><label>Contact Number : </label><br/> (+91) {{fields.EmpContact}}</p>
+					<div class="panel-body" style="height:400px">
+						<!--<p><label>Employee Name : </label><br/> {{fields.HandledBy}}</p><br>-->
+						<!--<p><label>Contact Number : </label><br/> (+91) {{fields.EmpContact}}</p>-->
+						<div ng-repeat="sch in shedule">
+							<label>{{sch.ptask}}</label> &nbsp; &nbsp;<label>{{sch.HandledBy}}</label>
+						</div>
+
 					</div>
 				 </div>
 				</div>
@@ -118,7 +122,7 @@
 						<br>
 						<br>
 
-						<img width="200px" height="200px" ng-src="{{abstractImage}}">
+						<img style="border: none" width="200px" height="200px" ng-src="{{abstractImage}}">
 					</p>
 					</div>
 				 </div>
@@ -151,12 +155,12 @@
 				<div class="panel panel-info" ng-init=""panel5="true" ng-click="panel5=!panel5" ng-accordion-group options="accordionGroupOptions6">
 					<div class="panel-heading" ng-accordion-heading>
 						<label>Delivery Date</label>
-						<b><span class="pull-right" ng-show="panel5" style="color:#1719dd"><a href="#">{{datas.DeliveryDate}}</a></span></b>
+						<b><span class="pull-right" ng-show="panel5" style="color:#1719dd"><a href="#">{{fields.date | date}}</a></span></b>
 						<b><span class="pull-right" ng-show="!panel5" style="color:#1719dd"><a href="#"><u>Hide...</u></a></span></b>
 					</div>
 					 <div class="panel-collapse collapse in" ng-accordion-body>
 						<div class="panel-body">
-							<p>{{fields.deletedDate}}</p>
+							<p>{{fields.date | date}}</p>
 						</div>
 			 		</div>
 				</div>
@@ -169,8 +173,8 @@
 					</div>
 				 <div class="panel-collapse collapse in" ng-accordion-body>
 					<div class="panel-body">
-						<p><label>Name : </label><br/>{{fields.Manager}}</p><br>
-						<p><label>Contact Number : </label><br/> (+91) {{fields.ManagerContact}}</p>
+						<p><label>Name : </label><br/>{{shedule[0].Manager}}</p><br>
+						<p><label>Contact Number : </label><br/> (+91) {{shedule[0].ManagerContact}}</p>
 					</div>
 				 </div>
 				</div>
@@ -189,7 +193,7 @@
 						<div class="panel-body">
 							<div class="col-md-4" ng-repeat="image in images">
 								<a ng-href="../uploads/project/{{image.fileName}}" class="thumbnail">
-						        	<p>CB2-1516-CSD0001</p>
+						        	<!--<p>CB2-1516-CSD0001</p>-->
 						        	<img ng-src="../uploads/project/{{image.fileName}}" alt="Project Image" style="width:150px;height:150px">
 						      </a>
 						    </div>

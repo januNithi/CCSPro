@@ -2,7 +2,7 @@
 module.exports=function(connection){
 
     this.projectPercentage = function(id,cb){
-        connection.query('select a.x as label, a.y as value from chart a where prId='+ id, function(err,result) {
+        connection.query("select a.x as label, a.y as value from chart a where prId='"+ id+"'", function(err,result) {
 
             if (err) {
                 console.log('Error when get imageData : ' + err);

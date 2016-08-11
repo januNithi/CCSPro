@@ -4,17 +4,19 @@
       .controller('homeController', homeController);
 
   homeController.$inject=[
-    '$scope',
-    'homeService',
-    '$window',
-    'dashboardService',
-      'spinnerService'
+        '$location',
+        '$scope',
+        'homeService',
+        '$window',
+        'dashboardService',
+        'spinnerService'
   ];
 
-  function homeController($scope,homeService,$window,dashboardService,spinnerService) {
+  function homeController($location,$scope,homeService,$window,dashboardService,spinnerService) {
       $scope.datas = [];
       $scope.fields = [];
       $scope.events = [];
+      $scope.shedule = [];
       $scope.myDataSource={
           data:[]
       };
@@ -27,6 +29,11 @@
           homeService.chatting();
       };
 
+    getParameterByName = function (params) {
+      if ( $location.search().hasOwnProperty( params ) ) {
+          return $location.search()[params];
+      }
+    };
     $scope.accordionGroupOptions1={
       open:true
     };
@@ -63,15 +70,20 @@
     };
 
       $scope.getAllFields=function(){
-          homeService.getAllFields()
+          homeService.getAllFields(getParameterByName('id'))
               .success(function(response){
+                  console.log(response[0]);
                   $scope.fields=response[0];
-                  console.log("kjjjj"+$scope.fields);
-                  var ext=$scope.fields.docFile.split('.').pop();
-                  $scope.abstractImage="/uploads/projectRegistration/"+$scope.fields.PCode+"."+ext;
+                  console.log($scope.fields);
+                  if($scope.fields.docFile){
+                      var ext=$scope.fields.docFile.split('.').pop();
+                      $scope.abstractImage="/uploads/projectRegistration/"+$scope.fields.docFile;
+                      alert($scope.abstractImage);
+                  }
                   $scope.imageData();
                   $scope.projectHistory();
                   $scope.chartData();
+                  $scope.getSchedule();
               })
               .error(function(error){
                   alert('error');
@@ -89,7 +101,7 @@
     };
 
     $scope.projectHistory = function(){
-      homeService.projectHistory($scope.fields.PCode)
+      homeService.projectHistory($scope.fields.projectCode)
           .then(function (results) {	//Success function
               data=results.data;
               for (var i = 0;i < data.length;i++) {
@@ -105,7 +117,7 @@
     };
 
     $scope.chartData = function(){
-      homeService.chartData($scope.fields.PCode)
+      homeService.chartData($scope.fields.projectCode)
           .then(function (results) {	//Success function
               // $scope.totalPercentage = results.data[0].per;
 
@@ -116,8 +128,20 @@
           });
     };
 
+      $scope.getSchedule = function(){
+          homeService.getSchedule($scope.fields.userid)
+              .then(function (results) {	//Success function
+                  // $scope.totalPercentage = results.data[0].per;
+
+                  $scope.shedule=results.data;
+                  console.log($scope.shedule);
+              }).catch(function(error) {
+              console.log('Error');
+          });
+      };
+
     $scope.imageData = function(){
-      homeService.imageData($scope.fields.PCode)
+      homeService.imageData($scope.fields.projectCode)
           .then(function (results) {
             $scope.images = results.data;
           }).catch(function (error) {

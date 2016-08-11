@@ -26,7 +26,7 @@ function getUserDetails(userType) {
   qry += " p.g_email as googleEmail, p.contact as contact, p.address as address, p.college as college, p.course as course,";
   qry += " p.branch as branch, p.year as year, p.project_fee as projectFees, p.fees_paid as feesPaid, ";
   qry += " p.fees_balance as feesBalance, p.profile_pic as profilePic, p.facebook_img as facebookImage,";
-  qry += " p.google_img as googleImage,p.message_no as msgNumber from personaldata as p where p.userType = '"+userType+"' and p.status = 'active'";
+  qry += " p.google_img as googleImage,p.message_no as msgNumber from personaldata as p where p.userType = '"+userType+"' and p.status = 'active' LIMIT 10";
 
   con.query(qry,function(err, results) {
       if (err) {
