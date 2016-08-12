@@ -47,6 +47,19 @@
             <form class="form-horizontal" role="form" method="post" action="/documents/upload" enctype="multipart/form-data" name="frmDoc" id="frmDoc" novalidate onsubmit="false" >
                 
                 <input type="hidden" value="{{formData.id}}" name="docId" id="docId" >
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5" for="projectId">Project<span style="color: red">*</span> </label>
+                    <div class="col-sm-7">
+                        <select class="form-control" name="projectId" id="projectId" ng-model="formData.projectId" required="">
+
+                            <option ng-repeat="prj in projects" ng-value="prj.projectCode" ng-selected="prj.projectCode==formData.projectId">{{prj.projectCode}}</option>
+
+                        </select>
+                        <span style="color: red" ng-show="isErr=frmDoc.projectId.$touched && frmDoc.projectId.$invalid">Please select the ProjectId</span>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="control-label col-sm-5" for="docCaption">Caption of the Document <span style="color: red">*</span> </label>
                     <div class="col-sm-7">

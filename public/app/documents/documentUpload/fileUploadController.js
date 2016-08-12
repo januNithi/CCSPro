@@ -10,13 +10,15 @@
         'dashboardService',
         'departmentServices',
         'documentTypeServices',
+        'projectRegService',
         '$window'
 
 
     ];
-    function fileUploadController($location,$scope, fileUploadServices, dashboardService,departmentServices,documentTypeServices, $window) {
+    function fileUploadController($location,$scope, fileUploadServices, dashboardService,departmentServices,documentTypeServices,projectRegService, $window) {
 
         $scope.formData = [{
+            projectId:'',
             id: '',
             docCaption: '',
             docType: '',
@@ -36,6 +38,7 @@
         $scope.docPattern = '';     //Model for store the pattern of ducument
         $scope.dep = [];            //Model for store the department list
         $scope.type = [];
+        $scope.projects=[];
 
         dashboardService.checkAdmin();
         //Function for inceremeenting rows//
@@ -128,9 +131,24 @@
 
         }
 
+        getAllProjects = function() {
+            projectRegService.getAllProjects()
+                .then(function(response) {
+
+                    $scope.projects = response.data;
+                })
+                .catch(function(error) {
+                    alert('error');
+                });
+
+
+
+        };
+
 
         getDocumentType();
         getDepartment();
+        getAllProjects();
 
 
     }

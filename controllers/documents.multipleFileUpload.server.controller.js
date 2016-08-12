@@ -52,6 +52,7 @@ exports.uploadMultiple = function(req,res) {
       document.docKey = fields['docKey' + i];
       document.docDesc = fields['docDesc' + i];
       document.docFile = files['docFile' + i].name;
+      document.projectId = fields['projectId' + i];
 
 
       // console.log(document);

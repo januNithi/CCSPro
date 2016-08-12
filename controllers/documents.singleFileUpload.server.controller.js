@@ -28,6 +28,7 @@ exports.upload = function(req,res) {
     document.docKey = fields.docKey;
     document.docDesc = fields.docDesc;
     document.docFile = files.docFile.name;
+    document.projectId = fields.projectId;
     var insertId = null;
 
     if (fields.docId !== '')    {

@@ -56,6 +56,7 @@
       <thead>
       <tr>
         <th>Sl No</th>
+          <th>Project</th>
         <th>Document Caption</th>
         <th>Doc Type</th>
         <th>Department</th>
@@ -68,7 +69,16 @@
       <tbody>
         <tr ng-repeat="r in rows">
           <td>{{r}}</td>
-          <td><input type="text" class="form-control" id="docCaption{{r}}" name="docCaption{{r}}" placeholder="" ng-model="formData[r].docCaption" ng-maxlength="50" ng-minlength="0" required="true" >
+
+            <td>
+                <select class="form-control" name="projectId" id="projectId" ng-model="formData.projectId" required="">
+
+                    <option ng-repeat="prj in projects" ng-value="prj.projectCode" ng-selected="prj.projectCode==formData[r].projectId">{{prj.projectCode}}</option>
+
+                </select>
+                <span style="color: red" ng-show="isErr=frmDoc.projectId{{r}}.$touched && frmDoc.projectId{{r}}.$invalid">Please select the ProjectId</span>
+            </td>
+            <td><input type="text" class="form-control" id="docCaption{{r}}" name="docCaption{{r}}" placeholder="" ng-model="formData[r].docCaption" ng-maxlength="50" ng-minlength="0" required="true" >
 
           <span style="color: red"  ng-show="isErr=frmDoc.docCaption{{r}}.$error.maxlength && frmDoc.docCaption{{r}}.$dirty">Maximum 50 Characters allowed</span>
 

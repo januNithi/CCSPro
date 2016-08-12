@@ -37,7 +37,7 @@ exports.getAllDoc=function(ser,cb){
       var myErr=null,data=null;
       var qry="SELECT A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as  docType,A.DOCDEP as docDep,A.DOCKEY as docKey,";
         qry += "A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN ";
-        qry += "as docNoDown,B.DEP_ID,B.DEP_NAME,COALESCE(FLOOR(AVG(C.STARS)),0) as star FROM tbl_documents ";
+        qry += "as docNoDown,B.DEP_ID,B.DEP_NAME,COALESCE(FLOOR(AVG(C.STARS)),0) as star,A.projectId as projectId FROM tbl_documents ";
         qry += "A LEFT OUTER join tbl_department B on (A.DOCDEP=B.DEP_ID) LEFT OUTER JOIN  tbl_doc_stars C  on ";
         qry += "A.ID=C.DOC_ID WHERE A.DOCCAPTION LIKE '" + ser+ "%' GROUP BY A.id ORDER BY A.ID DESC";
       con.query(qry,function(err,res){
@@ -110,11 +110,11 @@ exports.getDocById=function(id,nextPrev,cb){
     if( id===null || id==='') return cb("error",data);
 
       if(nextPrev===0)
-            qry="SELECT  A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown FROM tbl_documents A WHERE A.ID="+id;
+            qry="SELECT  A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown,A.projectId as projectId FROM tbl_documents A WHERE A.ID="+id;
       else if(nextPrev===-1)
-            qry='SELECT  A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown from tbl_documents A where A.ID = (select max(id) from tbl_documents where id < '+ id+' )';
+            qry='SELECT  A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown,A.projectId as projectId from tbl_documents A where A.ID = (select max(id) from tbl_documents where id < '+ id+' )';
       else if(nextPrev ===1)
-            qry='SELECT  A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown from tbl_documents A where A.ID = (select min(id) from tbl_documents where id > '+ id+' )';
+            qry='SELECT  A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown,A.projectId as projectId from tbl_documents A where A.ID = (select min(id) from tbl_documents where id > '+ id+' )';
 
       con.query(qry,function(err,res){
   		
@@ -137,7 +137,7 @@ exports.getDocByDep=function(ser,depId,cb){
       var myErr=null,data=null;
 
       if(depId==null || depId=='') return cb("error",data);
-      var qry="SELECT A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown,B.DEP_ID,B.DEP_NAME,COALESCE(FLOOR(AVG(C.STARS)),0) as star FROM tbl_documents A LEFT OUTER join tbl_department B on (A.DOCDEP=B.DEP_ID) LEFT OUTER JOIN  tbl_doc_stars C  on  A.ID=C.DOC_ID WHERE A.DOCDEP="+depId+" AND A.DOCCAPTION LIKE '" + ser+ "%' GROUP BY C.doc_id,A.ID ORDER BY A.ID DESC";
+      var qry="SELECT A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown,A.projectId as projectId,B.DEP_ID,B.DEP_NAME,COALESCE(FLOOR(AVG(C.STARS)),0) as star FROM tbl_documents A LEFT OUTER join tbl_department B on (A.DOCDEP=B.DEP_ID) LEFT OUTER JOIN  tbl_doc_stars C  on  A.ID=C.DOC_ID WHERE A.DOCDEP="+depId+" AND A.DOCCAPTION LIKE '" + ser+ "%' GROUP BY C.doc_id,A.ID ORDER BY A.ID DESC";
       con.query(qry,depId,function(err,res){
   		
       if(err)
@@ -159,7 +159,7 @@ exports.getDocByType=function(ser,typeId,cb){
       var myErr=null,data=null;
 
      if(typeId==null || typeId=='') return cb("error",data);
-      var qry="SELECT A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown,B.DEP_ID,B.DEP_NAME,COALESCE(FLOOR(AVG(C.STARS)),0) as star FROM tbl_documents A LEFT OUTER join tbl_department B on (A.DOCDEP=B.DEP_ID) LEFT OUTER JOIN  tbl_doc_stars C  on  A.ID=C.DOC_ID WHERE A.DOCTYPE="+ typeId+" AND A.DOCCAPTION LIKE '" + ser+ "%' GROUP BY C.doc_id,A.ID ORDER BY A.ID DESC";
+      var qry="SELECT A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown,A.projectId as projectId,B.DEP_ID,B.DEP_NAME,COALESCE(FLOOR(AVG(C.STARS)),0) as star FROM tbl_documents A LEFT OUTER join tbl_department B on (A.DOCDEP=B.DEP_ID) LEFT OUTER JOIN  tbl_doc_stars C  on  A.ID=C.DOC_ID WHERE A.DOCTYPE="+ typeId+" AND A.DOCCAPTION LIKE '" + ser+ "%' GROUP BY C.doc_id,A.ID ORDER BY A.ID DESC";
       con.query(qry,typeId,function(err,res){
   		
       if(err)
@@ -180,7 +180,7 @@ exports.getDocByTypeDep=function(ser,typeId,depId,cb){
 
       var myErr=null,data=null;
       if(typeId==null || typeId=='' || depId==null || depId=='' ) return cb("error",data);
-      var qry="SELECT A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown,B.DEP_ID,B.DEP_NAME,COALESCE(FLOOR(AVG(C.STARS)),0) as star FROM tbl_documents A LEFT OUTER join tbl_department B on (A.DOCDEP=B.DEP_ID) LEFT OUTER JOIN  tbl_doc_stars C  on  A.ID=C.DOC_ID WHERE A.DOCTYPE="+typeId+ " AND A.DOCDEP="+depId+" AND A.DOCCAPTION LIKE '" + ser+ "%' GROUP BY C.doc_id,A.ID ORDER BY A.ID DESC";
+      var qry="SELECT A.ID as id,A.DOCCAPTION as docCaption,A.DOCTYPE as docType,A.DOCDEP as docDep,A.DOCKEY as docKey,A.DOCDESC as docDesc,A.DOCDATE as docDate,A.DOCFILE as docFile,A.DOCNOVIEWS as docNoViews,A.DOCNODOWN as docNoDown,A.projectId as projectId,B.DEP_ID,B.DEP_NAME,COALESCE(FLOOR(AVG(C.STARS)),0) as star FROM tbl_documents A LEFT OUTER join tbl_department B on (A.DOCDEP=B.DEP_ID) LEFT OUTER JOIN  tbl_doc_stars C  on  A.ID=C.DOC_ID WHERE A.DOCTYPE="+typeId+ " AND A.DOCDEP="+depId+" AND A.DOCCAPTION LIKE '" + ser+ "%' GROUP BY C.doc_id,A.ID ORDER BY A.ID DESC";
     
       con.query(qry,typeId,function(err,res){
   		
