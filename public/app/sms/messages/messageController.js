@@ -70,7 +70,7 @@
 
             $scope.newSms.selectedContacts=[];
             if($scope.selDep===null) return;
-            var selProjects=$filter("filter")($scope.prInfo,{prDep:$scope.selDep.DEP_ID});
+            var selProjects=$filter("filter")($scope.prInfo,{prDep:$scope.selDep.DEP_NAME});
 
             for(var i=0;i<selProjects.length;i++){
 

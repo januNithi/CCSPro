@@ -118,7 +118,7 @@ exports.getStudentInfo = function (cb){
 };
 
 exports.getProjectInfo = function (cb){
-    con.query('SELECT p.projectCode as prCaption,p.Department as prDep,p.id as prId FROM erp_database p',function(err,result){
+    con.query('SELECT p.projectCode as prCaption,p.Department as prDep,p.projectCode as prId FROM erp_database p',function(err,result){
         cb( err,result);
     });
 };
