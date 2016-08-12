@@ -9,8 +9,8 @@
       chatting:function(){
         $window.location.href = '/chat/chathome';
       },
-      getAllFields: function (id) {
-        return $http.get('/getAllFields?id='+id);
+      getAllFields: function () {
+        return $http.get('/getAllFields');
       },
       projectData: function () {
         return $http.get('/data');

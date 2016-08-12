@@ -70,7 +70,7 @@
     };
 
       $scope.getAllFields=function(){
-          homeService.getAllFields(getParameterByName('id'))
+          homeService.getAllFields()  //getParameterByName('id')
               .success(function(response){
                   console.log(response[0]);
                   $scope.fields=response[0];
@@ -78,7 +78,6 @@
                   if($scope.fields.docFile){
                       var ext=$scope.fields.docFile.split('.').pop();
                       $scope.abstractImage="/uploads/projectRegistration/"+$scope.fields.docFile;
-                      alert($scope.abstractImage);
                   }
                   $scope.imageData();
                   $scope.projectHistory();
@@ -161,7 +160,7 @@
     };
 
       $scope.getAllFields();
-    $scope.projectData();
+      $scope.projectData();
 
 
 

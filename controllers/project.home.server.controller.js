@@ -18,7 +18,8 @@ exports.data = function(req, res) {
 };
 
 exports.getAllFields = function(req, res) {
-  var id=req.query.id;
+  var id=req.session.data.userid                   //req.query.id;
+  console.log("userid"+req.session.data.userid);
   connection.query("select a.*,b.*,c.*,c.id as pid,d.* from personaldata a left outer join project_allocate b on a.userid=b.student_id left outer join erp_database c on b.project_id=c.projectCode left outer join project d on b.project_id=d.PCode where a.userid='"+id+"'",function(err,result) {
 
     if (err) {
