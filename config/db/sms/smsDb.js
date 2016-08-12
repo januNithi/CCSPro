@@ -112,7 +112,7 @@ exports.getSmsData = function (cb){
 };
 
 exports.getStudentInfo = function (cb){
-    con.query('SELECT p.fname as name,p.id as id,p.facebook_id as fbId,p.message_no as mob,pr.project_id as prId FROM personaldata p INNER JOIN project_allocate pr on pr.student_id=p.id',function(err,result){
+    con.query('SELECT p.fname as name,p.userid as id,p.facebook_id as fbId,p.message_no as mob,pr.project_id as prId FROM personaldata p INNER JOIN project_allocate pr on pr.student_id=p.userid',function(err,result){
         cb( err,result);
     });
 };
