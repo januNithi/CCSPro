@@ -8,7 +8,6 @@
 
         this.getFileDoc=function()
         {
-            alert();
             return $http.get('/fileDoc');
         };
 
