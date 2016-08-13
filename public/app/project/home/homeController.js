@@ -79,6 +79,12 @@
                       var ext=$scope.fields.docFile.split('.').pop();
                       $scope.abstractImage="/uploads/projectRegistration/"+$scope.fields.docFile;
                   }
+
+                  if($scope.fields.synImg){
+                      var ext=$scope.fields.synImg.split('.').pop();
+                      $scope.synImg="/uploads/waterMark/"+$scope.fields.synImg;
+                  }
+
                   $scope.imageData();
                   $scope.projectHistory();
                   $scope.chartData();
