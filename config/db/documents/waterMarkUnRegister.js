@@ -26,12 +26,12 @@ module.exports=function(connection){
                 var i;
 
 
-                for (i = 0; i < jsonDATA.length - 1; i++) {
+               // for (i = 0; i < jsonDATA.length - 1; i++) {
 
-                            sync=false;
-                            var ext = path.extname(jsonDATA[i].synImg);
-
-                            if (ext === '.doc') {
+                            // sync=false;
+                            // var ext = path.extname(jsonDATA[i].synImg);
+                            //
+                            // if (ext === '.doc') {
 
                                 //for windows
                                 // convertPdf(jsonDATA[i].Doc_File);
@@ -52,25 +52,25 @@ module.exports=function(connection){
 
 
                                 
-                                var cmd = 'soffice --headless --convert-to pdf --outdir public/uploads/waterMark/ public/uploads/waterMark/' + jsonDATA[i].synImg +
-                                // libreoffice --headless --convert-to pdf ./;
-                                exec(cmd, function(error, stdout, stderr) {
-                                    console.log(error);
-                                    sync=true;
-                                });
-
-                            }
-                            else
-                                sync=true;
-                            console.log(i);
-
-                            while(!sync){
-                                require("deasync").sleep(1000);
-
-                            }
-
-
-                        }
+                        //         var cmd = 'soffice --headless --convert-to pdf --outdir public/uploads/waterMark/ public/uploads/waterMark/' + jsonDATA[i].synImg +
+                        //         // libreoffice --headless --convert-to pdf ./;
+                        //         exec(cmd, function(error, stdout, stderr) {
+                        //             console.log(error);
+                        //             sync=true;
+                        //         });
+                        //
+                        //     }
+                        //     else
+                        //         sync=true;
+                        //     console.log(i);
+                        //
+                        //     while(!sync){
+                        //         require("deasync").sleep(1000);
+                        //
+                        //     }
+                        //
+                        //
+                        // }
 
 
 
@@ -150,7 +150,7 @@ module.exports=function(connection){
                 //
                 // });
 
-                waterMark();
+                // waterMark();
 
 
             }
