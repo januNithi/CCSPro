@@ -52,7 +52,7 @@ module.exports=function(connection){
 
 
                                 console.log(jsonDATA[i].synImg);
-                                var cmd = 'soffice --headless --convert-to pdf --outdir public/uploads/waterMark/ public/uploads/waterMark/' + jsonDATA[i].synImg + ".pdf";
+                                var cmd = 'soffice --headless --convert-to pdf --outdir public/uploads/waterMark/'+jsonDATA[i].synImg + '.pdf public/uploads/waterMark/' + jsonDATA[i].synImg;
                                 // libreoffice --headless --convert-to pdf ./;
                                 exec(cmd, function(error, stdout, stderr) {
                                     console.log(error);
