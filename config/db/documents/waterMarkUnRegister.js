@@ -177,6 +177,7 @@ module.exports=function(connection){
 
                     exec(cmd, function(error, stdout, stderr) {
                         console.log(error);
+                        sync=true;
                     });
                 }
                 while(!sync){
