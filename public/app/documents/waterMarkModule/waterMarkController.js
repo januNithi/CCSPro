@@ -99,7 +99,7 @@
 
                 file.replace("doc","pdf");
                 // thisFile="../uploads/waterMarkpdf/"+file;
-            else
+            // else
                 thisFile="../uploads/waterMarkpdf/"+file;
 
             $window.open(thisFile);
