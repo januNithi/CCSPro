@@ -97,7 +97,8 @@
 
             if(file.split('.').pop()==="doc")
 
-                thisFile="../uploads/waterMarkpdf/"+file+".pdf";
+                file.replace("doc","pdf");
+                // thisFile="../uploads/waterMarkpdf/"+file;
             else
                 thisFile="../uploads/waterMarkpdf/"+file;
 

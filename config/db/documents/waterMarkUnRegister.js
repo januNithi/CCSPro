@@ -164,7 +164,9 @@ module.exports=function(connection){
     function waterMark(){
         fs.readdir('./public/uploads/waterMark/',function(err,files){
             if(err) return;
+            var sync=true;
             files.forEach(function(file){
+                sync=false;
                 console.log(file);
                 var ext=path.extname(file);
 
@@ -176,6 +178,10 @@ module.exports=function(connection){
                     exec(cmd, function(error, stdout, stderr) {
                         console.log(error);
                     });
+                }
+                while(!sync){
+                    require("deasync").sleep(2000);
+
                 }
             });
         });
