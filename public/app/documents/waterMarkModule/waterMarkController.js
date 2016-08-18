@@ -91,15 +91,15 @@
         };
 
 
-        $scope.showFile = function(id,file){
+        $scope.showFile = function(id,file) {
 
             var thisFile;
 
-            if(file.split('.').pop()==="doc")
-
-                file.replace("doc","pdf");
-                // thisFile="../uploads/waterMarkpdf/"+file;
-            // else
+            if (file.split('.').pop() === "doc") {
+                var f = file.replace("doc", "pdf");
+                thisFile = "../uploads/waterMarkpdf/" + f;
+            }
+            else
                 thisFile="../uploads/waterMarkpdf/"+file;
 
             $window.open(thisFile);
