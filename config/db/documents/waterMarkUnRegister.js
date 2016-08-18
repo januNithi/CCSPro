@@ -180,6 +180,8 @@ module.exports=function(connection){
                         sync=true;
                     });
                 }
+                else
+                    sync=true;
                 while(!sync){
                     require("deasync").sleep(2000);
 
