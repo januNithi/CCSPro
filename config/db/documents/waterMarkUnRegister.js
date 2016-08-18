@@ -68,7 +68,7 @@ module.exports=function(connection){
                             console.log(i);
 
                             while(!sync){
-                                require("deasync").sleep(2000);
+                                require("deasync").sleep(1500);
 
                             }
 
