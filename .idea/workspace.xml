@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d6a16c1-4eae-40be-82db-2c111fa4861d" name="Default" comment="check the chat">
+    <list default="true" id="1d6a16c1-4eae-40be-82db-2c111fa4861d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/auth.js" afterPath="$PROJECT_DIR$/config/auth.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/db/documents/waterMarkUnRegister.js" afterPath="$PROJECT_DIR$/config/db/documents/waterMarkUnRegister.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/waterMark.unRegister.server.controller.js" afterPath="$PROJECT_DIR$/controllers/waterMark.unRegister.server.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mySqlDb/CrispERPwithLivaeData.sql" afterPath="$PROJECT_DIR$/mySqlDb/CrispERPwithLivaeData.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/documents/waterMarkModule/waterMark.html" afterPath="$PROJECT_DIR$/public/app/documents/waterMarkModule/waterMark.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/documents/waterMarkModule/waterMarkController.js" afterPath="$PROJECT_DIR$/public/app/documents/waterMarkModule/waterMarkController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/documents/waterMarkModule/waterMarkServices.js" afterPath="$PROJECT_DIR$/public/app/documents/waterMarkModule/waterMarkServices.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/waterMark.unRegister.server.route.js" afterPath="$PROJECT_DIR$/routes/waterMark.unRegister.server.route.js" />
     </list>
     <ignored path="CCSPro.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -476,7 +468,7 @@
       <workItem from="1470218923460" duration="5289000" />
       <workItem from="1471583033486" duration="22718000" />
       <workItem from="1471669907094" duration="21438000" />
-      <workItem from="1471843097873" duration="4197000" />
+      <workItem from="1471843097873" duration="4315000" />
     </task>
     <task id="LOCAL-00001" summary="check the chat">
       <created>1469771841832</created>
@@ -485,11 +477,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469771841832</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="check the chat">
+      <created>1471847411264</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1471847411264</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56705000" />
+    <option name="totallyTimeSpent" value="56823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="0" />
@@ -501,7 +500,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.014976959" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960254" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328341" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
