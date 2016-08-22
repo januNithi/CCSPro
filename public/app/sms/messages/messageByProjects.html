@@ -33,7 +33,7 @@
                         </div>
 
                         <div class=" col-lg-2">
-                            <select class="form-control" ng-options="stud as stud.name for stud in contInfo" ng-model="selStud" ng-change="getContactsBySelection();">
+                            <select class="form-control" ng-options="stud as stud.id for stud in contInfo" ng-model="selStud" ng-change="getContactsBySelection();">
                                 <option value="">Select Student</option>
                             </select>
                         </div>
