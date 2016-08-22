@@ -17,6 +17,7 @@
     </div>
 </nav>
 
+
 <div class="container">
     <div class="row content">
 <!--<div class="col-sm-3">-->
@@ -41,90 +42,165 @@
     <!--</div>-->
 <!--</div>-->
 
-<div class="col-sm-10 col-sm-offset-1">
-    <div class="panel panel-primary">
-        <div class="panel-heading" style="height: 70px">
-            <div class="col-lg-6"><h4>You Can Select The Project Here ! ! !</h4></div>
-        <div class="col-lg-6"><button type="button" class="btn btn-primary col-sm-offset-10"  data-toggle="collapse" data-target="#demo">Search</button></div>
-        </div>
-            <div class="panel-body">
-            <form class="form-horizontal" role="form">
-                <div class="form-group collapse" id="demo">
-                    <label class="control-label col-sm-2">Search:</label>
-                    <div class="col-sm-8">
-                        <input type="text" ng-model="searchText" class="form-control" placeholder="Search...">
+
+        <style>
+            /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+            .row.content5 {height: 600px;}
+
+            /* Set gray background color and 100% height */
+            .sidenave {
+                background-color: #006dcc;
+                height: auto;
+            }
+            .tab-pane{
+                height:600px;
+                overflow-y:scroll;
+                width:100%;
+            }
+            .tab-pane1{
+                height:480px;
+                overflow-y:scroll;
+                width:100%;
+            }
+            /* On small screens, set height to 'auto' for sidenav and grid */
+            @media screen and (max-width: 767px) {
+                .sidenav {
+                    height: auto;
+                    /*padding: 15px;*/
+                }
+                .row.content {height: auto;}
+            }
+        </style>
+
+
+        <div class="container-fluid">
+            <div class="row content5">
+                <div class="col-sm-5 sidenave">
+                  <br><br>
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            Project Category <br><br>
+                            <select class="form-control" id="sel1"   ng-model="selected" ng-change="selectDepName()">
+                                       <option ng-repeat="datas in data"  ng-value="datas.DEP_NAME">{{datas.DEP_NAME}}</option>
+                            </select>
+                            <br>
+                            <input type= "text" ng-model="search" class="form-control" placeholder="Search...">
+                        </div>
+                        <div class="tab-pane1 active" id="test1">
+                        <p ng-repeat="data in selectDepNames  | filter:search">
+                       <a ng-click="chooseSubHead(data.subhead)" >{{data.subhead}}</a>
+                        </p>
+                            </div>
                     </div>
                 </div>
-                </form>
-            <div ng-show="mechanical">
-                <h4>Projects</h4><hr>
-                <ul ng-repeat="file in files | filter:searchText">
-                    <li class="panel col-sm-offset-1">{{file.Title}}
-                        <div class="panel col-sm-offset-8">
+
+
+                <div class="col-sm-7">
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><h4>Projects</h4>
+                            <input type="text" ng-model="searchText" class="form-control" placeholder="Search...">
+                        </div>
+                        <div class="tab-pane active" id="test">
+                        <div class="panel-body" ng-repeat="data in datas | filter:searchText" data-spy="scroll">
+                                {{data.Title}}<br><br>
                             <button type="button" class="btn btn-primary" ng-init="File = file.synImg" ng-click='showFile(1,file.synImg)'>DOWNLOAD</button>
+                            </div>
                         </div>
-                        </li>
-                </ul>
-            </div>
-            <div ng-hide="hideAllDept">
-            <div  ng-show="CAD">
-                <h4>CAD/CAM projects</h4><hr>
-                <ul ng-repeat="file in files | filter:searchText">
-                    <li class="panel col-sm-offset-1">{{file.Doc_File}}
-                        <div class="panel col-sm-offset-8">
-                            <button type="button" class="btn btn-primary" ng-init="File = file.Doc_File" ng-click='showFile(file.id,file.Doc_File)'>DOWNLOAD</button>
                         </div>
-                    </li>
-                </ul>
-
-            </div>
-            <div ng-show="Electronics">
-                <h4>Electronics projects</h4><hr>
-                <ul ng-repeat="file in files | filter:searchText">
-                    <li class="panel col-sm-offset-1">{{file.Doc_File}}
-                        <div class="panel col-sm-offset-8">
-                            <button type="button" class="btn btn-primary" ng-init="File = file.Doc_File" ng-click='showFile(file.id,file.Doc_File)'>DOWNLOAD</button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div ng-show="Mini">
-                <h4>Mini projects</h4><hr>
-                <ul ng-repeat="file in files | filter:searchText">
-                    <li class="panel col-sm-offset-1">{{file.Doc_File}}
-                        <div class="panel col-sm-offset-8">
-                            <button type="button" class="btn btn-primary" ng-init="File = file.Doc_File" ng-click='showFile(file.id,file.Doc_File)'>DOWNLOAD</button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div ng-show="IEEE">
-                <h4>IEEE projects</h4><hr>
-                <ul ng-repeat="file in files | filter:searchText">
-                    <li class="panel col-sm-offset-1">{{file.Doc_File}}
-                        <div class="panel col-sm-offset-8">
-                            <button type="button" class="btn btn-primary" ng-init="File = file.Doc_File" ng-click='showFile(file.id,file.Doc_File)'>DOWNLOAD</button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div ng-show="Software">
-                <h4>Software projects</h4><hr>
-
-                <ul ng-repeat="file in files | filter:searchText">
-                    <li class="panel col-sm-offset-1">{{file.Title}}
-                        <div class="panel col-sm-offset-8">
-                            <button type="button" class="btn btn-primary" ng-init="File = file.synImg" ng-click='showFile(1,file.synImg)'>DOWNLOAD</button>
-                        </div>
-                    </li>
-                </ul>
-
-            </div>
-            </div>
+                    </div>
 
         </div>
+        </div>
+        </div>
 
-    </div>
-</div>
+<!--======mark-->
+
+
+        <!--<div class="col-sm-10 col-sm-offset-1">-->
+    <!--<div class="panel panel-primary">-->
+        <!--<div class="panel-heading" style="height: 70px">-->
+            <!--<div class="col-lg-6"><h4>You Can Select The Project Here ! ! !</h4></div>-->
+        <!--<div class="col-lg-6"><button type="button" class="btn btn-primary col-sm-offset-10"  data-toggle="collapse" data-target="#demo">Search</button></div>-->
+        <!--</div>-->
+            <!--<div class="panel-body">-->
+            <!--<form class="form-horizontal" role="form">-->
+                <!--<div class="form-group collapse" id="demo">-->
+                    <!--<label class="control-label col-sm-2">Search:</label>-->
+                    <!--<div class="col-sm-8">-->
+                        <!--<input type="text" ng-model="searchText" class="form-control" placeholder="Search...">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--</form>-->
+            <!--<div ng-show="mechanical">-->
+                <!--<h4>Projects</h4><hr>-->
+                <!--<ul ng-repeat="file in files | filter:searchText">-->
+                    <!--<li class="panel col-sm-offset-1">{{file.Title}}-->
+                        <!--<div class="panel col-sm-offset-8">-->
+                            <!--<button type="button" class="btn btn-primary" ng-init="File = file.synImg" ng-click='showFile(1,file.synImg)'>DOWNLOAD</button>-->
+                        <!--</div>-->
+                        <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<div ng-hide="hideAllDept">-->
+            <!--<div  ng-show="CAD">-->
+                <!--<h4>CAD/CAM projects</h4><hr>-->
+                <!--<ul ng-repeat="file in files | filter:searchText">-->
+                    <!--<li class="panel col-sm-offset-1">{{file.Doc_File}}-->
+                        <!--<div class="panel col-sm-offset-8">-->
+                            <!--<button type="button" class="btn btn-primary" ng-init="File = file.Doc_File" ng-click='showFile(file.id,file.Doc_File)'>DOWNLOAD</button>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+
+            <!--</div>-->
+            <!--<div ng-show="Electronics">-->
+                <!--<h4>Electronics projects</h4><hr>-->
+                <!--<ul ng-repeat="file in files | filter:searchText">-->
+                    <!--<li class="panel col-sm-offset-1">{{file.Doc_File}}-->
+                        <!--<div class="panel col-sm-offset-8">-->
+                            <!--<button type="button" class="btn btn-primary" ng-init="File = file.Doc_File" ng-click='showFile(file.id,file.Doc_File)'>DOWNLOAD</button>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<div ng-show="Mini">-->
+                <!--<h4>Mini projects</h4><hr>-->
+                <!--<ul ng-repeat="file in files | filter:searchText">-->
+                    <!--<li class="panel col-sm-offset-1">{{file.Doc_File}}-->
+                        <!--<div class="panel col-sm-offset-8">-->
+                            <!--<button type="button" class="btn btn-primary" ng-init="File = file.Doc_File" ng-click='showFile(file.id,file.Doc_File)'>DOWNLOAD</button>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<div ng-show="IEEE">-->
+                <!--<h4>IEEE projects</h4><hr>-->
+                <!--<ul ng-repeat="file in files | filter:searchText">-->
+                    <!--<li class="panel col-sm-offset-1">{{file.Doc_File}}-->
+                        <!--<div class="panel col-sm-offset-8">-->
+                            <!--<button type="button" class="btn btn-primary" ng-init="File = file.Doc_File" ng-click='showFile(file.id,file.Doc_File)'>DOWNLOAD</button>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<div ng-show="Software">-->
+                <!--<h4>Software projects</h4><hr>-->
+
+                <!--<ul ng-repeat="file in files | filter:searchText">-->
+                    <!--<li class="panel col-sm-offset-1">{{file.Title}}-->
+                        <!--<div class="panel col-sm-offset-8">-->
+                            <!--<button type="button" class="btn btn-primary" ng-init="File = file.synImg" ng-click='showFile(1,file.synImg)'>DOWNLOAD</button>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+
+            <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+    <!--</div>-->
+<!--</div>-->
     </div>
     </div>

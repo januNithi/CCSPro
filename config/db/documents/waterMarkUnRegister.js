@@ -1,9 +1,12 @@
 // var msopdf = require('../../../lib');
 var path=require('path');
 var exec = require('child_process').exec;
+var q=require('q');
     var fs= require('fs');
 
 module.exports=function(connection){
+
+    var deffer=q.defer();
     
     this.getPdfFiles=function(cb) {
         var qry = "select * from erp_database";   //select doc_File from file_uploading
@@ -52,15 +55,15 @@ module.exports=function(connection){
 
 
                                 console.log(jsonDATA[i].synImg);
-                                var cmd = 'soffice --headless --convert-to pdf --outdir public/uploads/waterMark/ public/uploads/waterMark/' + jsonDATA[i].synImg;
-                                // libreoffice --headless --convert-to pdf ./;
-                                exec(cmd, function(error, stdout, stderr) {
-                                    console.log(error);
-                                    console.log(stdout);
-                                    console.log(stderr);
-                                    sync=true;
-                                });
-
+                                // var cmd = 'soffice --headless --convert-to pdf --outdir public/uploads/waterMark/ public/uploads/waterMark/' + jsonDATA[i].synImg;
+                                // // libreoffice --headless --convert-to pdf ./;
+                                // exec(cmd, function(error, stdout, stderr) {
+                                //     console.log(error);
+                                //     console.log(stdout);
+                                //     console.log(stderr);
+                                //     sync=true;
+                                // });
+                                //
 
                             }
                             else
@@ -153,13 +156,101 @@ module.exports=function(connection){
                 //
                 // });
 
-                waterMark();
+                // waterMark();
 
 
             }
 
         });
     };
+
+
+
+    this.getDocName=function(cb) {
+        var qry = 'select DEP_NAME from tbl_department';
+
+        console.log("get thedata from dp" + qry);
+
+        connection.query(qry, function (err, results) {
+
+        if(err){
+            cb(err,results);
+            console.log(err);
+        }
+            else {
+
+            cb(err,results);
+            console.log(results);
+        }
+
+
+
+    });
+
+    };
+
+    this. getDepName=function(data,cb) {
+        var qry = 'select subhead from cathead where head="' + data + '"';
+
+        console.log("get thedata from dp" + qry);
+
+        connection.query(qry, function (err, results) {
+
+            if (err) {
+                cb(err, results);
+                console.log(err);
+            }
+            else {
+
+                cb(err, results);
+                console.log(results);
+            }
+
+
+        });
+    };
+
+
+        this.getTittle=function(data,cb) {
+            var qry = 'select Title from erp_database where subHeads="'+data+'"';
+
+            console.log("get thedata from dp" + qry);
+
+            connection.query(qry, function (err, results) {
+
+                if (err) {
+                    cb(err, results);
+                    console.log(err);
+                }
+                else {
+
+                    cb(err, results);
+                    console.log(results);
+                }
+
+
+            });
+
+
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     function waterMark(){
         fs.readdir('./public/uploads/waterMark/',function(err,files){
@@ -196,5 +287,8 @@ module.exports=function(connection){
     //         });
     //     });
     // }
+
+
+
 
 };

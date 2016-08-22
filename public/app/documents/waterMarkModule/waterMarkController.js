@@ -14,6 +14,10 @@
     function waterMarkController($scope,$http,$window,unRegisterService)
     {
 
+        $scope.selected='';
+        $scope.selectDepNames=[];
+        $scope.datas=[];
+
         $scope.onLogout = function () {
             dashboardService.logout();
         };
@@ -21,6 +25,7 @@
             unRegisterService.goToDashboard();
         };
 
+        $scope.data=[];
 
         $scope.mechanical=true;
         $scope.CAD=true;
@@ -94,7 +99,7 @@
         $scope.showFile = function(id,file) {
 
             var thisFile;
-
+            if(file===undefined || file===null) return;
             if (file.split('.').pop() === "doc") {
                 var f = file.replace("doc", "pdf");
                 thisFile = "../uploads/waterMarkpdf/" + f;
@@ -126,7 +131,46 @@
             });
         };
 
-        $scope.getFileDoc();
+       //$scope.getFileDoc();
+
+        $scope.getDocHead=function(){
+
+            unRegisterService.getDocHead().then(function(data){
+
+               $scope.data=data.data;
+
+                $scope.selected=$scope.data[0].DEP_NAME;
+
+                $scope.selectDepName();
+
+            });
+
+        };
+        $scope.getDocHead();
+
+        $scope.selectDepName=function(){
+
+            unRegisterService.DepName($scope.selected).then(function(data){
+
+                $scope.selectDepNames=data.data;
+
+                
+                
+            });
+            
+            
+        };
+        
+        $scope.chooseSubHead=function(Tittledata){
+
+            unRegisterService.tittle(Tittledata).then(function(tittleData){
+                
+              $scope.datas=tittleData.data;
+            });
+            
+        };
+
+
 
 
     }
