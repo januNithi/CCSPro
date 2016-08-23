@@ -149,6 +149,7 @@
       homeService.imageData($scope.fields.projectCode)
           .then(function (results) {
             $scope.images = results.data;
+              console.log($scope.images[0].Al3Img);
           }).catch(function (error) {
             console.log('Error');
           });
@@ -165,6 +166,29 @@
             });
     };
 
+      $scope.getDocIcon=function(fileName){
+
+          if(fileName===undefined || fileName===null) return;
+          var icon;
+          var ext=fileName.split('.').pop();
+          switch (ext){
+              case 'pdf':
+                  icon="/images/documents/32/pdf.png";
+                  break;
+              case 'doc':
+                  icon='/images/documents/32/word.png';
+                  break;
+              case 'docx':
+                  icon='/images/documents/32/word.png';
+                  break;
+              case 'zip':
+                  icon='/images/documents/32/zip.png';
+                  break;
+
+          }
+          
+          return icon;
+      };
       $scope.getAllFields();
       $scope.projectData();
 

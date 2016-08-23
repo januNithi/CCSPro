@@ -14,7 +14,7 @@ exports.imageData = function(req, res) {
             res.send(err)
         }
         else{
-            res.send(results)
+            res.send(JSON.stringify(results));
         }
         
     });

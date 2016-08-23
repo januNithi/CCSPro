@@ -1,7 +1,7 @@
 module.exports=function(connection){
 
     this.imageDatas = function(id,cb){
-        connection.query("select * from images where prj_id='"+ id+"'", function(err,result) {
+        connection.query("select * from projdocs where PCode='"+ id+"'", function(err,result) {
 
             if (err) {
                 console.log('Error when get imageData : ' + err);
@@ -12,7 +12,7 @@ module.exports=function(connection){
 
             }
         });
-    }
+    };
 
     this.postHomeProjectImage=function(document,cb){
         var qry="INSERT INTO images set ?";
