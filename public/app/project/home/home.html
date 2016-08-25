@@ -267,9 +267,9 @@
 						    </timeline-badge>
 						    <timeline-panel class="{{event.badgeClass}}"ng-hide="false">
 						      <timeline-heading>
-						        <h4 class="text-info">{{event.title}}</h4>
+						        <h4 class="text-info">Date:&nbsp;{{event.title | date}}</h4>
 						      </timeline-heading>
-						      <h5>{{event.content}}</h5>
+						      <h4 class="text-info">Status:&nbsp;{{event.content}}</h4>
 						    </timeline-panel>
 						  </timeline-event>
 						</timeline>

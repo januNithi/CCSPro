@@ -111,9 +111,9 @@
               data=results.data;
               for (var i = 0;i < data.length;i++) {
                 if (i % 2 === 0) {	//Even badge
-                  $scope.events.push({badgeClass: 'info', badgeIconClass: 'glyphicon-check', title: data[i].Date, content: data[i].History});
+                  $scope.events.push({badgeClass: 'info', badgeIconClass: 'glyphicon-check', title: data[i].odate, content: data[i].job4});
                 }else {	//Odd badge
-                  $scope.events.push({badgeClass: 'warning', badgeIconClass: 'glyphicon-credit-card', title: data[i].Date, content: data[i].History});
+                  $scope.events.push({badgeClass: 'warning', badgeIconClass: 'glyphicon-credit-card', title: data[i].odate, content: data[i].job4});
                 }
               }
           }).catch(function (error) {

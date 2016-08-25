@@ -1,6 +1,6 @@
 module.exports=function(connection) {
     this.projectHomeHistory = function (id,cb) {
-        connection.query("Select * from projectdetails where PCode='" + id+"'", function (err, result) {
+        connection.query("Select odate,job4 from staffworkflow where PCode='"+id+"' and job4!='' and job4!='LUNCH'  group by job4;", function (err, result) {
 console.log('Select * from projectdetails where PCode=' + id);
             if (err) {
                 console.log('Error when get projectHistory data : ' + err);
