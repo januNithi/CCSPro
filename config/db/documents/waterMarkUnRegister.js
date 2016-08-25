@@ -212,7 +212,7 @@ module.exports=function(connection){
 
 
         this.getTittle=function(data,cb) {
-            var qry = 'select Title from erp_database where subHeads="'+data+'"';
+            var qry = 'select * from erp_database where subHeads="'+data+'"';
 
             console.log("get thedata from dp" + qry);
 
