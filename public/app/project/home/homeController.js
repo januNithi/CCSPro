@@ -149,6 +149,7 @@
       homeService.imageData($scope.fields.projectCode)
           .then(function (results) {
             $scope.images = results.data;
+              console.log(results.data);
               console.log($scope.images[0].Al3Img);
           }).catch(function (error) {
             console.log('Error');

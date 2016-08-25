@@ -104,7 +104,7 @@
                         <div class="tab-pane active" id="test">
                         <div class="panel-body" ng-repeat="data in datas | filter:searchText" data-spy="scroll">
                                 {{data.Title}}<br><br>
-                            <button type="button" class="btn btn-primary" ng-init="File = file.synImg" ng-click='showFile(1,file.synImg)'>DOWNLOAD</button>
+                            <button type="button" class="btn btn-primary" ng-init="File = data.synImg" ng-click='showFile(1,data.synImg)'>DOWNLOAD</button>
                             </div>
                         </div>
                         </div>

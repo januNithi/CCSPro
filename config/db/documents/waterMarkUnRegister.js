@@ -167,7 +167,8 @@ module.exports=function(connection){
 
 
     this.getDocName=function(cb) {
-        var qry = 'select DEP_NAME from tbl_department';
+        // var qry = 'select DEP_NAME from tbl_department';
+        var qry = 'select DISTINCT(Department) as DEP_NAME from erp_database';
 
         console.log("get thedata from dp" + qry);
 
@@ -190,7 +191,8 @@ module.exports=function(connection){
     };
 
     this. getDepName=function(data,cb) {
-        var qry = 'select subhead from cathead where head="' + data + '"';
+        // var qry = 'select subhead from cathead where head="' + data + '"';
+        var qry = 'select distinct(subHeads) as subhead  from erp_database where Department="' + data + '"';
 
         console.log("get thedata from dp" + qry);
 
@@ -212,7 +214,7 @@ module.exports=function(connection){
 
 
         this.getTittle=function(data,cb) {
-            var qry = 'select Title from erp_database where subHeads="'+data+'"';
+            var qry = 'select * from erp_database where subHeads="'+data+'"';
 
             console.log("get thedata from dp" + qry);
 

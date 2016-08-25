@@ -97,7 +97,6 @@
 
 
         $scope.showFile = function(id,file) {
-
             var thisFile;
             if(file===undefined || file===null) return;
             if (file.split('.').pop() === "doc") {
