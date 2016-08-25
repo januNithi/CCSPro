@@ -85,8 +85,8 @@
 					<div class="panel-body" style="height:400px">
 						<!--<p><label>Employee Name : </label><br/> {{fields.HandledBy}}</p><br>-->
 						<!--<p><label>Contact Number : </label><br/> (+91) {{fields.EmpContact}}</p>-->
-						<div ng-repeat="sch in shedule">
-							<label>{{sch.ptask}}</label> &nbsp; &nbsp;<label>{{sch.HandledBy}}</label>
+						<div ng-repeat="event in events">
+							<br><br><h6>{{event.HandledBy}}-{{event.content}}</tr></h6>
 						</div>
 
 					</div>
